@@ -71,7 +71,7 @@
       <div class="slideshow-container" id="homeSlideshow" aria-label="Home slideshow">
         <!-- Slide 1: Video -->
         <div class="slide is-active" data-type="video">
-          <div class="hero-media hero-media--Shome">
+          <div class="hero-media hero-media--home">
             <video
               id="homeHeroVideo"
               class="hero-video"
@@ -81,80 +81,30 @@
               preload="metadata"
               poster="assets\media\home\home-page-video-poster.png"
             >
-              <source src="assets/media/home/home-page-video.mp4" type="video/mp4" />
+              <source src="assets\media\home\home-page-video-1.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
 
-        <!-- Slide 2+: Images -->
-        <div class="slide" data-type="image" data-interval="4500">
-          <div class="hero-media hero-media--home">
-            <img class="hero-img" src="assets/media/our-services/01-Terrace-House-copy.png" alt="" />
-          </div>
-        </div>
-        <div class="slide" data-type="image" data-interval="4500">
-          <div class="hero-media hero-media--home">
-            <img class="hero-img" src="assets/media/our-services/02-Workspaces-copy.png" alt="" />
-          </div>
-        </div>
-        <div class="slide" data-type="image" data-interval="4500">
-          <div class="hero-media hero-media--home">
-            <img class="hero-img" src="assets/media/our-services/03-Urban-Home-copy.png" alt="" />
-          </div>
-        </div>
-
-        <!-- Navigation dots -->
-        <div class="dots" aria-label="Slideshow navigation">
-          <button class="dot is-active" type="button" aria-label="Go to slide 1" data-slide="0"></button>
-          <button class="dot" type="button" aria-label="Go to slide 2" data-slide="1"></button>
-          <button class="dot" type="button" aria-label="Go to slide 3" data-slide="2"></button>
-          <button class="dot" type="button" aria-label="Go to slide 4" data-slide="3"></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHO WE ARE -->
-    <section id="who" class="hero hero--short">
-      <div class="slideshow-container" id="whoSlideshow" aria-label="Who we are slideshow">
-        <div
-          class="slide is-active"
-          data-type="video"
-          data-overlay="intro"
-          data-title="WHO WE ARE"
-          data-line1="More than builders, we are your partners in excellence."
-          data-line2a="PPC Construction Sdn. Bhd. delivers seamless"
-          data-line2b="design-and-build solutions for ambitious commercial "
-          data-line2c="spaces and premium homes."
-          data-line3a="We turn your vision into reality with disciplined "
-          data-line3b="precision and uncompromising efficiency."
-        >
-          <div class="hero-media">
-            <video class="hero-video" muted playsinline preload="metadata">
-              <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-
+        <!-- Slide 2-4: Videos (moved from Who We Are) -->
         <div class="slide" data-type="video" data-overlay="label" data-title="RESIDENTIAL">
-          <div class="hero-media">
-            <video class="hero-video" muted playsinline preload="metadata">
-              <source src="assets/media/who-we-are/Who-We-Are-Residential-02.mp4" type="video/mp4" />
+          <div class="hero-media hero-media--home">
+            <video class="hero-video" autoplay muted playsinline preload="metadata">
+              <source src="assets\media\home\home-page-video-2.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
-
         <div class="slide" data-type="video" data-overlay="label" data-title="COMMERCIAL">
-          <div class="hero-media">
-            <video class="hero-video" muted playsinline preload="metadata">
-              <source src="assets/media/who-we-are/Who-We-Are-Commercial-03.mp4" type="video/mp4" />
+          <div class="hero-media hero-media--home">
+            <video class="hero-video" autoplay muted playsinline preload="metadata">
+              <source src="assets\media\home\home-page-video-3.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
-
         <div class="slide" data-type="video" data-overlay="label" data-title="CONSTRUCTION">
-          <div class="hero-media">
-            <video class="hero-video" muted playsinline preload="metadata">
-              <source src="assets/media/who-we-are/Who-We-Are-Construction-04.mp4" type="video/mp4" />
+          <div class="hero-media hero-media--home">
+            <video class="hero-video" autoplay muted playsinline preload="metadata">
+              <source src="assets\media\home\home-page-video-4.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
@@ -184,6 +134,45 @@
               <div class="progress-nav__fill"></div>
             </div>
           </button>
+        </div>
+      </div>
+
+      <div class="home-label" id="homeLabel" aria-live="polite">
+        <div class="container">
+          <div class="home-label__text" id="homeLabelText"></div>
+        </div>
+      </div>
+
+      <div class="home-hero-overlay" id="homeHeroOverlay" aria-live="polite">
+        <div class="container">
+          <div class="home-hero-overlay__inner">
+            <div class="home-hero-overlay__title">INNOVATING SOLUTIONS FOR</div>
+            <div class="home-hero-overlay__subtitle">A CHANGING WORLD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section id="who" class="hero hero--short">
+      <div class="slideshow-container" id="whoSlideshow" aria-label="Who we are">
+        <div
+          class="slide is-active"
+          data-type="video"
+          data-overlay="intro"
+          data-title="WHO WE ARE"
+          data-line1="More than builders, we are your partners in excellence."
+          data-line2a="PPC Construction Sdn. Bhd. delivers seamless"
+          data-line2b="design-and-build solutions for ambitious commercial "
+          data-line2c="spaces and premium homes."
+          data-line3a="We turn your vision into reality with disciplined "
+          data-line3b="precision and uncompromising efficiency."
+        >
+          <div class="hero-media">
+            <video class="hero-video" muted playsinline preload="metadata">
+              <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
       </div>
 
@@ -408,57 +397,6 @@
       </div>
     </section>
 
-    <!-- WHY PPC -->
-    <section id="why" class="why-clean section-light">
-      <div class="container">
-        <div class="why-head text-center mx-auto">
-          <h2 class="why-title mb-3">WHY PPC CONSTRUCTION</h2>
-          <p class="why-lead mb-2">
-            Choosing us means choosing a partner dedicated to elevating your property's potential.
-            We combine innovative design with cost-effective engineering to deliver superior results.
-          </p>
-          <p class="why-body mb-0">
-            In an industry where trust is everything, we stand as a cornerstone of reliability in Malaysia.
-            With nearly two decades of mastery in construction and renovation, we bridge the gap between visionary design
-            and structural integrity.
-          </p>
-        </div>
-
-        <div class="row g-4 justify-content-center mt-4 mt-lg-5">
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">1</div>
-              <div class="why-tile__label">Transparent<br />Costing</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">2</div>
-              <div class="why-tile__label">Quality<br />Craftsmanship</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">3</div>
-              <div class="why-tile__label">Licensed<br />Accredited</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">4</div>
-              <div class="why-tile__label">On Time, On<br />Budget Delivery</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">5</div>
-              <div class="why-tile__label">Long Term<br />Client Support</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- REVIEWS -->
     <section id="reviews" class="section-pad section-light">
       <div class="container">
@@ -601,6 +539,57 @@
       </div>
     </section>
 
+    <!-- WHY PPC -->
+    <section id="why" class="why-clean section-light">
+      <div class="container">
+        <div class="why-head text-center mx-auto">
+          <h2 class="why-title mb-3">WHY PPC CONSTRUCTION</h2>
+          <p class="why-lead mb-2">
+            Choosing us means choosing a partner dedicated to elevating your property's potential.
+            We combine innovative design with cost-effective engineering to deliver superior results.
+          </p>
+          <p class="why-body mb-0">
+            In an industry where trust is everything, we stand as a cornerstone of reliability in Malaysia.
+            With nearly two decades of mastery in construction and renovation, we bridge the gap between visionary design
+            and structural integrity.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center mt-4 mt-lg-5">
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">1</div>
+              <div class="why-tile__label">Transparent<br />Costing</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">2</div>
+              <div class="why-tile__label">Quality<br />Craftsmanship</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">3</div>
+              <div class="why-tile__label">Licensed<br />Accredited</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">4</div>
+              <div class="why-tile__label">On Time, On<br />Budget Delivery</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">5</div>
+              <div class="why-tile__label">Long Term<br />Client Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="section-pad section-light">
       <div class="container">
@@ -612,13 +601,16 @@
         <div class="accordion mt-4" id="faqAccordion">
           <div class="accordion-item">
             <h3 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                What areas do you service?
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                We have a specific budget for our renovation. How do we ensure we’re spending it wisely?
               </button>
             </h3>
-            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
-                Add your service area details here (city/region, travel policy, etc.).
+                We don’t believe in "cookie-cutter" estimates. We consult with you to prioritize High-Impact Design
+                Elements and also Financial planning that align with your lifestyle or brand identity. Whether it’s
+                structural optimization, bespoke cabinetry, or sustainable material sourcing, we ensure your investment
+                increases both your Property Value and Functional Quality of Life.
               </div>
             </div>
           </div>
@@ -626,22 +618,125 @@
           <div class="accordion-item">
             <h3 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                Do you provide free estimates or consultations?
+                Do you disappear after the project is done, or is there long-term support?
               </button>
             </h3>
             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Add your estimate/consultation policy here.</div>
+              <div class="accordion-body">
+                We are Anti-"Hit and Run." We stand by the craftsmanship of every renovation and build. We conduct
+                follow-up checks to ensure everything is performing as intended. For us, a project isn’t just a one-time
+                transaction; it’s a Long-Term Partnership in maintaining the value and beauty of your property.
+              </div>
             </div>
           </div>
 
           <div class="accordion-item">
             <h3 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                What is your typical project timeline?
+                Can I be hands-on during the design and build? I want to be part of the decision-making.
               </button>
             </h3>
             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">Add typical ranges and what impacts timelines.</div>
+              <div class="accordion-body">
+                We wouldn't have it any other way. We believe in Empowerment through Design. We provide a platform where
+                you are the "Chief Architect" of your lifestyle needs. Rather than just watching from the sidelines, you
+                are invited to site walkthroughs and material workshops to ensure every detail feels like "home."
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Will I have a say in the day-to-day progress, or am I just paying for a finished product?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Definitely. We operate on a principle of Informed Execution. We create communication channels where you
+                are an Active Stakeholder in the project’s evolution. You aren't just funding a construction site; you
+                are an integral part of the transformation from concept to completion.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                How do you address accessibility and inclusive design in your projects?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Inclusive design is not a checkbox; it’s a standard. We offer tailored, human-centric solutions—from
+                barrier-free layouts to sensory-friendly material palettes—specifically designed to align with your
+                building’s purpose and the diverse needs of its occupants.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                Will this design look dated in a few years, or is there long-term value?
+              </button>
+            </h3>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We don’t believe in "Surface-Level Aesthetics." We design for Functional Longevity, balancing current
+                innovations with timeless principles. Our goal is to create a space that grows with you. We don’t just
+                finish a project; we build a lasting relationship to help you maintain and evolve your environment as
+                your needs change.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                Is any project too small—or too large—for your team?
+              </button>
+            </h3>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We thrive on variety. We provide the same level of precision for a bespoke furniture commission as we do
+                for industrial-scale architectural projects. Whether you are looking for a curated interior update or a
+                complete structural overhaul, we possess the manpower and technical oversight to ensure your vision is
+                executed to perfection.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                How big is your team and what is your expertise?
+              </button>
+            </h3>
+            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                <p class="mb-3">
+                  We operate as an Integrated Design &amp; Project Management Collective. This allows us to curate a
+                  "Project Dream Team" specifically tailored to your site’s requirements. Our network includes:
+                </p>
+                <ul class="mb-3">
+                  <li>Design &amp; Visualization: Interior Designers, 3D Render Artists, and AutoCAD Draftsmen.</li>
+                  <li>
+                    Technical Engineering: M&amp;E Specialists (Mechanical &amp; Electrical), Plumbing Schematics
+                    Experts, and Lighting Consultants.
+                  </li>
+                  <li>Master Craftsmen: Professional Carpenters for bespoke cabinetry, Tilers, and Fine Finishers.</li>
+                  <li>
+                    Project Oversight: Dedicated Project Leads and Copywriters to ensure seamless documentation and
+                    communication.
+                  </li>
+                </ul>
+                <p class="mb-0">
+                  Safety &amp; Compliance First: Every renovation or construction site is managed under strict CIDB
+                  standards (or local safety protocols) to ensure a zero-compromise environment for our workers and your
+                  property.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -704,7 +799,31 @@
         <footer class="pt-5 mt-5 border-top border-white-10 text-white-50 small">
           <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
             <div>© <span id="year"></span> PCC Construction. All rights reserved.</div>
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3 align-items-center">
+              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="currentColor"
+                    d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z"
+                  />
+                </svg>
+              </a>
+              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="currentColor"
+                    d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z"
+                  />
+                </svg>
+              </a>
+              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path
+                    fill="currentColor"
+                    d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z"
+                  />
+                </svg>
+              </a>
               <a class="text-white-50" href="#home">Back to top</a>
             </div>
           </div>
@@ -718,5 +837,21 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/js/main.js"></script>
+
+    <!-- Sticky WhatsApp button (bottom-right) -->
+    <a
+      class="wa-float"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z"
+        />
+      </svg>
+    </a>
   </body>
 </html>

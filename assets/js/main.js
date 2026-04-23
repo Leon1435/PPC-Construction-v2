@@ -375,9 +375,12 @@
     if (!(root instanceof HTMLElement)) return;
 
     const slides = Array.from(root.querySelectorAll(".slide")).filter((el) => el instanceof HTMLElement);
-    const dots = Array.from(root.querySelectorAll(".dot")).filter((el) => el instanceof HTMLButtonElement);
-    const video = root.querySelector("#homeHeroVideo");
-    const heroVideo = video instanceof HTMLVideoElement ? video : null;
+    const nav = root.querySelector(".progress-nav");
+    const navItems = Array.from(root.querySelectorAll(".progress-nav__item")).filter((el) => el instanceof HTMLButtonElement);
+    const videos = slides.map((s) => s.querySelector("video.hero-video")).map((v) => (v instanceof HTMLVideoElement ? v : null));
+    const labelRoot = document.getElementById("homeLabel");
+    const labelText = document.getElementById("homeLabelText");
+    const heroOverlay = document.getElementById("homeHeroOverlay");
 
     if (!slides.length) return;
 
@@ -385,8 +388,95 @@
     let timer = null;
     let leaveTimer = null;
     let paused = false;
+    let labelTimer = null;
+    let heroOverlayTimer = null;
+    let isSwitching = false;
+    let remainingMs = 0;
+    let nextDueAt = 0;
+    const pauseReasons = new Set();
 
     const FADE_MS = 350; // keep in sync with CSS opacity transition
+
+    const getSlideDurationSeconds = () => {
+      const v = videos[idx];
+      if (v) {
+        const d = v.duration;
+        if (Number.isFinite(d) && d > 0.25) return d;
+      }
+      const active = slides[idx];
+      const ms = Number(active?.dataset?.interval);
+      if (Number.isFinite(ms) && ms > 0) return ms / 1000;
+      return 10;
+    };
+
+    const setNavDurationVar = () => {
+      if (!(nav instanceof HTMLElement)) return;
+      nav.style.setProperty("--slide-duration", `${getSlideDurationSeconds()}s`);
+    };
+
+    const resetActiveProgressFill = () => {
+      const activeItem = navItems[idx];
+      if (!(activeItem instanceof HTMLElement)) return;
+      const fill = activeItem.querySelector(".progress-nav__fill");
+      if (!(fill instanceof HTMLElement)) return;
+
+      fill.style.animation = "none";
+      // eslint-disable-next-line no-unused-expressions
+      fill.offsetHeight;
+      fill.style.animation = "";
+    };
+
+    const setActiveNav = (opts = {}) => {
+      const { resetFill = true } = opts;
+      navItems.forEach((b, i) => b.classList.toggle("is-active", i === idx));
+      setNavDurationVar();
+      if (resetFill) resetActiveProgressFill();
+    };
+
+    const setHomeLabel = () => {
+      if (!(labelRoot instanceof HTMLElement) || !(labelText instanceof HTMLElement)) return;
+      const active = slides[idx];
+      const mode = active?.dataset?.overlay;
+      const title = active?.dataset?.title || "";
+      const show = mode === "label" && Boolean(title);
+      if (labelTimer) window.clearTimeout(labelTimer);
+
+      const current = labelText.textContent || "";
+
+      if (!show) {
+        if (!labelRoot.classList.contains("is-visible")) {
+          labelText.textContent = "";
+          return;
+        }
+        labelRoot.classList.add("is-changing");
+        labelTimer = window.setTimeout(() => {
+          labelRoot.classList.remove("is-visible");
+          labelText.textContent = "";
+        }, 110);
+        return;
+      }
+
+      labelRoot.classList.add("is-visible");
+      if (current === title && !labelRoot.classList.contains("is-changing")) return;
+
+      // Smooth cross-fade: fade out -> swap text -> fade in.
+      labelRoot.classList.add("is-changing");
+      labelTimer = window.setTimeout(() => {
+        labelText.textContent = title;
+        requestAnimationFrame(() => labelRoot.classList.remove("is-changing"));
+      }, 140);
+    };
+
+    const setHomeHeroOverlay = () => {
+      if (!(heroOverlay instanceof HTMLElement)) return;
+      if (heroOverlayTimer) window.clearTimeout(heroOverlayTimer);
+      const show = idx === 0;
+      heroOverlay.classList.toggle("is-visible", show);
+      if (show) {
+        heroOverlay.classList.add("is-changing");
+        requestAnimationFrame(() => heroOverlay.classList.remove("is-changing"));
+      }
+    };
 
     const scheduleNextForActive = () => {
       const active = slides[idx];
@@ -395,15 +485,26 @@
       if (timer) window.clearTimeout(timer);
       if (paused) return;
 
+      let ms = 0;
       if (type === "video") {
-        timer = window.setTimeout(() => go(idx + 1), 10000);
+        ms = Math.round(getSlideDurationSeconds() * 1000);
       } else {
-        const ms = Number(active?.dataset?.interval || 4500);
-        timer = window.setTimeout(() => go(idx + 1), Number.isFinite(ms) ? ms : 4500);
+        const raw = Number(active?.dataset?.interval || 4500);
+        ms = Number.isFinite(raw) ? raw : 4500;
       }
+
+      remainingMs = ms;
+      nextDueAt = performance.now() + ms;
+      timer = window.setTimeout(() => go(idx + 1), ms);
     };
 
     const setActive = (nextIdx) => {
+      if (isSwitching) return;
+      isSwitching = true;
+      window.setTimeout(() => {
+        isSwitching = false;
+      }, Math.max(0, FADE_MS - 60));
+
       const prevIdx = idx;
       idx = (nextIdx + slides.length) % slides.length;
 
@@ -418,43 +519,66 @@
       }
 
       slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
-      dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+      setActiveNav();
+      // Hide/show the main overlay first to avoid brief overlap.
+      setHomeHeroOverlay();
+      setHomeLabel();
 
       const active = slides[idx];
       const type = active?.dataset?.type;
 
-      // Pause video when leaving video slide; play when entering.
-      if (heroVideo) {
-        if (type === "video") {
-          if (!paused) {
-            const p = heroVideo.play();
-            if (p && typeof p.catch === "function") p.catch(() => {});
-          }
+      // Pause all videos; play only the active slide's video.
+      videos.forEach((v, i) => {
+        if (!v) return;
+        if (i === idx && type === "video" && !paused) {
+          // If the video was at the end, restart so it doesn't instantly end and skip.
+          try {
+            const dur = v.duration;
+            if (v.ended || (Number.isFinite(dur) && dur > 0 && v.currentTime >= dur - 0.05)) {
+              v.currentTime = 0;
+            }
+          } catch {}
+          const p = v.play();
+          if (p && typeof p.catch === "function") p.catch(() => {});
         } else {
-          heroVideo.pause();
+          v.pause();
         }
-      }
+      });
 
       scheduleNextForActive();
     };
 
-    const go = (nextIdx) => setActive(nextIdx);
+    const go = (nextIdx) => {
+      if (isSwitching) return;
+      setActive(nextIdx);
+    };
     addSwipeNavigation(root, { onNext: () => go(idx + 1), onPrev: () => go(idx - 1) });
 
-    // Dots navigation
-    dots.forEach((btn) => {
+    // Progress navigation
+    navItems.forEach((btn) => {
       btn.addEventListener("click", () => {
         const target = Number(btn.dataset.slide);
         if (Number.isFinite(target)) go(target);
       });
     });
 
-    // Video ended -> advance
-    if (heroVideo) {
-      heroVideo.addEventListener("ended", () => go(idx + 1));
-      // Ensure it can end.
-      heroVideo.loop = false;
-    }
+    // When metadata loads, update duration var if this is the active slide.
+    videos.forEach((v, i) => {
+      if (!v) return;
+      v.loop = false;
+      v.addEventListener("loadedmetadata", () => {
+        if (i !== idx) return;
+        setNavDurationVar();
+        resetActiveProgressFill();
+        // Resync timer to real duration for the active slide.
+        scheduleNextForActive();
+      });
+      v.addEventListener("ended", () => {
+        // Only advance if the ended video is still the active slide.
+        if (i !== idx) return;
+        go(idx + 1);
+      });
+    });
 
     // Start
     setActive(0);
@@ -462,21 +586,38 @@
     // Expose pause/resume so we can stop Home when Who is in view.
     root.dataset.slideshow = "home";
     window.__pccHomeSlideshow = {
-      pause() {
+      pause(reason = "external") {
+        pauseReasons.add(String(reason));
+        if (paused) return;
         paused = true;
+        root.classList.add("is-paused");
         if (timer) window.clearTimeout(timer);
-        if (heroVideo) heroVideo.pause();
+        // keep remaining time for progress bar + timeout
+        const now = performance.now();
+        if (nextDueAt && remainingMs) remainingMs = Math.max(0, Math.round(nextDueAt - now));
+        videos.forEach((v) => v?.pause());
       },
-      resume() {
+      resume(reason = "external") {
+        pauseReasons.delete(String(reason));
+        if (pauseReasons.size) return;
         if (!paused) return;
         paused = false;
+        root.classList.remove("is-paused");
         // Resume video only if we're on the video slide.
         const active = slides[idx];
-        if (heroVideo && active?.dataset?.type === "video") {
-          const p = heroVideo.play();
+        const v = videos[idx];
+        if (v && active?.dataset?.type === "video") {
+          const p = v.play();
           if (p && typeof p.catch === "function") p.catch(() => {});
         }
-        scheduleNextForActive();
+        // resume timer from remaining time (if any)
+        if (timer) window.clearTimeout(timer);
+        const ms = Number.isFinite(remainingMs) && remainingMs > 50 ? remainingMs : Math.round(getSlideDurationSeconds() * 1000);
+        remainingMs = ms;
+        nextDueAt = performance.now() + ms;
+        timer = window.setTimeout(() => go(idx + 1), ms);
+        // Don't reset fill on resume; CSS animation continues from paused state.
+        setActiveNav({ resetFill: false });
       },
     };
 
@@ -514,6 +655,8 @@
     let timer = null;
     let overlayTimer = null;
     let paused = false;
+    let remainingMs = 0;
+    let nextDueAt = 0;
 
     const renderSoftLines = (target, lines) => {
       if (!(target instanceof HTMLElement)) return;
@@ -592,13 +735,21 @@
       fill.style.animation = "";
     };
 
-    const setActiveNav = () => {
+    const setActiveNav = (opts = {}) => {
+      const { resetFill = true } = opts;
       navItems.forEach((b, i) => b.classList.toggle("is-active", i === idx));
       setNavDurationVar();
-      resetActiveProgressFill();
+      if (resetFill) resetActiveProgressFill();
     };
 
-    const stopAll = () => {
+    const pauseAll = () => {
+      videos.forEach((v) => {
+        if (!v) return;
+        v.pause();
+      });
+    };
+
+    const resetAll = () => {
       videos.forEach((v) => {
         if (!v) return;
         v.pause();
@@ -619,8 +770,11 @@
     const scheduleFallbackAdvance = () => {
       if (timer) window.clearTimeout(timer);
       if (paused) return;
-      // If video "ended" doesn't fire (bad metadata), advance after 10s.
-      timer = window.setTimeout(() => go(idx + 1), 10000);
+      // Advance using real duration (fallback to 10s if unknown).
+      const ms = Math.round(getSlideDurationSeconds() * 1000);
+      remainingMs = ms;
+      nextDueAt = performance.now() + ms;
+      timer = window.setTimeout(() => go(idx + 1), ms);
     };
 
     const setActive = (nextIdx) => {
@@ -629,7 +783,7 @@
       setActiveNav();
 
       animateOverlaySwap();
-      stopAll();
+      resetAll();
       playActive();
       scheduleFallbackAdvance();
     };
@@ -652,6 +806,8 @@
         if (i !== idx) return;
         setNavDurationVar();
         resetActiveProgressFill();
+        // Resync timer to real duration for the active slide.
+        scheduleFallbackAdvance();
       });
     });
 
@@ -672,24 +828,56 @@
     window.__pccWhoSlideshow = {
       pause() {
         paused = true;
+        root.classList.add("is-paused");
         if (timer) window.clearTimeout(timer);
-        stopAll();
+        const now = performance.now();
+        if (nextDueAt && remainingMs) remainingMs = Math.max(0, Math.round(nextDueAt - now));
+        pauseAll();
       },
       resume() {
         if (!paused) return;
         paused = false;
+        root.classList.remove("is-paused");
         // Ensure overlay matches current active slide.
         setOverlay();
         playActive();
-        scheduleFallbackAdvance();
-        setActiveNav();
+        if (timer) window.clearTimeout(timer);
+        const ms = Number.isFinite(remainingMs) && remainingMs > 50 ? remainingMs : Math.round(getSlideDurationSeconds() * 1000);
+        remainingMs = ms;
+        nextDueAt = performance.now() + ms;
+        timer = window.setTimeout(() => go(idx + 1), ms);
+        // Don't reset fill on resume; CSS animation continues from paused state.
+        setActiveNav({ resetFill: false });
       },
     };
+  };
+
+  const wireHomeRevealOnScroll = () => {
+    const home = document.getElementById("home");
+    if (!(home instanceof HTMLElement)) return;
+    const api = () => window.__pccHomeSlideshow;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.15;
+        const h = api();
+        if (!h) return;
+        if (inView) h.resume("offscreen");
+        else h.pause("offscreen");
+      },
+      { root: null, threshold: [0, 0.15, 0.25], rootMargin: "-10% 0px -10% 0px" }
+    );
+
+    observer.observe(home);
   };
 
   const wireWhoRevealOnScroll = () => {
     const who = document.getElementById("who");
     if (!(who instanceof HTMLElement)) return;
+
+    let inited = false;
 
     const resumeActiveWhoVideo = () => {
       const activeVideo = who.querySelector(".slide.is-active video.hero-video");
@@ -714,8 +902,6 @@
       });
     };
 
-    let inited = false;
-
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -730,13 +916,11 @@
           if (!inited) {
             inited = true;
             wireWhoSlideshow();
-            // wireWhoSlideshow() will start the first slide; nothing else needed here.
-          } else {
-            // Re-entering viewport: resume playback so it doesn't stay frozen on a frame.
-            resumeActiveWhoVideo();
-            const api = window.__pccWhoSlideshow;
-            if (api) api.resume();
           }
+          // Re-entering viewport: resume playback so it doesn't stay frozen on a frame.
+          resumeActiveWhoVideo();
+          const api = window.__pccWhoSlideshow;
+          if (api) api.resume();
         } else {
           who.classList.remove("is-video-visible");
           pauseWhoVideos();
@@ -768,8 +952,8 @@
         const api = window.__pccHomeSlideshow;
         if (!api) return;
 
-        if (entry.isIntersecting) api.pause();
-        else api.resume();
+        if (entry.isIntersecting) api.pause("who");
+        else api.resume("who");
       },
       { root: null, threshold: 0.15 }
     );
@@ -817,6 +1001,66 @@
     );
 
     observer.observe(services);
+  };
+
+  const wireFixedCarouselHeight = (carouselId) => {
+    const carousel = document.getElementById(carouselId);
+    if (!(carousel instanceof HTMLElement)) return;
+    const inner = carousel.querySelector(".carousel-inner");
+    if (!(inner instanceof HTMLElement)) return;
+
+    const recompute = () => {
+      const items = Array.from(inner.querySelectorAll(".carousel-item")).filter((el) => el instanceof HTMLElement);
+      if (!items.length) return;
+
+      // Measure each item at natural height.
+      const prev = items.map((it) => ({
+        el: it,
+        display: it.style.display,
+        position: it.style.position,
+        visibility: it.style.visibility,
+        pointerEvents: it.style.pointerEvents,
+        width: it.style.width,
+      }));
+
+      items.forEach((it) => {
+        it.style.display = "block";
+        it.style.position = "relative";
+        it.style.visibility = "hidden";
+        it.style.pointerEvents = "none";
+        it.style.width = "100%";
+      });
+
+      // Force layout
+      // eslint-disable-next-line no-unused-expressions
+      inner.offsetHeight;
+
+      let maxH = 0;
+      items.forEach((it) => {
+        const h = it.scrollHeight;
+        if (h > maxH) maxH = h;
+      });
+
+      prev.forEach((p) => {
+        p.el.style.display = p.display;
+        p.el.style.position = p.position;
+        p.el.style.visibility = p.visibility;
+        p.el.style.pointerEvents = p.pointerEvents;
+        p.el.style.width = p.width;
+      });
+
+      if (maxH > 0) inner.style.height = `${maxH}px`;
+    };
+
+    recompute();
+    window.addEventListener("load", recompute, { once: true });
+    window.addEventListener("resize", recompute);
+    carousel.addEventListener("slid.bs.carousel", recompute);
+    carousel.querySelectorAll("img").forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) return;
+      if (img.complete) return;
+      img.addEventListener("load", recompute, { once: true });
+    });
   };
 
   const wireSimpleSectionFadeIns = () => {
@@ -875,9 +1119,11 @@
     wireInlineNavbarLogo();
     // wireVideoDiagnostics(); // removed from Home section
     wireHomeSlideshow();
+    wireHomeRevealOnScroll();
     wireWhoRevealOnScroll();
     wirePauseHomeWhenWhoVisible();
     wireServicesReveal();
+    wireFixedCarouselHeight("reviewsCarousel");
     wireSimpleSectionFadeIns();
     pauseOffscreenHeroVideos();
     wireContactForm();

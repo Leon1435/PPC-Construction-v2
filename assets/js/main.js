@@ -852,6 +852,67 @@
     };
   };
 
+  const wireWorksCarousel = () => {
+    const root = document.getElementById("worksCarousel");
+    if (!(root instanceof HTMLElement)) return;
+
+    const slides = Array.from(root.querySelectorAll(".works-slide")).filter((el) => el instanceof HTMLElement);
+    if (!slides.length) return;
+
+    const prevBtn = root.querySelector(".works-arrow--prev");
+    const nextBtn = root.querySelector(".works-arrow--next");
+
+    let idx = 0;
+    let timer = null;
+    let paused = false;
+
+    const setClasses = () => {
+      const prev = (idx - 1 + slides.length) % slides.length;
+      const next = (idx + 1) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle("is-active", i === idx);
+        s.classList.toggle("is-prev", i === prev);
+        s.classList.toggle("is-next", i === next);
+      });
+    };
+
+    const schedule = () => {
+      if (timer) window.clearTimeout(timer);
+      if (paused) return;
+      timer = window.setTimeout(() => go(idx + 1), 4500);
+    };
+
+    const go = (nextIdx) => {
+      idx = (nextIdx + slides.length) % slides.length;
+      setClasses();
+      schedule();
+    };
+
+    prevBtn?.addEventListener("click", () => go(idx - 1));
+    nextBtn?.addEventListener("click", () => go(idx + 1));
+    addSwipeNavigation(root, { onNext: () => go(idx + 1), onPrev: () => go(idx - 1) });
+
+    // Pause autoplay when not visible (and resume smoothly)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+        paused = !inView;
+        if (paused) {
+          if (timer) window.clearTimeout(timer);
+        } else {
+          schedule();
+        }
+      },
+      { root: null, threshold: [0, 0.25, 0.5] }
+    );
+    observer.observe(root);
+
+    setClasses();
+    schedule();
+  };
+
   const wireHomeRevealOnScroll = () => {
     const home = document.getElementById("home");
     if (!(home instanceof HTMLElement)) return;
@@ -1120,6 +1181,7 @@
     // wireVideoDiagnostics(); // removed from Home section
     wireHomeSlideshow();
     wireHomeRevealOnScroll();
+    wireWorksCarousel();
     wireWhoRevealOnScroll();
     wirePauseHomeWhenWhoVisible();
     wireServicesReveal();

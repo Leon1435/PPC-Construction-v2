@@ -1,4 +1,56 @@
 (() => {
+  const addSwipeNavigation = (root, { onNext, onPrev }) => {
+    if (!(root instanceof HTMLElement)) return;
+
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+
+    const THRESH_X = 45;
+    const THRESH_Y = 55;
+
+    const onStart = (x, y) => {
+      startX = x;
+      startY = y;
+      tracking = true;
+    };
+
+    const onEnd = (x, y) => {
+      if (!tracking) return;
+      tracking = false;
+
+      const dx = x - startX;
+      const dy = y - startY;
+
+      // Ignore mostly-vertical gestures (scroll).
+      if (Math.abs(dy) > THRESH_Y && Math.abs(dy) > Math.abs(dx)) return;
+      if (Math.abs(dx) < THRESH_X) return;
+
+      if (dx < 0) onNext?.();
+      else onPrev?.();
+    };
+
+    root.addEventListener(
+      "touchstart",
+      (e) => {
+        const t = e.touches?.[0];
+        if (!t) return;
+        onStart(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+
+    root.addEventListener(
+      "touchend",
+      (e) => {
+        const t = e.changedTouches?.[0];
+        if (!t) return;
+        onEnd(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+  };
+
   const setYear = () => {
     const el = document.getElementById("year");
     if (el) el.textContent = String(new Date().getFullYear());
@@ -94,47 +146,44 @@
     if (!sections.length) return;
 
     let currentActiveId = null;
+    let ticking = false;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Prefer the section whose top is closest to the viewport top,
-        // but only from those intersecting our "center band".
-        const visible = entries
-          .filter((e) => e.isIntersecting && e.target instanceof HTMLElement)
-          .map((e) => e.target);
+    const computeActive = () => {
+      ticking = false;
 
-        if (!visible.length) return;
+      const navH = nav.getBoundingClientRect().height || 0;
+      const y = window.scrollY + navH + 8; // small buffer below the navbar
 
-        let best = visible[0];
-        let bestTop = Math.abs(best.getBoundingClientRect().top);
-        for (const el of visible) {
-          const t = Math.abs(el.getBoundingClientRect().top);
-          if (t < bestTop) {
-            best = el;
-            bestTop = t;
-          }
-        }
-
-        const id = best.id ? `#${best.id}` : null;
-        if (!id || id === currentActiveId) return;
-        currentActiveId = id;
-        setActiveNavLink(id);
-      },
-      {
-        root: null,
-        // "Center band" so the active item changes in a natural spot.
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: [0, 0.01, 0.1],
+      // Pick the last section whose top is above the navbar line.
+      let best = sections[0];
+      for (const s of sections) {
+        if (!(s instanceof HTMLElement)) continue;
+        if (s.offsetTop <= y) best = s;
       }
-    );
 
-    sections.forEach((s) => observer.observe(s));
+      const id = best?.id ? `#${best.id}` : null;
+      if (!id || id === currentActiveId) return;
+      currentActiveId = id;
+      setActiveNavLink(id);
+    };
+
+    const onScrollOrResize = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(computeActive);
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
 
     // Initial highlight on load.
     const initial = window.location.hash && document.getElementById(window.location.hash.slice(1))
       ? window.location.hash
       : `#${sections[0].id}`;
     setActiveNavLink(initial);
+
+    // Ensure correct state even without hash.
+    computeActive();
   };
 
   const wireServicesNavbarTheme = () => {
@@ -390,6 +439,7 @@
     };
 
     const go = (nextIdx) => setActive(nextIdx);
+    addSwipeNavigation(root, { onNext: () => go(idx + 1), onPrev: () => go(idx - 1) });
 
     // Dots navigation
     dots.forEach((btn) => {
@@ -585,6 +635,7 @@
     };
 
     const go = (nextIdx) => setActive(nextIdx);
+    addSwipeNavigation(root, { onNext: () => go(idx + 1), onPrev: () => go(idx - 1) });
 
     // Progress navigation
     navItems.forEach((btn) => {

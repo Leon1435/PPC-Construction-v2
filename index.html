@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PCC Construction</title>
+    <meta
+      name="description"
+      content="PCC Construction — Residential & Commercial construction solutions."
+    />
+
+    <link rel="icon" href="assets\media\logo\favicon.png" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preload" href="Montserrat/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-smooth-scroll="true" tabindex="0">
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light navbar--light fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+          <!-- We inject your Inkscape SVG inline at runtime so we can animate fills smoothly -->
+          <svg
+            id="navLogo"
+            class="nav-logo"
+            data-src="assets/media/logo/company-logo.svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 364 133"
+            role="img"
+            aria-label="PPC Construction logo"
+            focusable="false"
+          ></svg>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#who">Who We Are</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#purpose">Purpose</a></li>
+            <li class="nav-item"><a class="nav-link" href="#why">Why PCC</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reviews">Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero hero--tall">
+      <div class="slideshow-container" id="homeSlideshow" aria-label="Home slideshow">
+        <!-- Slide 1: Video -->
+        <div class="slide is-active" data-type="video">
+          <div class="hero-media hero-media--Shome">
+            <video
+              id="homeHeroVideo"
+              class="hero-video"
+              autoplay
+              muted
+              playsinline
+              preload="metadata"
+              poster="assets\media\home\home-page-video-poster.png"
+            >
+              <source src="assets/media/home/home-page-video.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <!-- Slide 2+: Images -->
+        <div class="slide" data-type="image" data-interval="4500">
+          <div class="hero-media hero-media--home">
+            <img class="hero-img" src="assets/media/our-services/01-Terrace-House-copy.png" alt="" />
+          </div>
+        </div>
+        <div class="slide" data-type="image" data-interval="4500">
+          <div class="hero-media hero-media--home">
+            <img class="hero-img" src="assets/media/our-services/02-Workspaces-copy.png" alt="" />
+          </div>
+        </div>
+        <div class="slide" data-type="image" data-interval="4500">
+          <div class="hero-media hero-media--home">
+            <img class="hero-img" src="assets/media/our-services/03-Urban-Home-copy.png" alt="" />
+          </div>
+        </div>
+
+        <!-- Navigation dots -->
+        <div class="dots" aria-label="Slideshow navigation">
+          <button class="dot is-active" type="button" aria-label="Go to slide 1" data-slide="0"></button>
+          <button class="dot" type="button" aria-label="Go to slide 2" data-slide="1"></button>
+          <button class="dot" type="button" aria-label="Go to slide 3" data-slide="2"></button>
+          <button class="dot" type="button" aria-label="Go to slide 4" data-slide="3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section id="who" class="hero hero--short">
+      <div class="slideshow-container" id="whoSlideshow" aria-label="Who we are slideshow">
+        <div
+          class="slide is-active"
+          data-type="video"
+          data-overlay="intro"
+          data-title="WHO WE ARE"
+          data-line1="More than builders, we are your partners in excellence."
+          data-line2a="PPC Construction Sdn. Bhd. delivers seamless"
+          data-line2b="design-and-build solutions for ambitious commercial "
+          data-line2c="spaces and premium homes."
+          data-line3a="We turn your vision into reality with disciplined "
+          data-line3b="precision and uncompromising efficiency."
+        >
+          <div class="hero-media">
+            <video class="hero-video" muted playsinline preload="metadata">
+              <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="slide" data-type="video" data-overlay="label" data-title="RESIDENTIAL">
+          <div class="hero-media">
+            <video class="hero-video" muted playsinline preload="metadata">
+              <source src="assets/media/who-we-are/Who-We-Are-Residential-02.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="slide" data-type="video" data-overlay="label" data-title="COMMERCIAL">
+          <div class="hero-media">
+            <video class="hero-video" muted playsinline preload="metadata">
+              <source src="assets/media/who-we-are/Who-We-Are-Commercial-03.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="slide" data-type="video" data-overlay="label" data-title="CONSTRUCTION">
+          <div class="hero-media">
+            <video class="hero-video" muted playsinline preload="metadata">
+              <source src="assets/media/who-we-are/Who-We-Are-Construction-04.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div class="progress-nav" aria-label="Slideshow navigation">
+          <button class="progress-nav__item is-active" type="button" aria-label="Go to slide 1" data-slide="0">
+            <span class="progress-nav__index">01</span>
+            <div class="progress-nav__track">
+              <div class="progress-nav__fill"></div>
+            </div>
+          </button>
+          <button class="progress-nav__item" type="button" aria-label="Go to slide 2" data-slide="1">
+            <span class="progress-nav__index">02</span>
+            <div class="progress-nav__track">
+              <div class="progress-nav__fill"></div>
+            </div>
+          </button>
+          <button class="progress-nav__item" type="button" aria-label="Go to slide 3" data-slide="2">
+            <span class="progress-nav__index">03</span>
+            <div class="progress-nav__track">
+              <div class="progress-nav__fill"></div>
+            </div>
+          </button>
+          <button class="progress-nav__item" type="button" aria-label="Go to slide 4" data-slide="3">
+            <span class="progress-nav__index">04</span>
+            <div class="progress-nav__track">
+              <div class="progress-nav__fill"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="who-overlay" id="whoOverlay" aria-live="polite">
+        <div class="container">
+          <div class="who-overlay__inner text-center mx-auto">
+            <h2 class="who-overlay__title" id="whoOverlayTitle">WHO WE ARE</h2>
+            <div class="who-overlay__para" id="whoOverlayP1"></div>
+            <div class="who-overlay__para" id="whoOverlayP2"></div>
+            <div class="who-overlay__para" id="whoOverlayP3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section-pad section-light">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="services-title mb-0">OUR SERVICES</h2>
+        </div>
+
+        <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6500">
+          <div class="carousel-indicators services-dots">
+            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-4 g-lg-5">
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\01-Terrace-House-copy.png" alt="Service 1" />
+                    </div>
+                    <h3 class="service-tile__title">Essential Fit-outs for Modern Terrace Living</h3>
+                    <p class="service-tile__text">
+                      Add key renovation highlights here. Keep this to 2–3 lines to match the layout.
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Lighting, fans &amp; feature walls</li>
+                      <li>Custom cabinets &amp; wardrobes</li>
+                      <li>Plaster ceiling &amp; painting</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\02-Workspaces-copy.png" alt="Service 2" />
+                    </div>
+                    <h3 class="service-tile__title">Optimized Workspaces, Exceptional Value</h3>
+                    <p class="service-tile__text">
+                      Add a short office/workspace renovation summary here (2–3 lines).
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Space planning &amp; partitions</li>
+                      <li>MEP coordination</li>
+                      <li>Budget-conscious designs</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\03-Urban-Home-copy.png" alt="Service 3" />
+                    </div>
+                    <h3 class="service-tile__title">Unlock the Potential of Your Urban Home</h3>
+                    <p class="service-tile__text">
+                      Add a short residential upgrade summary here (2–3 lines).
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Material selection support</li>
+                      <li>Kitchen &amp; living upgrades</li>
+                      <li>Detail finishing &amp; QC</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row g-4 g-lg-5">
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\04-Electrical-Systems-copy.png" alt="Service 4" />
+                    </div>
+                    <h3 class="service-tile__title">Premium Concealed Electrical Systems</h3>
+                    <p class="service-tile__text">
+                      Add a short electrical/rewiring description here (2–3 lines).
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Wiring, sockets &amp; DB upgrades</li>
+                      <li>Safety checks &amp; testing</li>
+                      <li>Clean concealed routing</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\05-Bathroom-copy.png" alt="Service 5" />
+                    </div>
+                    <h3 class="service-tile__title">Innovative Bathrooms, Tailored Excellence</h3>
+                    <p class="service-tile__text">
+                      Add a short bathroom renovation description here (2–3 lines).
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Waterproofing &amp; plumbing</li>
+                      <li>Tiles, fixtures &amp; accessories</li>
+                      <li>Ergonomic layouts</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\06-Modern-Kitchen-copy.png" alt="Service 6" />
+                    </div>
+                    <h3 class="service-tile__title">Modern Kitchen Renovation</h3>
+                    <p class="service-tile__text">
+                      Add a short kitchen renovation description here (2–3 lines).
+                    </p>
+                    <ul class="service-tile__list">
+                      <li>Cabinetry &amp; worktops</li>
+                      <li>Lighting &amp; appliance planning</li>
+                      <li>Precision installation</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row g-4 g-lg-5">
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\07-Elevated-Ceiling-copy.png" alt="Service 7" />
+                    </div>
+                    <h3 class="service-tile__title">Service Title 7</h3>
+                    <p class="service-tile__text">Short description for service 7.</p>
+                    <ul class="service-tile__list">
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\08-Bedroom-copy.png" alt="Service 8" />
+                    </div>
+                    <h3 class="service-tile__title">Service Title 8</h3>
+                    <p class="service-tile__text">Short description for service 8.</p>
+                    <ul class="service-tile__list">
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="service-tile h-100">
+                    <div class="service-tile__media">
+                      <img src="assets\media\our-services\09-SPC-Flooring-copy.png" alt="Service 9" />
+                    </div>
+                    <h3 class="service-tile__title">Service Title 9</h3>
+                    <p class="service-tile__text">Short description for service 9.</p>
+                    <ul class="service-tile__list">
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                      <li>Bullet point</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PURPOSE -->
+    <section id="purpose" class="purpose-split">
+      <div class="container">
+        <div class="purpose-card ms-auto">
+          <h2 class="purpose-title mb-2">OUR PURPOSE</h2>
+          <p class="purpose-subtitle mb-3">Crafting Excellence. Simplifying Complexity.</p>
+          <p class="purpose-intro mb-4">
+            At PPC Construction, we transform the chaos of renovation into a structured, effortless reality.
+            Our mission is built on three unwavering pillars designed to protect your interests:
+          </p>
+
+          <div class="purpose-points">
+            <div class="purpose-point">
+              <h3 class="purpose-point__title">Strategic Cost-Optimization</h3>
+              <p class="purpose-point__text mb-0">
+                We don't just save costs; we maximize your investment through smart engineering and transparent pricing.
+              </p>
+            </div>
+            <div class="purpose-point">
+              <h3 class="purpose-point__title">Seamless Project Management</h3>
+              <p class="purpose-point__text mb-0">
+                From concept to key, we handle every detail, offering you a stress-free experience while you focus on what
+                matters most.
+              </p>
+            </div>
+            <div class="purpose-point">
+              <h3 class="purpose-point__title">Accelerated Delivery</h3>
+              <p class="purpose-point__text mb-0">
+                Our mastery of workflow ensures your project is completed with uncompromising speed and precision,
+                getting you into your new space sooner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY PPC -->
+    <section id="why" class="why-clean section-light">
+      <div class="container">
+        <div class="why-head text-center mx-auto">
+          <h2 class="why-title mb-3">WHY PPC CONSTRUCTION</h2>
+          <p class="why-lead mb-2">
+            Choosing us means choosing a partner dedicated to elevating your property's potential.
+            We combine innovative design with cost-effective engineering to deliver superior results.
+          </p>
+          <p class="why-body mb-0">
+            In an industry where trust is everything, we stand as a cornerstone of reliability in Malaysia.
+            With nearly two decades of mastery in construction and renovation, we bridge the gap between visionary design
+            and structural integrity.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center mt-4 mt-lg-5">
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">1</div>
+              <div class="why-tile__label">Transparent<br />Costing</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">2</div>
+              <div class="why-tile__label">Quality<br />Craftsmanship</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">3</div>
+              <div class="why-tile__label">Licensed<br />Accredited</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">4</div>
+              <div class="why-tile__label">On Time, On<br />Budget Delivery</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <div class="why-tile">
+              <div class="why-tile__num">5</div>
+              <div class="why-tile__label">Long Term<br />Client Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section-pad section-light">
+      <div class="container">
+        <div class="section-head text-center">
+          <h2 class="reviews-title mb-0">OUR REVIEWS</h2>
+        </div>
+
+        <div id="reviewsCarousel" class="carousel slide reviews-carousel" data-bs-ride="carousel" data-bs-interval="9000">
+          <div class="carousel-indicators reviews-dots">
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\KELVIN-KONG.png" alt="Kelvin Kong" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">KELVIN KONG</div>
+                        <div class="review-tile__time">1 month ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Excellence.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      Our project was well built and PPC CONSTRUCTION was closely working with us from the conceptual
+                      design to its completion.
+                    </p>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\Nicol-Wong.png" alt="Nicol Wong" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">NICOL WONG</div>
+                        <div class="review-tile__time">4 months ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Good Services.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      It is no longer a mere structure, but a soulful sanctuary—a harmonious blend of aesthetic elegance
+                      and the functional soul of my lifestyle. I am really love it.
+                    </p>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\ADMAD.png" alt="Admad" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">ADMAD</div>
+                        <div class="review-tile__time">1 year ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Recommended.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      I am highly recommend PPC Construction to businesses looking for a dependable design &amp; build
+                      partner.
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\Aminah.png" alt="Aminah" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">AMINAH</div>
+                        <div class="review-tile__time">2 years ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Superb.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      Our dream kitchen and bedroom final result looks exactly like the drawings—if not better! The
+                      attention to detail in the finishing is simply superb.
+                    </p>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\David-Chen.png" alt="David Chen" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">DAVID CHEN</div>
+                        <div class="review-tile__time">9 months ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Flawless.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      We had a tight timeline for our office renovation in KL and PPC delivered ahead of schedule. Their
+                      coordination of the concealed wiring and SPC flooring was flawless.
+                    </p>
+                  </article>
+                </div>
+                <div class="col-md-4">
+                  <article class="review-tile h-100">
+                    <div class="review-tile__top">
+                      <img class="review-tile__avatar" src="assets\media\our-reviews\SARAH-LIM.png" alt="Sarah Lim" />
+                      <div class="review-tile__meta">
+                        <div class="review-tile__name">SARAH LIM</div>
+                        <div class="review-tile__time">1 year ago</div>
+                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="review-tile__headline">“ Impressive.. ”</div>
+                    <p class="review-tile__text mb-0">
+                      PPC provided a detailed, itemized quotation that helped us optimize our budget without compromising
+                      on the aesthetics. No hidden costs, just honest, high-quality craftsmanship.
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section-pad section-light">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow text-uppercase mb-2">FAQ</p>
+          <h2 class="h1 fw-bold mb-0">Frequently asked questions</h2>
+        </div>
+
+        <div class="accordion mt-4" id="faqAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                What areas do you service?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Add your service area details here (city/region, travel policy, etc.).
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Do you provide free estimates or consultations?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Add your estimate/consultation policy here.</div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                What is your typical project timeline?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Add typical ranges and what impacts timelines.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-pad section-dark">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow text-uppercase mb-2">Contact</p>
+          <h2 class="h1 fw-bold mb-0">Get consultation</h2>
+        </div>
+
+        <div class="row g-4 mt-1 align-items-stretch">
+          <div class="col-lg-5">
+            <div class="soft-panel h-100">
+              <h3 class="h4 fw-semibold">Contact details</h3>
+              <p class="text-white-75 mb-3">Replace with your real contact information.</p>
+              <ul class="list-unstyled mb-0 contact-list">
+                <li><span class="text-white-50">Phone</span> <a href="tel:+60102502525">(+60)10-250 2525</a></li>
+                <li><span class="text-white-50">Email</span> <a href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a></li>
+                <li>
+                  <span class="text-white-50">Location</span>
+                  <span class="contact-list__value">
+                    52, Jalan Bunga Melur 12, <br />Taman Muda, 68000 Ampang, Selangor
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <form class="soft-panel h-100" id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="name">Name</label>
+                  <input class="form-control" id="name" name="name" type="text" autocomplete="name" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="phone">Phone</label>
+                  <input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-control" id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div class="col-12 d-flex align-items-center justify-content-between flex-wrap gap-2">
+                  <button class="btn btn-accent btn-lg" type="submit">Send</button>
+                  <div class="small text-white-50" id="contactStatus" role="status" aria-live="polite"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <footer class="pt-5 mt-5 border-top border-white-10 text-white-50 small">
+          <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
+            <div>© <span id="year"></span> PCC Construction. All rights reserved.</div>
+            <div class="d-flex gap-3">
+              <a class="text-white-50" href="#home">Back to top</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

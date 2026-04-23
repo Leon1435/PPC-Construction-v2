@@ -22,6 +22,12 @@ body{
   font-family:MontserratLocal,Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 
+/* Slightly larger side gutters (responsive) */
+.container{
+  padding-left:clamp(1rem, 4vw, 2.25rem);
+  padding-right:clamp(1rem, 4vw, 2.25rem);
+}
+
 .skip-link{
   position:absolute;
   left:-999px;
@@ -75,7 +81,8 @@ body{
 
 /* Navbar logo (inline SVG) */
 .nav-logo{
-  height:3rem;
+  /* Responsive sizing: smaller on mobile, capped on desktop */
+  height:clamp(2rem, 4.2vw, 3rem);
   width:auto;
   display:block;
   overflow:visible;
@@ -86,10 +93,7 @@ body{
   shape-rendering:geometricPrecision;
 }
 
-/* Keep the logo from getting too tall on small screens */
-@media (max-width: 991.98px){
-  .nav-logo{ height:5.5rem; }
-}
+/* Keep the logo responsive (no mobile upscaling) */
 
 /* SVG fill control:
    - red parts stay constant

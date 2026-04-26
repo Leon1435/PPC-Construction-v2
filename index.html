@@ -9,7 +9,7 @@
       content="PCC Construction — Residential & Commercial construction solutions."
     />
 
-    <link rel="icon" href="assets\media\logo\favicon.png" />
+    <link rel="icon" href="assets\media\icons\favicon.png" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -31,7 +31,7 @@
           <svg
             id="navLogo"
             class="nav-logo"
-            data-src="assets/media/logo/company-logo.svg"
+            data-src="assets/media/icons/company-logo.svg"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 364 133"
             role="img"
@@ -58,8 +58,8 @@
             <li class="nav-item"><a class="nav-link" href="#who">Who We Are</a></li>
             <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="#purpose">Purpose</a></li>
-            <li class="nav-item"><a class="nav-link" href="#why">Why PCC</a></li>
             <li class="nav-item"><a class="nav-link" href="#reviews">Review</a></li>
+            <li class="nav-item"><a class="nav-link" href="#why">Why PCC</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
@@ -155,36 +155,82 @@
     </section>
 
     <!-- OUR WORKS -->
-    <section id="works" class="hero hero--short works-hero">
-      <div class="container works-hero__inner">
-        <div class="works-hero__content">
-          <h2 class="works-hero__title mb-4">OUR WORKS</h2>
-        </div>
+    <section id="works" class="works-hero works-hero--full" aria-label="Our works">
+      <div class="works-blank">
+        <div class="works-blend works-blend--top" aria-hidden="true"></div>
 
-        <div class="works-carousel" id="worksCarousel" aria-label="Our works carousel">
+        <div id="works-view" class="works-view" aria-hidden="true"></div>
+        <div class="works-carousel works-carousel--blank" id="worksCarousel" aria-label="Our works slideshow">
+          <div class="works-top-title" aria-hidden="true">OUR WORKS</div>
           <button class="works-arrow works-arrow--prev" type="button" aria-label="Previous slide" data-dir="-1">
             <span aria-hidden="true">‹</span>
           </button>
 
-          <div class="works-track">
-            <div class="works-slide is-active">
-              <img src="assets\media\our-works\MARC Residence 1.jpg" alt="Our work 1" loading="lazy" />
+          <div class="works-track works-track--blank">
+            <div class="works-slide is-active" data-caption="Baron">
+              <img src="assets/media/our-works/Baron%2001.png" alt="Baron 01" loading="lazy" />
             </div>
-            <div class="works-slide is-next">
-              <img src="assets\media\our-works\MARC Residence 2.jpg" alt="Our work 2" loading="lazy" />
+            <div class="works-slide is-next" data-caption="Baron">
+              <img src="assets/media/our-works/Baron%2002.png" alt="Baron 02" loading="lazy" />
             </div>
-            <div class="works-slide">
-              <img src="assets\media\our-works\MARC Residence 3.jpg" alt="Our work 3" loading="lazy" />
+            <div class="works-slide" data-caption="Baron">
+              <img src="assets/media/our-works/Baron%2003.png" alt="Baron 03" loading="lazy" />
             </div>
-            <div class="works-slide is-prev">
-              <img src="assets\media\our-works\MARC Residence 4.jpg" alt="Our work 4" loading="lazy" />
+
+            <div class="works-slide" data-caption="Chuan Yu Bu Luo">
+              <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2001.png" alt="Chuan Yu Bu Luo 01" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="Chuan Yu Bu Luo">
+              <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2002.png" alt="Chuan Yu Bu Luo 02" loading="lazy" />
+            </div>
+
+            <div class="works-slide" data-caption="KLCC">
+              <img src="assets/media/our-works/KLCC%2001.png" alt="KLCC 01" loading="lazy" />
+            </div>
+
+            <div class="works-slide" data-caption="Marc">
+              <img src="assets/media/our-works/Marc%2001.png" alt="Marc 01" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="Marc">
+              <img src="assets/media/our-works/Marc%2002.png" alt="Marc 02" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="Marc">
+              <img src="assets/media/our-works/Marc%2003.png" alt="Marc 03" loading="lazy" />
+            </div>
+
+            <div class="works-slide" data-caption="TRX">
+              <img src="assets/media/our-works/TRX%2001.png" alt="TRX 01" loading="lazy" />
+            </div>
+
+            <div class="works-slide" data-caption="The Oval">
+              <img src="assets/media/our-works/The%20Oval%2001.png" alt="The Oval 01" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="The Oval">
+              <img src="assets/media/our-works/The%20Oval%2002.png" alt="The Oval 02" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="The Oval">
+              <img src="assets/media/our-works/The%20Oval%2003.png" alt="The Oval 03" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="The Oval">
+              <img src="assets/media/our-works/The%20Oval%2004.png" alt="The Oval 04" loading="lazy" />
+            </div>
+
+            <div class="works-slide is-prev" data-caption="YangBuTong">
+              <img src="assets/media/our-works/YangBuTong%2001.png" alt="YangBuTong 01" loading="lazy" />
+            </div>
+            <div class="works-slide" data-caption="YangBuTong">
+              <img src="assets/media/our-works/YangBuTong%2002.png" alt="YangBuTong 02" loading="lazy" />
             </div>
           </div>
+
+          <div class="works-caption" id="worksCaption" aria-live="polite"></div>
 
           <button class="works-arrow works-arrow--next" type="button" aria-label="Next slide" data-dir="1">
             <span aria-hidden="true">›</span>
           </button>
         </div>
+
+        <div class="works-blend works-blend--bottom" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -629,8 +675,7 @@
     <section id="faq" class="section-pad section-light">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow text-uppercase mb-2">FAQ</p>
-          <h2 class="h1 fw-bold mb-0">Frequently asked questions</h2>
+          <h2 class="h1 fw-bold mb-0">Frequently Asked Questions</h2>
         </div>
 
         <div class="accordion mt-4" id="faqAccordion">
@@ -779,90 +824,246 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section-pad section-dark">
+    <section id="contact" class="section-pad section-light contact-section">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow text-uppercase mb-2">Contact</p>
-          <h2 class="h1 fw-bold mb-0">Get consultation</h2>
-        </div>
+        <div class="contact-grid">
+          <div class="row g-5 align-items-start">
+            <div class="col-lg-5">
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M12 2a8 8 0 0 1 8 8c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 0 1 8-8Zm0 4.2A3.8 3.8 0 1 0 12 14a3.8 3.8 0 0 0 0-7.6Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="contact-item__body">
+                    <div class="contact-item__title">OFFICE</div>
+                    <div class="contact-item__text">
+                      52, Jalan Bunga Melur 12,<br />
+                      68000 Ampang, Selangor, Malaysia.
+                    </div>
+                  </div>
+                </div>
 
-        <div class="row g-4 mt-1 align-items-stretch">
-          <div class="col-lg-5">
-            <div class="soft-panel h-100">
-              <h3 class="h4 fw-semibold">Contact details</h3>
-              <p class="text-white-75 mb-3">Replace with your real contact information.</p>
-              <ul class="list-unstyled mb-0 contact-list">
-                <li><span class="text-white-50">Phone</span> <a href="tel:+60102502525">(+60)10-250 2525</a></li>
-                <li><span class="text-white-50">Email</span> <a href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a></li>
-                <li>
-                  <span class="text-white-50">Location</span>
-                  <span class="contact-list__value">
-                    52, Jalan Bunga Melur 12, <br />Taman Muda, 68000 Ampang, Selangor
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <form class="soft-panel h-100" id="contactForm">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label" for="name">Name</label>
-                  <input class="form-control" id="name" name="name" type="text" autocomplete="name" required />
+                <div class="contact-item">
+                  <div class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M3 7.5 12 3l9 4.5V20a1 1 0 0 1-1 1h-6v-7H10v7H4a1 1 0 0 1-1-1V7.5Zm9-2.3L5 8.3V19h3v-7h8v7h3V8.3L12 5.2Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="contact-item__body">
+                    <div class="contact-item__title">FACTORY</div>
+                    <div class="contact-item__text">
+                      Lot 270, Batu 14, Jalan Sungai Sop,<br />
+                      43100 Hulu Langat, Selangor, Malaysia.
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="phone">Phone</label>
-                  <input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" />
+
+                <div class="contact-item">
+                  <div class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M6.6 10.8c1.3 2.5 3.1 4.3 5.6 5.6l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .5 3.1.5.5 0 1 .4 1 1V20c0 .5-.5 1-1 1C10.8 21 3 13.2 3 3c0-.5.4-1 1-1h3.6c.6 0 1 .5 1 1 0 1 .2 2.1.5 3.1.1.3 0 .6-.2.8L6.6 10.8Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="contact-item__body">
+                    <div class="contact-item__title">CONTACT US</div>
+                    <div class="contact-item__text">
+                      <a class="contact-link" href="tel:+60102502525">+6010-250 2525</a><br />
+                      <a class="contact-link" href="tel:+60128189500">+6012-818 9500</a><br />
+                      <a class="contact-link" href="tel:+60162525254">+6016-252 5254</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <label class="form-label" for="email">Email</label>
-                  <input class="form-control" id="email" name="email" type="email" autocomplete="email" required />
+
+                <div class="contact-item">
+                  <div class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="contact-item__body">
+                    <div class="contact-item__title">EMAIL</div>
+                    <div class="contact-item__text">
+                      <a class="contact-link" href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <label class="form-label" for="message">Message</label>
-                  <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                </div>
-                <div class="col-12 d-flex align-items-center justify-content-between flex-wrap gap-2">
-                  <button class="btn btn-accent btn-lg" type="submit">Send</button>
-                  <div class="small text-white-50" id="contactStatus" role="status" aria-live="polite"></div>
+
+                <div class="contact-item">
+                  <div class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        fill="currentColor"
+                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9h-3.2a15.3 15.3 0 0 0-1.2-5A8 8 0 0 1 19.9 11ZM12 4.1c1 1.4 1.8 3.6 2.2 6.9H9.8c.4-3.3 1.2-5.5 2.2-6.9ZM4.1 13h3.2a15.3 15.3 0 0 0 1.2 5A8 8 0 0 1 4.1 13Zm3.2-2H4.1A8 8 0 0 1 8.5 6a15.3 15.3 0 0 0-1.2 5Zm2.5 2h4.4c-.4 3.3-1.2 5.5-2.2 6.9-1-1.4-1.8-3.6-2.2-6.9Zm6.7 0h3.2A8 8 0 0 1 15.5 18a15.3 15.3 0 0 0 1.2-5Z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="contact-item__body">
+                    <div class="contact-item__title">WEBSITE</div>
+                    <div class="contact-item__text">
+                      <a class="contact-link" href="#" target="_blank" rel="noopener">ppcconstruction.com.my</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </form>
-          </div>
-        </div>
+            </div>
 
-        <footer class="pt-5 mt-5 border-top border-white-10 text-white-50 small">
-          <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
-            <div>© <span id="year"></span> PCC Construction. All rights reserved.</div>
-            <div class="d-flex gap-3 align-items-center">
-              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z"
-                  />
-                </svg>
-              </a>
-              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z"
-                  />
-                </svg>
-              </a>
-              <a class="footer-social text-white-50" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    fill="currentColor"
-                    d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z"
-                  />
-                </svg>
-              </a>
-              <a class="text-white-50" href="#home">Back to top</a>
+            <div class="col-lg-7">
+              <div class="contact-form-card">
+                <h2 class="contact-form-title mb-4">Free Online Consultation</h2>
+                <form id="contactForm" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="name">Name</label>
+                    </div>
+                    <div class="col-md-8">
+                      <input class="form-control contact-control" id="name" name="name" type="text" autocomplete="name" required />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="phone">Mobile</label>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="input-group">
+                        <span class="input-group-text contact-prefix" id="phonePrefix">+60</span>
+                        <input
+                          class="form-control contact-control is-prefixed"
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          inputmode="numeric"
+                          autocomplete="tel-national"
+                          aria-describedby="phonePrefix"
+                          placeholder="10-250 2525"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="location">Location</label>
+                    </div>
+                    <div class="col-md-8">
+                      <input class="form-control contact-control" id="location" name="location" type="text" autocomplete="street-address" />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="type">Type</label>
+                    </div>
+                    <div class="col-md-8">
+                      <select class="form-select contact-control" id="type" name="type">
+                        <option value="" selected>Select type</option>
+                        <option value="terence">Terence</option>
+                        <option value="bungalow">Bungalow</option>
+                        <option value="office">Office</option>
+                        <option value="factory">Factory</option>
+                        <option value="condominium">Condominium</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="budget">Budget</label>
+                    </div>
+                    <div class="col-md-8">
+                      <select class="form-select contact-control" id="budget" name="budget">
+                        <option value="" selected>Select budget</option>
+                        <option value="<50k">Below RM 50k</option>
+                        <option value="50-100k">RM 50k – RM 100k</option>
+                        <option value="100-250k">RM 100k – RM 150k</option>
+                        <option value="150-200k">RM 150k – RM 200k</option>
+                        <option value="200k+">RM 200k+</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label contact-label" for="message">Message</label>
+                    </div>
+                    <div class="col-md-8">
+                      <textarea
+                        class="form-control contact-control contact-control--message"
+                        id="message"
+                        name="message"
+                        rows="4"
+                        maxlength="420"
+                        placeholder="Tell us about your project..."
+                        aria-describedby="messageHelp"
+                      ></textarea>
+                      <div class="contact-help" id="messageHelp">0 / 50 words</div>
+                    </div>
+
+                    <div class="col-12 d-flex align-items-center justify-content-end gap-3 pt-2">
+                      <button class="btn btn-accent contact-submit" type="submit">Submit</button>
+                      <div class="small contact-status" id="contactStatus" role="status" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </footer>
+
+          <div class="contact-social-row" aria-label="Social links">
+            <a class="contact-social" href="https://www.facebook.com/share/1ZyCpNPS53/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z"
+                />
+              </svg>
+            </a>
+            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2ZM17.6 6.6a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z"
+                />
+              </svg>
+            </a>
+            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z"
+                />
+              </svg>
+            </a>
+            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M16.8 2c.4 2.6 1.9 4.1 4.2 4.4v3.3c-1.6.1-3-.4-4.2-1.2V16c0 3.6-2.9 6-6.4 6-3.3 0-6.4-2.7-6.4-6.4S6.8 9.2 10.2 9.2c.5 0 1 .1 1.5.2v3.6c-.4-.1-.8-.3-1.3-.3-1.6 0-2.9 1.3-2.9 2.9s1.3 3 3 3c1.7 0 3-1 3-3.5V2h3.3Z"
+                />
+              </svg>
+            </a>
+            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M6.5 6.8a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM4.8 21V8.8h3.4V21H4.8Zm5.9 0V8.8h3.2v1.7h.1c.4-.9 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V21h-3.4v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-3.4Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-footer-bar">
+        <div class="container">
+          <div class="contact-footer-inner">
+            <div>© <span id="year"></span> PPC CONSTRUCTION SDN. BHD. (1669987-D) | ALL RIGHTS RESERVED</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -876,7 +1077,7 @@
     <!-- Sticky WhatsApp button (bottom-right) -->
     <a
       class="wa-float"
-      href="#"
+      href="https://wa.me/60102502525?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20PPC%20Construction.%20Please%20connect%20me%20with%20the%20project%20manager."
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"

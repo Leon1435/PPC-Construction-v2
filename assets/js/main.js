@@ -109,11 +109,16 @@
       if (!a) return;
       const href = a.getAttribute("href");
       if (!href || href === "#") return;
-      const target = document.querySelector(href);
+      // Special-case: "Our Works" should scroll to the slide viewport anchor,
+      // but nav highlighting should remain tied to the real #works section.
+      const target =
+        href === "#works" ? document.getElementById("works-view") : document.querySelector(href);
       if (!(target instanceof HTMLElement)) return;
       e.preventDefault();
 
-      const y = target.getBoundingClientRect().top + window.scrollY - 72;
+      const navEl = document.getElementById("mainNav");
+      const navH = navEl instanceof HTMLElement ? navEl.getBoundingClientRect().height : 72;
+      const y = target.getBoundingClientRect().top + window.scrollY - navH;
       window.scrollTo({ top: y, behavior: "smooth" });
 
       const nav = document.getElementById("navbarContent");
@@ -861,10 +866,47 @@
 
     const prevBtn = root.querySelector(".works-arrow--prev");
     const nextBtn = root.querySelector(".works-arrow--next");
+    const captionEl = document.getElementById("worksCaption");
 
     let idx = 0;
     let timer = null;
     let paused = false;
+
+    const setCaption = () => {
+      if (!(captionEl instanceof HTMLElement)) return;
+      const active = slides[idx];
+      const raw = String(active?.dataset?.caption || "").trim();
+      captionEl.style.opacity = raw ? "1" : "0";
+      if (!raw) {
+        captionEl.replaceChildren();
+        return;
+      }
+
+      // Supports "Project | Location" format (like reference).
+      // If location isn't provided, default to Kuala Lumpur (or data-location).
+      const parts = raw.split("|").map((s) => s.trim()).filter(Boolean);
+      captionEl.replaceChildren();
+
+      const name = document.createElement("span");
+      name.className = "works-caption__name";
+      name.textContent = parts[0] || raw;
+      captionEl.appendChild(name);
+
+      const locText =
+        parts.length > 1
+          ? parts.slice(1).join(" | ")
+          : String(active?.dataset?.location || "Kuala Lumpur").trim();
+
+      const sep = document.createElement("span");
+      sep.className = "works-caption__sep";
+      sep.textContent = "|";
+      captionEl.appendChild(sep);
+
+      const loc = document.createElement("span");
+      loc.className = "works-caption__loc";
+      loc.textContent = locText;
+      captionEl.appendChild(loc);
+    };
 
     const setClasses = () => {
       const prev = (idx - 1 + slides.length) % slides.length;
@@ -874,6 +916,7 @@
         s.classList.toggle("is-prev", i === prev);
         s.classList.toggle("is-next", i === next);
       });
+      setCaption();
     };
 
     const schedule = () => {
@@ -939,6 +982,7 @@
     if (!(who instanceof HTMLElement)) return;
 
     let inited = false;
+    let revealed = false;
 
     const resumeActiveWhoVideo = () => {
       const activeVideo = who.querySelector(".slide.is-active video.hero-video");
@@ -974,6 +1018,7 @@
 
         if (isVisible) {
           who.classList.add("is-video-visible");
+          revealed = true;
           if (!inited) {
             inited = true;
             wireWhoSlideshow();
@@ -983,7 +1028,9 @@
           const api = window.__pccWhoSlideshow;
           if (api) api.resume();
         } else {
-          who.classList.remove("is-video-visible");
+          // Fade-in should happen only once. Keep the revealed state visible,
+          // but still pause videos when the section is out of view.
+          if (!revealed) who.classList.remove("is-video-visible");
           pauseWhoVideos();
           const api = window.__pccWhoSlideshow;
           if (api) api.pause();
@@ -1125,7 +1172,7 @@
   };
 
   const wireSimpleSectionFadeIns = () => {
-    const ids = ["purpose", "why", "reviews"];
+    const ids = ["works", "purpose", "why", "reviews"];
     const targets = ids.map((id) => document.getElementById(id)).filter((el) => el instanceof HTMLElement);
     if (!targets.length) return;
 
@@ -1149,10 +1196,39 @@
     const status = document.getElementById("contactStatus");
     if (!(form instanceof HTMLFormElement)) return;
 
+    const message = document.getElementById("message");
+    const messageHelp = document.getElementById("messageHelp");
+    const MAX_WORDS = 50;
+
+    const getWords = (value) =>
+      String(value || "")
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+
+    const syncMessageCount = () => {
+      if (!(message instanceof HTMLTextAreaElement) || !(messageHelp instanceof HTMLElement)) return;
+      const words = getWords(message.value);
+
+      if (words.length > MAX_WORDS) {
+        message.value = words.slice(0, MAX_WORDS).join(" ");
+      }
+
+      const finalCount = getWords(message.value).length;
+      messageHelp.textContent = `${finalCount} / ${MAX_WORDS} words`;
+    };
+
+    if (message instanceof HTMLTextAreaElement && messageHelp instanceof HTMLElement) {
+      message.addEventListener("input", syncMessageCount);
+      syncMessageCount();
+    }
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       if (status) status.textContent = "Thanks! Your message is ready to send. (Hook this up to email/backend later.)";
       form.reset();
+      // Reset counter after form reset.
+      syncMessageCount();
     });
   };
 

@@ -1,1093 +1,1065 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PCC Construction</title>
-    <meta
-      name="description"
-      content="PCC Construction — Residential & Commercial construction solutions."
-    />
 
-    <link rel="icon" href="assets\media\icons\favicon.png" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PCC Construction</title>
+  <meta name="description" content="PCC Construction — Residential & Commercial construction solutions." />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+  <link rel="icon" href="assets\media\icons\favicon.png" />
 
-    <link rel="preload" href="Montserrat/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body tabindex="0">
-    <a class="skip-link" href="#home">Skip to content</a>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light navbar--light fixed-top">
+  <link rel="preload" href="Montserrat/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body tabindex="0">
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-light navbar--light fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+        <!-- We inject your Inkscape SVG inline at runtime so we can animate fills smoothly -->
+        <svg id="navLogo" class="nav-logo" data-src="assets/media/icons/company-logo.svg"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 364 133" role="img" aria-label="PPC Construction logo"
+          focusable="false"></svg>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#works">Our Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#who">Who We Are</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#purpose">Purpose</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Review</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why">Why PCC</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="hero hero--tall">
+    <div class="slideshow-container" id="homeSlideshow" aria-label="Home slideshow">
+      <!-- Slide 1: Video -->
+      <div class="slide is-active" data-type="video">
+        <div class="hero-media hero-media--home">
+          <video id="homeHeroVideo" class="hero-video" autoplay muted playsinline preload="metadata"
+            poster="assets\media\home\home-page-video-poster.png">
+            <source src="assets\media\home\home-page-video-1.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- Slide 2-4: Videos (moved from Who We Are) -->
+      <div class="slide" data-type="video" data-overlay="label" data-title="RESIDENTIAL">
+        <div class="hero-media hero-media--home">
+          <video class="hero-video" autoplay muted playsinline preload="metadata">
+            <source src="assets\media\home\home-page-video-2.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div class="slide" data-type="video" data-overlay="label" data-title="COMMERCIAL">
+        <div class="hero-media hero-media--home">
+          <video class="hero-video" autoplay muted playsinline preload="metadata">
+            <source src="assets\media\home\home-page-video-3.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div class="slide" data-type="video" data-overlay="label" data-title="CONSTRUCTION">
+        <div class="hero-media hero-media--home">
+          <video class="hero-video" autoplay muted playsinline preload="metadata">
+            <source src="assets\media\home\home-page-video-4.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="progress-nav" aria-label="Slideshow navigation">
+        <button class="progress-nav__item is-active" type="button" aria-label="Go to slide 1" data-slide="0">
+          <span class="progress-nav__index">01</span>
+          <div class="progress-nav__track">
+            <div class="progress-nav__fill"></div>
+          </div>
+        </button>
+        <button class="progress-nav__item" type="button" aria-label="Go to slide 2" data-slide="1">
+          <span class="progress-nav__index">02</span>
+          <div class="progress-nav__track">
+            <div class="progress-nav__fill"></div>
+          </div>
+        </button>
+        <button class="progress-nav__item" type="button" aria-label="Go to slide 3" data-slide="2">
+          <span class="progress-nav__index">03</span>
+          <div class="progress-nav__track">
+            <div class="progress-nav__fill"></div>
+          </div>
+        </button>
+        <button class="progress-nav__item" type="button" aria-label="Go to slide 4" data-slide="3">
+          <span class="progress-nav__index">04</span>
+          <div class="progress-nav__track">
+            <div class="progress-nav__fill"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="home-label" id="homeLabel" aria-live="polite">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-          <!-- We inject your Inkscape SVG inline at runtime so we can animate fills smoothly -->
-          <svg
-            id="navLogo"
-            class="nav-logo"
-            data-src="assets/media/icons/company-logo.svg"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 364 133"
-            role="img"
-            aria-label="PPC Construction logo"
-            focusable="false"
-          ></svg>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-          aria-controls="navbarContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
+        <div class="home-label__text" id="homeLabelText"></div>
+      </div>
+    </div>
+
+    <div class="home-hero-overlay" id="homeHeroOverlay" aria-live="polite">
+      <div class="container">
+        <div class="home-hero-overlay__inner">
+          <div class="home-hero-overlay__title">INNOVATING SOLUTIONS FOR</div>
+          <div class="home-hero-overlay__subtitle">A CHANGING WORLD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR WORKS -->
+  <section id="works" class="works-hero works-hero--full" aria-label="Our works">
+    <div class="works-blank">
+      <div class="works-blend works-blend--top" aria-hidden="true"></div>
+
+      <div id="works-view" class="works-view" aria-hidden="true"></div>
+      <div class="works-carousel works-carousel--blank" id="worksCarousel" aria-label="Our works slideshow">
+        <div class="works-top-title" aria-hidden="true">OUR WORKS</div>
+        <button class="works-arrow works-arrow--prev" type="button" aria-label="Previous slide" data-dir="-1">
+          <span aria-hidden="true">‹</span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#works">Our Works</a></li>
-            <li class="nav-item"><a class="nav-link" href="#who">Who We Are</a></li>
-            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#purpose">Purpose</a></li>
-            <li class="nav-item"><a class="nav-link" href="#reviews">Review</a></li>
-            <li class="nav-item"><a class="nav-link" href="#why">Why PCC</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <div class="works-track works-track--blank">
+          <div class="works-slide is-active" data-caption="Baron">
+            <img src="assets/media/our-works/Baron%2001.png" alt="Baron 01" loading="lazy" />
+          </div>
+          <div class="works-slide is-next" data-caption="Baron">
+            <img src="assets/media/our-works/Baron%2002.png" alt="Baron 02" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="Baron">
+            <img src="assets/media/our-works/Baron%2003.png" alt="Baron 03" loading="lazy" />
+          </div>
 
-    <!-- HOME -->
-    <section id="home" class="hero hero--tall">
-      <div class="slideshow-container" id="homeSlideshow" aria-label="Home slideshow">
-        <!-- Slide 1: Video -->
-        <div class="slide is-active" data-type="video">
-          <div class="hero-media hero-media--home">
-            <video
-              id="homeHeroVideo"
-              class="hero-video"
-              autoplay
-              muted
-              playsinline
-              preload="metadata"
-              poster="assets\media\home\home-page-video-poster.png"
-            >
-              <source src="assets\media\home\home-page-video-1.mp4" type="video/mp4" />
-            </video>
+          <div class="works-slide" data-caption="Chuan Yu Bu Luo">
+            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2001.png" alt="Chuan Yu Bu Luo 01" loading="lazy" />
           </div>
-        </div>
+          <div class="works-slide" data-caption="Chuan Yu Bu Luo">
+            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2002.png" alt="Chuan Yu Bu Luo 02" loading="lazy" />
+          </div>
 
-        <!-- Slide 2-4: Videos (moved from Who We Are) -->
-        <div class="slide" data-type="video" data-overlay="label" data-title="RESIDENTIAL">
-          <div class="hero-media hero-media--home">
-            <video class="hero-video" autoplay muted playsinline preload="metadata">
-              <source src="assets\media\home\home-page-video-2.mp4" type="video/mp4" />
-            </video>
+          <div class="works-slide" data-caption="KLCC">
+            <img src="assets/media/our-works/KLCC%2001.png" alt="KLCC 01" loading="lazy" />
           </div>
-        </div>
-        <div class="slide" data-type="video" data-overlay="label" data-title="COMMERCIAL">
-          <div class="hero-media hero-media--home">
-            <video class="hero-video" autoplay muted playsinline preload="metadata">
-              <source src="assets\media\home\home-page-video-3.mp4" type="video/mp4" />
-            </video>
+
+          <div class="works-slide" data-caption="Marc">
+            <img src="assets/media/our-works/Marc%2001.png" alt="Marc 01" loading="lazy" />
           </div>
-        </div>
-        <div class="slide" data-type="video" data-overlay="label" data-title="CONSTRUCTION">
-          <div class="hero-media hero-media--home">
-            <video class="hero-video" autoplay muted playsinline preload="metadata">
-              <source src="assets\media\home\home-page-video-4.mp4" type="video/mp4" />
-            </video>
+          <div class="works-slide" data-caption="Marc">
+            <img src="assets/media/our-works/Marc%2002.png" alt="Marc 02" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="Marc">
+            <img src="assets/media/our-works/Marc%2003.png" alt="Marc 03" loading="lazy" />
+          </div>
+
+          <div class="works-slide" data-caption="TRX">
+            <img src="assets/media/our-works/TRX%2001.png" alt="TRX 01" loading="lazy" />
+          </div>
+
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2001.png" alt="The Oval 01" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2002.png" alt="The Oval 02" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2003.png" alt="The Oval 03" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2004.png" alt="The Oval 04" loading="lazy" />
+          </div>
+
+          <div class="works-slide is-prev" data-caption="YangBuTong">
+            <img src="assets/media/our-works/YangBuTong%2001.png" alt="YangBuTong 01" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="YangBuTong">
+            <img src="assets/media/our-works/YangBuTong%2002.png" alt="YangBuTong 02" loading="lazy" />
           </div>
         </div>
 
-        <div class="progress-nav" aria-label="Slideshow navigation">
-          <button class="progress-nav__item is-active" type="button" aria-label="Go to slide 1" data-slide="0">
-            <span class="progress-nav__index">01</span>
-            <div class="progress-nav__track">
-              <div class="progress-nav__fill"></div>
-            </div>
-          </button>
-          <button class="progress-nav__item" type="button" aria-label="Go to slide 2" data-slide="1">
-            <span class="progress-nav__index">02</span>
-            <div class="progress-nav__track">
-              <div class="progress-nav__fill"></div>
-            </div>
-          </button>
-          <button class="progress-nav__item" type="button" aria-label="Go to slide 3" data-slide="2">
-            <span class="progress-nav__index">03</span>
-            <div class="progress-nav__track">
-              <div class="progress-nav__fill"></div>
-            </div>
-          </button>
-          <button class="progress-nav__item" type="button" aria-label="Go to slide 4" data-slide="3">
-            <span class="progress-nav__index">04</span>
-            <div class="progress-nav__track">
-              <div class="progress-nav__fill"></div>
-            </div>
-          </button>
-        </div>
+        <div class="works-caption" id="worksCaption" aria-live="polite"></div>
+
+        <button class="works-arrow works-arrow--next" type="button" aria-label="Next slide" data-dir="1">
+          <span aria-hidden="true">›</span>
+        </button>
       </div>
 
-      <div class="home-label" id="homeLabel" aria-live="polite">
-        <div class="container">
-          <div class="home-label__text" id="homeLabelText"></div>
+      <div class="works-blend works-blend--bottom" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section id="who" class="hero hero--short">
+    <div class="slideshow-container" id="whoSlideshow" aria-label="Who we are">
+      <div class="slide is-active" data-type="video" data-overlay="intro" data-title="WHO WE ARE"
+        data-line1="More than builders, we are your partners in excellence."
+        data-line2a="PPC Construction Sdn. Bhd. delivers seamless"
+        data-line2b="design-and-build solutions for ambitious commercial " data-line2c="spaces and premium homes."
+        data-line3a="We turn your vision into reality with disciplined "
+        data-line3b="precision and uncompromising efficiency.">
+        <div class="hero-media">
+          <video class="hero-video" muted playsinline preload="metadata">
+            <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
+    </div>
 
-      <div class="home-hero-overlay" id="homeHeroOverlay" aria-live="polite">
-        <div class="container">
-          <div class="home-hero-overlay__inner">
-            <div class="home-hero-overlay__title">INNOVATING SOLUTIONS FOR</div>
-            <div class="home-hero-overlay__subtitle">A CHANGING WORLD</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OUR WORKS -->
-    <section id="works" class="works-hero works-hero--full" aria-label="Our works">
-      <div class="works-blank">
-        <div class="works-blend works-blend--top" aria-hidden="true"></div>
-
-        <div id="works-view" class="works-view" aria-hidden="true"></div>
-        <div class="works-carousel works-carousel--blank" id="worksCarousel" aria-label="Our works slideshow">
-          <div class="works-top-title" aria-hidden="true">OUR WORKS</div>
-          <button class="works-arrow works-arrow--prev" type="button" aria-label="Previous slide" data-dir="-1">
-            <span aria-hidden="true">‹</span>
-          </button>
-
-          <div class="works-track works-track--blank">
-            <div class="works-slide is-active" data-caption="Baron">
-              <img src="assets/media/our-works/Baron%2001.png" alt="Baron 01" loading="lazy" />
-            </div>
-            <div class="works-slide is-next" data-caption="Baron">
-              <img src="assets/media/our-works/Baron%2002.png" alt="Baron 02" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="Baron">
-              <img src="assets/media/our-works/Baron%2003.png" alt="Baron 03" loading="lazy" />
-            </div>
-
-            <div class="works-slide" data-caption="Chuan Yu Bu Luo">
-              <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2001.png" alt="Chuan Yu Bu Luo 01" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="Chuan Yu Bu Luo">
-              <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2002.png" alt="Chuan Yu Bu Luo 02" loading="lazy" />
-            </div>
-
-            <div class="works-slide" data-caption="KLCC">
-              <img src="assets/media/our-works/KLCC%2001.png" alt="KLCC 01" loading="lazy" />
-            </div>
-
-            <div class="works-slide" data-caption="Marc">
-              <img src="assets/media/our-works/Marc%2001.png" alt="Marc 01" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="Marc">
-              <img src="assets/media/our-works/Marc%2002.png" alt="Marc 02" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="Marc">
-              <img src="assets/media/our-works/Marc%2003.png" alt="Marc 03" loading="lazy" />
-            </div>
-
-            <div class="works-slide" data-caption="TRX">
-              <img src="assets/media/our-works/TRX%2001.png" alt="TRX 01" loading="lazy" />
-            </div>
-
-            <div class="works-slide" data-caption="The Oval">
-              <img src="assets/media/our-works/The%20Oval%2001.png" alt="The Oval 01" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="The Oval">
-              <img src="assets/media/our-works/The%20Oval%2002.png" alt="The Oval 02" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="The Oval">
-              <img src="assets/media/our-works/The%20Oval%2003.png" alt="The Oval 03" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="The Oval">
-              <img src="assets/media/our-works/The%20Oval%2004.png" alt="The Oval 04" loading="lazy" />
-            </div>
-
-            <div class="works-slide is-prev" data-caption="YangBuTong">
-              <img src="assets/media/our-works/YangBuTong%2001.png" alt="YangBuTong 01" loading="lazy" />
-            </div>
-            <div class="works-slide" data-caption="YangBuTong">
-              <img src="assets/media/our-works/YangBuTong%2002.png" alt="YangBuTong 02" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="works-caption" id="worksCaption" aria-live="polite"></div>
-
-          <button class="works-arrow works-arrow--next" type="button" aria-label="Next slide" data-dir="1">
-            <span aria-hidden="true">›</span>
-          </button>
-        </div>
-
-        <div class="works-blend works-blend--bottom" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- WHO WE ARE -->
-    <section id="who" class="hero hero--short">
-      <div class="slideshow-container" id="whoSlideshow" aria-label="Who we are">
-        <div
-          class="slide is-active"
-          data-type="video"
-          data-overlay="intro"
-          data-title="WHO WE ARE"
-          data-line1="More than builders, we are your partners in excellence."
-          data-line2a="PPC Construction Sdn. Bhd. delivers seamless"
-          data-line2b="design-and-build solutions for ambitious commercial "
-          data-line2c="spaces and premium homes."
-          data-line3a="We turn your vision into reality with disciplined "
-          data-line3b="precision and uncompromising efficiency."
-        >
-          <div class="hero-media">
-            <video class="hero-video" muted playsinline preload="metadata">
-              <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <div class="who-overlay" id="whoOverlay" aria-live="polite">
-        <div class="container">
-          <div class="who-overlay__inner text-center mx-auto">
-            <h2 class="who-overlay__title" id="whoOverlayTitle">WHO WE ARE</h2>
-            <div class="who-overlay__para" id="whoOverlayP1"></div>
-            <div class="who-overlay__para" id="whoOverlayP2"></div>
-            <div class="who-overlay__para" id="whoOverlayP3"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section-pad section-light">
+    <div class="who-overlay" id="whoOverlay" aria-live="polite">
       <div class="container">
-        <div class="section-head">
-          <h2 class="services-title mb-0">OUR SERVICES</h2>
+        <div class="who-overlay__inner text-center mx-auto">
+          <h2 class="who-overlay__title" id="whoOverlayTitle">WHO WE ARE</h2>
+          <div class="who-overlay__para" id="whoOverlayP1"></div>
+          <div class="who-overlay__para" id="whoOverlayP2"></div>
+          <div class="who-overlay__para" id="whoOverlayP3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-pad section-light">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="services-title mb-0">OUR SERVICES</h2>
+      </div>
+
+      <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6500"
+        data-bs-touch="true">
+        <div class="carousel-indicators services-dots">
+          <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
 
-        <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6500" data-bs-touch="true">
-          <div class="carousel-indicators services-dots">
-            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4 g-lg-5">
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\01-Terrace-House-copy.png" alt="Service 1" />
+                  </div>
+                  <h3 class="service-tile__title">Essential Fit-outs for Modern Terrace Living</h3>
+                  <p class="service-tile__text">
+                    Most new developments in Malaysia require a professional touch before they are ready for occupancy.
+                    We provide comprehensive "Move-in Packages" to complete your home.
+                  </p>
+                  <p class="service-tile__text">Illumination &amp; Ventilation:<br/> Lighting, Fans &amp; Water Heaters.</p>
+                  <p class="service-tile__text">Climate Control:<br/> Precision Air-Conditioning installation.</p>
+                  <p class="service-tile__text">Custom Joinery:<br/> Bespoke Kitchen Cabinets &amp; Storage Solutions.</p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\02-Workspaces-copy.png" alt="Service 2" />
+                  </div>
+                  <h3 class="service-tile__title">Optimized Workspaces, Exceptional Value</h3>
+                  <p class="service-tile__text">
+                    Transform your office without the stress. From compact creative studios to expansive retail
+                    environments, we specialize in providing cost-efficient renovation solutions.
+                  </p>
+                  <p class="service-tile__text">
+                    We don't just save you money; we invest your budget wisely to create a high-performance workspace
+                    that inspires your team.
+                  </p>
+                  <p class="service-tile__text">
+                    Our Commitment:<br/> Delivering premium finishes through energy-efficient and budget-conscious design.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\03-Urban-Home-copy.png" alt="Service 3" />
+                  </div>
+                  <h3 class="service-tile__title">Unlock the Potential of Your Urban Home</h3>
+                  <p class="service-tile__text">
+                    Don't let limited square footage define your lifestyle. Our renovation expertise focuses on
+                    intelligent spatial planning
+                    and seamless integration.
+                  </p>
+                  <p class="service-tile__text">
+                    We turn compact apartments into airy, multifunctional spaces through innovative cabinetry and
+                    refined interior fit-outs—tailored perfectly to the rhythm of urban life.
+                  </p>
+                  <p class="service-tile__text">Key Focus: Maximizing storage, open-concept layouts and ergonomic
+                    design.</p>
+                </article>
+              </div>
+            </div>
           </div>
 
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row g-4 g-lg-5">
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\01-Terrace-House-copy.png" alt="Service 1" />
-                    </div>
-                    <h3 class="service-tile__title">Essential Fit-outs for Modern Terrace Living</h3>
-                    <p class="service-tile__text">
-                      Add key renovation highlights here. Keep this to 2–3 lines to match the layout.
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Lighting, fans &amp; feature walls</li>
-                      <li>Custom cabinets &amp; wardrobes</li>
-                      <li>Plaster ceiling &amp; painting</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\02-Workspaces-copy.png" alt="Service 2" />
-                    </div>
-                    <h3 class="service-tile__title">Optimized Workspaces, Exceptional Value</h3>
-                    <p class="service-tile__text">
-                      Add a short office/workspace renovation summary here (2–3 lines).
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Space planning &amp; partitions</li>
-                      <li>MEP coordination</li>
-                      <li>Budget-conscious designs</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\03-Urban-Home-copy.png" alt="Service 3" />
-                    </div>
-                    <h3 class="service-tile__title">Unlock the Potential of Your Urban Home</h3>
-                    <p class="service-tile__text">
-                      Add a short residential upgrade summary here (2–3 lines).
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Material selection support</li>
-                      <li>Kitchen &amp; living upgrades</li>
-                      <li>Detail finishing &amp; QC</li>
-                    </ul>
-                  </article>
-                </div>
+          <div class="carousel-item">
+            <div class="row g-4 g-lg-5">
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\04-Electrical-Systems-copy.png" alt="Service 4" />
+                  </div>
+                  <h3 class="service-tile__title">Premium Concealed Electrical Systems</h3>
+                  <p class="service-tile__text">
+                    For those who prioritize a flawless interior, concealed conduit wiring is the gold standard for both
+                    residential
+                    and commercial spaces. By integrating PVC conduits within the walls during the pre-plastering stage,
+                    we eliminate
+                    unsightly surface wires, delivering a seamless, minimalist finish.
+                  </p>
+                  <p class="service-tile__text">
+                    Beyond aesthetics, this system provides a fortified shield against external damage and pests,
+                    significantly extending the lifespan of your building's electrical infrastructure.
+                  </p>
+                  <p class="service-tile__text">
+                    Our Expertise Includes:<br/> Concealed &amp; Surface Conduit Wiring, Clean, Casing and Batten Wiring
+                    Systems.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\05-Bathroom-copy.png" alt="Service 5" />
+                  </div>
+                  <h3 class="service-tile__title">Innovative Bathrooms, Tailored Excellence.</h3>
+                  <p class="service-tile__text">
+                    Great bathroom remodeling is an art of maximizing space without compromising style. Our expert team
+                    excels in creating
+                    multifunctional environments through clever spatial planning and modern, space-saving furniture.
+                  </p>
+                  <p class="service-tile__text">
+                    We deliver sophisticated, move-in-ready bathrooms that prioritize both luxury and practicality—all
+                    within your strategic budget.
+                  </p>
+                  <p class="service-tile__text">
+                    Key Features:<br/> Ergonomic storage solutions, water-efficient systems, and contemporary finishes.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\06-Modern-Kitchen-copy.png" alt="Service 6" />
+                  </div>
+                  <h3 class="service-tile__title">Modern Kitchen Renovation</h3>
+                  <p class="service-tile__text">
+                    Elevate your daily cooking experience with a kitchen designed for efficiency and style. Our
+                    designers excel in transforming
+                    dated layouts into functional, modern workspaces optimized for every culinary need.
+                  </p>
+                  <p class="service-tile__text">
+                    Backed by master craftsmanship and industrial-grade materials, our renovations are engineered for
+                    maximum durability and effortless maintenance.
+                  </p>
+                  <p class="service-tile__text">Key Focus:<br/> Intelligent storage solutions, heavy-duty surfaces, and
+                    precision installation.</p>
+                </article>
               </div>
             </div>
+          </div>
 
-            <div class="carousel-item">
-              <div class="row g-4 g-lg-5">
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\04-Electrical-Systems-copy.png" alt="Service 4" />
-                    </div>
-                    <h3 class="service-tile__title">Premium Concealed Electrical Systems</h3>
-                    <p class="service-tile__text">
-                      Add a short electrical/rewiring description here (2–3 lines).
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Wiring, sockets &amp; DB upgrades</li>
-                      <li>Safety checks &amp; testing</li>
-                      <li>Clean concealed routing</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\05-Bathroom-copy.png" alt="Service 5" />
-                    </div>
-                    <h3 class="service-tile__title">Innovative Bathrooms, Tailored Excellence</h3>
-                    <p class="service-tile__text">
-                      Add a short bathroom renovation description here (2–3 lines).
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Waterproofing &amp; plumbing</li>
-                      <li>Tiles, fixtures &amp; accessories</li>
-                      <li>Ergonomic layouts</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\06-Modern-Kitchen-copy.png" alt="Service 6" />
-                    </div>
-                    <h3 class="service-tile__title">Modern Kitchen Renovation</h3>
-                    <p class="service-tile__text">
-                      Add a short kitchen renovation description here (2–3 lines).
-                    </p>
-                    <ul class="service-tile__list">
-                      <li>Cabinetry &amp; worktops</li>
-                      <li>Lighting &amp; appliance planning</li>
-                      <li>Precision installation</li>
-                    </ul>
-                  </article>
-                </div>
+          <div class="carousel-item">
+            <div class="row g-4 g-lg-5">
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\07-Elevated-Ceiling-copy.png" alt="Service 7" />
+                  </div>
+                  <h3 class="service-tile__title">The Art of Elevated Ceilings</h3>
+                  <p class="service-tile__text">
+                    Transform your overhead space into a clean, modern canvas. Our expertise lies in creating
+                    multifunctional plaster ceilings that
+                    elegantly mask essential wiring and MEP (Mechanical, Electrical and Plumbing) systems.
+                  </p>
+                  <p class="service-tile__text">
+                    By combining strategic lighting layouts with refined skirting, we add texture and character to your
+                    home, ensuring a seamless transition from wall to ceiling.
+                  </p>
+                  <p class="service-tile__text">
+                    Expertise in:<br/> Innovative lighting layouts, custom skirting and structured ceiling design.
+                  </p>
+                </article>
               </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="row g-4 g-lg-5">
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\07-Elevated-Ceiling-copy.png" alt="Service 7" />
-                    </div>
-                    <h3 class="service-tile__title">Service Title 7</h3>
-                    <p class="service-tile__text">Short description for service 7.</p>
-                    <ul class="service-tile__list">
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\08-Bedroom-copy.png" alt="Service 8" />
-                    </div>
-                    <h3 class="service-tile__title">Service Title 8</h3>
-                    <p class="service-tile__text">Short description for service 8.</p>
-                    <ul class="service-tile__list">
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                    </ul>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="service-tile h-100">
-                    <div class="service-tile__media">
-                      <img src="assets\media\our-services\09-SPC-Flooring-copy.png" alt="Service 9" />
-                    </div>
-                    <h3 class="service-tile__title">Service Title 9</h3>
-                    <p class="service-tile__text">Short description for service 9.</p>
-                    <ul class="service-tile__list">
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                      <li>Bullet point</li>
-                    </ul>
-                  </article>
-                </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\08-Bedroom-copy.png" alt="Service 8" />
+                  </div>
+                  <h3 class="service-tile__title">Private Sanctuary: Bedroom Reimagined</h3>
+                  <p class="service-tile__text">
+                    The bedroom is the soul of any interior design project—a personal retreat where comfort meets
+                    identity. To ensure your vision is captured perfectly,
+                    we provide immersive 3D visualizations that bring your dream to life.
+                  </p>
+                  <p class="service-tile__text">
+                    By meticulously selecting colors and textures within the design phase, we help you experience the
+                    atmosphere of your new sanctuary before the first brick is laid.
+                  </p>
+                  <p class="service-tile__text">
+                    Key Focus:<br/> Mood-enhancing palettes, tactile textures, and personalized spatial harmony.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="service-tile h-100">
+                  <div class="service-tile__media">
+                    <img src="assets\media\our-services\09-SPC-Flooring-copy.png" alt="Service 9" />
+                  </div>
+                  <h3 class="service-tile__title">Worry-Free Elegance with SPC Flooring</h3>
+                  <p class="service-tile__text">
+                    Designed for life, built to last. Stone Plastic Composite (SPC) is the ultimate flooring choice for
+                    those seeking 100% waterproof performance
+                    and superior impact resistance.
+                  </p>
+                  <p class="service-tile__text">
+                    These engineered luxury vinyl planks capture the warmth of timber and the cool of stone, providing
+                    a resilient, budget-friendly alternative that doesn’t compromise on style.
+                  </p>
+                  <p class="service-tile__text">Key Features:<br/> Scratch-resistant, moisture-proof, and effortless to
+                    maintain.</p>
+                </article>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PURPOSE -->
-    <section id="purpose" class="purpose-split">
-      <div class="container">
-        <div class="purpose-card ms-auto">
-          <h2 class="purpose-title mb-2">OUR PURPOSE</h2>
-          <p class="purpose-subtitle mb-3">Crafting Excellence. Simplifying Complexity.</p>
-          <p class="purpose-intro mb-4">
-            At PPC Construction, we transform the chaos of renovation into a structured, effortless reality.
-            Our mission is built on three unwavering pillars designed to protect your interests:
-          </p>
+  <!-- PURPOSE -->
+  <section id="purpose" class="purpose-split">
+    <div class="container">
+      <div class="purpose-card ms-auto">
+        <h2 class="purpose-title mb-2">OUR PURPOSE</h2>
+        <p class="purpose-subtitle mb-3">Crafting Excellence. Simplifying Complexity.</p>
+        <p class="purpose-intro mb-4">
+          At PPC Construction, we transform the chaos of renovation into a structured, effortless reality.
+          Our mission is built on three unwavering pillars designed to protect your interests:
+        </p>
 
-          <div class="purpose-points">
-            <div class="purpose-point">
-              <h3 class="purpose-point__title">Strategic Cost-Optimization</h3>
-              <p class="purpose-point__text mb-0">
-                We don't just save costs; we maximize your investment through smart engineering and transparent pricing.
+        <div class="purpose-points">
+          <div class="purpose-point">
+            <h3 class="purpose-point__title">Strategic Cost-Optimization</h3>
+            <p class="purpose-point__text mb-0">
+              We don't just save costs; we maximize your investment through smart engineering and transparent pricing.
+            </p>
+          </div>
+          <div class="purpose-point">
+            <h3 class="purpose-point__title">Seamless Project Management</h3>
+            <p class="purpose-point__text mb-0">
+              From concept to key, we handle every detail, offering you a stress-free experience while you focus on what
+              matters most.
+            </p>
+          </div>
+          <div class="purpose-point">
+            <h3 class="purpose-point__title">Accelerated Delivery</h3>
+            <p class="purpose-point__text mb-0">
+              Our mastery of workflow ensures your project is completed with uncompromising speed and precision,
+              getting you into your new space sooner.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section-pad section-light">
+    <div class="container">
+      <div class="section-head text-center">
+        <h2 class="reviews-title mb-0">OUR REVIEWS</h2>
+      </div>
+
+      <div id="reviewsCarousel" class="carousel slide reviews-carousel" data-bs-ride="carousel" data-bs-interval="9000"
+        data-bs-touch="true">
+        <div class="carousel-indicators reviews-dots">
+          <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\KELVIN-KONG.png" alt="Kelvin Kong" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">KELVIN KONG</div>
+                      <div class="review-tile__time">1 month ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Excellence.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    Our project was well built and PPC CONSTRUCTION was closely working with us from the conceptual
+                    design to its completion.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\Nicol-Wong.png" alt="Nicol Wong" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">NICOL WONG</div>
+                      <div class="review-tile__time">4 months ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Good Services.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    It is no longer a mere structure, but a soulful sanctuary—a harmonious blend of aesthetic elegance
+                    and the functional soul of my lifestyle. I am really love it.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\ADMAD.png" alt="Admad" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">ADMAD</div>
+                      <div class="review-tile__time">1 year ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Recommended.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    I am highly recommend PPC Construction to businesses looking for a dependable design &amp; build
+                    partner.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\Aminah.png" alt="Aminah" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">AMINAH</div>
+                      <div class="review-tile__time">2 years ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Superb.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    Our dream kitchen and bedroom final result looks exactly like the drawings—if not better! The
+                    attention to detail in the finishing is simply superb.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\David-Chen.png" alt="David Chen" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">DAVID CHEN</div>
+                      <div class="review-tile__time">9 months ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Flawless.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    We had a tight timeline for our office renovation in KL and PPC delivered ahead of schedule. Their
+                    coordination of the concealed wiring and SPC flooring was flawless.
+                  </p>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="review-tile h-100">
+                  <div class="review-tile__top">
+                    <img class="review-tile__avatar" src="assets\media\our-reviews\SARAH-LIM.png" alt="Sarah Lim" />
+                    <div class="review-tile__meta">
+                      <div class="review-tile__name">SARAH LIM</div>
+                      <div class="review-tile__time">1 year ago</div>
+                      <div class="review-tile__stars" aria-label="5 out of 5 stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-tile__headline">“ Impressive.. ”</div>
+                  <p class="review-tile__text mb-0">
+                    PPC provided a detailed, itemized quotation that helped us optimize our budget without compromising
+                    on the aesthetics. No hidden costs, just honest, high-quality craftsmanship.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PPC -->
+  <section id="why" class="why-clean section-light">
+    <div class="container">
+      <div class="why-head text-center mx-auto">
+        <h2 class="why-title mb-3">WHY PPC CONSTRUCTION</h2>
+        <p class="why-lead mb-2">
+          Choosing us means choosing a partner dedicated to elevating your property's potential.
+          We combine innovative design with cost-effective engineering to deliver superior results.
+        </p>
+        <p class="why-body mb-0">
+          In an industry where trust is everything, we stand as a cornerstone of reliability in Malaysia.
+          With nearly two decades of mastery in construction and renovation, we bridge the gap between visionary design
+          and structural integrity.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center mt-4 mt-lg-5">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="why-tile">
+            <div class="why-tile__num">1</div>
+            <div class="why-tile__label">Transparent<br />Costing</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="why-tile">
+            <div class="why-tile__num">2</div>
+            <div class="why-tile__label">Quality<br />Craftsmanship</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="why-tile">
+            <div class="why-tile__num">3</div>
+            <div class="why-tile__label">Licensed<br />Accredited</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="why-tile">
+            <div class="why-tile__num">4</div>
+            <div class="why-tile__label">On Time, On<br />Budget Delivery</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="why-tile">
+            <div class="why-tile__num">5</div>
+            <div class="why-tile__label">Long Term<br />Client Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-pad section-light">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="h1 fw-bold mb-0">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="accordion mt-4" id="faqAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              We have a specific budget for our renovation. How do we ensure we’re spending it wisely?
+            </button>
+          </h3>
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We don’t believe in "cookie-cutter" estimates. We consult with you to prioritize High-Impact Design
+              Elements and also Financial planning that align with your lifestyle or brand identity. Whether it’s
+              structural optimization, bespoke cabinetry, or sustainable material sourcing, we ensure your investment
+              increases both your Property Value and Functional Quality of Life.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Do you disappear after the project is done, or is there long-term support?
+            </button>
+          </h3>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We are Anti-"Hit and Run." We stand by the craftsmanship of every renovation and build. We conduct
+              follow-up checks to ensure everything is performing as intended. For us, a project isn’t just a one-time
+              transaction; it’s a Long-Term Partnership in maintaining the value and beauty of your property.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              Can I be hands-on during the design and build? I want to be part of the decision-making.
+            </button>
+          </h3>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We wouldn't have it any other way. We believe in Empowerment through Design. We provide a platform where
+              you are the "Chief Architect" of your lifestyle needs. Rather than just watching from the sidelines, you
+              are invited to site walkthroughs and material workshops to ensure every detail feels like "home."
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+              Will I have a say in the day-to-day progress, or am I just paying for a finished product?
+            </button>
+          </h3>
+          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Definitely. We operate on a principle of Informed Execution. We create communication channels where you
+              are an Active Stakeholder in the project’s evolution. You aren't just funding a construction site; you
+              are an integral part of the transformation from concept to completion.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+              How do you address accessibility and inclusive design in your projects?
+            </button>
+          </h3>
+          <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Inclusive design is not a checkbox; it’s a standard. We offer tailored, human-centric solutions—from
+              barrier-free layouts to sensory-friendly material palettes—specifically designed to align with your
+              building’s purpose and the diverse needs of its occupants.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+              Will this design look dated in a few years, or is there long-term value?
+            </button>
+          </h3>
+          <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We don’t believe in "Surface-Level Aesthetics." We design for Functional Longevity, balancing current
+              innovations with timeless principles. Our goal is to create a space that grows with you. We don’t just
+              finish a project; we build a lasting relationship to help you maintain and evolve your environment as
+              your needs change.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+              Is any project too small—or too large—for your team?
+            </button>
+          </h3>
+          <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We thrive on variety. We provide the same level of precision for a bespoke furniture commission as we do
+              for industrial-scale architectural projects. Whether you are looking for a curated interior update or a
+              complete structural overhaul, we possess the manpower and technical oversight to ensure your vision is
+              executed to perfection.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+              How big is your team and what is your expertise?
+            </button>
+          </h3>
+          <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              <p class="mb-3">
+                We operate as an Integrated Design &amp; Project Management Collective. This allows us to curate a
+                "Project Dream Team" specifically tailored to your site’s requirements. Our network includes:
+              </p>
+              <ul class="mb-3">
+                <li>Design &amp; Visualization: Interior Designers, 3D Render Artists, and AutoCAD Draftsmen.</li>
+                <li>
+                  Technical Engineering: M&amp;E Specialists (Mechanical &amp; Electrical), Plumbing Schematics
+                  Experts, and Lighting Consultants.
+                </li>
+                <li>Master Craftsmen: Professional Carpenters for bespoke cabinetry, Tilers, and Fine Finishers.</li>
+                <li>
+                  Project Oversight: Dedicated Project Leads and Copywriters to ensure seamless documentation and
+                  communication.
+                </li>
+              </ul>
+              <p class="mb-0">
+                Safety &amp; Compliance First: Every renovation or construction site is managed under strict CIDB
+                standards (or local safety protocols) to ensure a zero-compromise environment for our workers and your
+                property.
               </p>
             </div>
-            <div class="purpose-point">
-              <h3 class="purpose-point__title">Seamless Project Management</h3>
-              <p class="purpose-point__text mb-0">
-                From concept to key, we handle every detail, offering you a stress-free experience while you focus on what
-                matters most.
-              </p>
-            </div>
-            <div class="purpose-point">
-              <h3 class="purpose-point__title">Accelerated Delivery</h3>
-              <p class="purpose-point__text mb-0">
-                Our mastery of workflow ensures your project is completed with uncompromising speed and precision,
-                getting you into your new space sooner.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- REVIEWS -->
-    <section id="reviews" class="section-pad section-light">
+  <!-- CONTACT -->
+  <section id="contact" class="section-pad section-light contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="row g-5 align-items-start">
+          <div class="col-lg-5">
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M12 2a8 8 0 0 1 8 8c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 0 1 8-8Zm0 4.2A3.8 3.8 0 1 0 12 14a3.8 3.8 0 0 0 0-7.6Z" />
+                  </svg>
+                </div>
+                <div class="contact-item__body">
+                  <div class="contact-item__title">OFFICE</div>
+                  <div class="contact-item__text">
+                    52, Jalan Bunga Melur 12,<br />
+                    68000 Ampang, Selangor, Malaysia.
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M3 7.5 12 3l9 4.5V20a1 1 0 0 1-1 1h-6v-7H10v7H4a1 1 0 0 1-1-1V7.5Zm9-2.3L5 8.3V19h3v-7h8v7h3V8.3L12 5.2Z" />
+                  </svg>
+                </div>
+                <div class="contact-item__body">
+                  <div class="contact-item__title">FACTORY</div>
+                  <div class="contact-item__text">
+                    Lot 270, Batu 14, Jalan Sungai Sop,<br />
+                    43100 Hulu Langat, Selangor, Malaysia.
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M6.6 10.8c1.3 2.5 3.1 4.3 5.6 5.6l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .5 3.1.5.5 0 1 .4 1 1V20c0 .5-.5 1-1 1C10.8 21 3 13.2 3 3c0-.5.4-1 1-1h3.6c.6 0 1 .5 1 1 0 1 .2 2.1.5 3.1.1.3 0 .6-.2.8L6.6 10.8Z" />
+                  </svg>
+                </div>
+                <div class="contact-item__body">
+                  <div class="contact-item__title">CONTACT US</div>
+                  <div class="contact-item__text">
+                    <a class="contact-link" href="tel:+60102502525">+6010-250 2525</a><br />
+                    <a class="contact-link" href="tel:+60128189500">+6012-818 9500</a><br />
+                    <a class="contact-link" href="tel:+60162525254">+6016-252 5254</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z" />
+                  </svg>
+                </div>
+                <div class="contact-item__body">
+                  <div class="contact-item__title">EMAIL</div>
+                  <div class="contact-item__text">
+                    <a class="contact-link"
+                      href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                      d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9h-3.2a15.3 15.3 0 0 0-1.2-5A8 8 0 0 1 19.9 11ZM12 4.1c1 1.4 1.8 3.6 2.2 6.9H9.8c.4-3.3 1.2-5.5 2.2-6.9ZM4.1 13h3.2a15.3 15.3 0 0 0 1.2 5A8 8 0 0 1 4.1 13Zm3.2-2H4.1A8 8 0 0 1 8.5 6a15.3 15.3 0 0 0-1.2 5Zm2.5 2h4.4c-.4 3.3-1.2 5.5-2.2 6.9-1-1.4-1.8-3.6-2.2-6.9Zm6.7 0h3.2A8 8 0 0 1 15.5 18a15.3 15.3 0 0 0 1.2-5Z" />
+                  </svg>
+                </div>
+                <div class="contact-item__body">
+                  <div class="contact-item__title">WEBSITE</div>
+                  <div class="contact-item__text">
+                    <a class="contact-link" href="#" target="_blank" rel="noopener">ppcconstruction.com.my</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-form-card">
+              <h2 class="contact-form-title mb-4">Free Online Consultation</h2>
+              <form id="contactForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="name">Name</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input class="form-control contact-control" id="name" name="name" type="text" autocomplete="name"
+                      required />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="phone">Mobile</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="input-group">
+                      <span class="input-group-text contact-prefix" id="phonePrefix">+60</span>
+                      <input class="form-control contact-control is-prefixed" id="phone" name="phone" type="tel"
+                        inputmode="numeric" autocomplete="tel-national" aria-describedby="phonePrefix"
+                        placeholder="10-250 2525" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="location">Location</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input class="form-control contact-control" id="location" name="location" type="text"
+                      autocomplete="street-address" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="type">Type</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select class="form-select contact-control" id="type" name="type">
+                      <option value="" selected>Select type</option>
+                      <option value="terence">Terence</option>
+                      <option value="bungalow">Bungalow</option>
+                      <option value="office">Office</option>
+                      <option value="factory">Factory</option>
+                      <option value="condominium">Condominium</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="budget">Budget</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select class="form-select contact-control" id="budget" name="budget">
+                      <option value="" selected>Select budget</option>
+                      <option value="<50k">Below RM 50k</option>
+                      <option value="50-100k">RM 50k – RM 100k</option>
+                      <option value="100-250k">RM 100k – RM 150k</option>
+                      <option value="150-200k">RM 150k – RM 200k</option>
+                      <option value="200k+">RM 200k+</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="form-label contact-label" for="message">Message</label>
+                  </div>
+                  <div class="col-md-8">
+                    <textarea class="form-control contact-control contact-control--message" id="message" name="message"
+                      rows="4" maxlength="420" placeholder="Tell us about your project..."
+                      aria-describedby="messageHelp"></textarea>
+                    <div class="contact-help" id="messageHelp">0 / 50 words</div>
+                  </div>
+
+                  <div class="col-12 d-flex align-items-center justify-content-end gap-3 pt-2">
+                    <button class="btn btn-accent contact-submit" type="submit">Submit</button>
+                    <div class="small contact-status" id="contactStatus" role="status" aria-live="polite"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social-row" aria-label="Social links">
+          <a class="contact-social" href="https://www.facebook.com/share/1ZyCpNPS53/?mibextid=wwXIfr" target="_blank"
+            rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z" />
+            </svg>
+          </a>
+          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2ZM17.6 6.6a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z" />
+            </svg>
+          </a>
+          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z" />
+            </svg>
+          </a>
+          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M16.8 2c.4 2.6 1.9 4.1 4.2 4.4v3.3c-1.6.1-3-.4-4.2-1.2V16c0 3.6-2.9 6-6.4 6-3.3 0-6.4-2.7-6.4-6.4S6.8 9.2 10.2 9.2c.5 0 1 .1 1.5.2v3.6c-.4-.1-.8-.3-1.3-.3-1.6 0-2.9 1.3-2.9 2.9s1.3 3 3 3c1.7 0 3-1 3-3.5V2h3.3Z" />
+            </svg>
+          </a>
+          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M6.5 6.8a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM4.8 21V8.8h3.4V21H4.8Zm5.9 0V8.8h3.2v1.7h.1c.4-.9 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V21h-3.4v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-3.4Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-footer-bar">
       <div class="container">
-        <div class="section-head text-center">
-          <h2 class="reviews-title mb-0">OUR REVIEWS</h2>
-        </div>
-
-        <div id="reviewsCarousel" class="carousel slide reviews-carousel" data-bs-ride="carousel" data-bs-interval="9000" data-bs-touch="true">
-          <div class="carousel-indicators reviews-dots">
-            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          </div>
-
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row g-4">
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\KELVIN-KONG.png" alt="Kelvin Kong" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">KELVIN KONG</div>
-                        <div class="review-tile__time">1 month ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Excellence.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      Our project was well built and PPC CONSTRUCTION was closely working with us from the conceptual
-                      design to its completion.
-                    </p>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\Nicol-Wong.png" alt="Nicol Wong" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">NICOL WONG</div>
-                        <div class="review-tile__time">4 months ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Good Services.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      It is no longer a mere structure, but a soulful sanctuary—a harmonious blend of aesthetic elegance
-                      and the functional soul of my lifestyle. I am really love it.
-                    </p>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\ADMAD.png" alt="Admad" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">ADMAD</div>
-                        <div class="review-tile__time">1 year ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Recommended.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      I am highly recommend PPC Construction to businesses looking for a dependable design &amp; build
-                      partner.
-                    </p>
-                  </article>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="row g-4">
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\Aminah.png" alt="Aminah" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">AMINAH</div>
-                        <div class="review-tile__time">2 years ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Superb.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      Our dream kitchen and bedroom final result looks exactly like the drawings—if not better! The
-                      attention to detail in the finishing is simply superb.
-                    </p>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\David-Chen.png" alt="David Chen" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">DAVID CHEN</div>
-                        <div class="review-tile__time">9 months ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Flawless.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      We had a tight timeline for our office renovation in KL and PPC delivered ahead of schedule. Their
-                      coordination of the concealed wiring and SPC flooring was flawless.
-                    </p>
-                  </article>
-                </div>
-                <div class="col-md-4">
-                  <article class="review-tile h-100">
-                    <div class="review-tile__top">
-                      <img class="review-tile__avatar" src="assets\media\our-reviews\SARAH-LIM.png" alt="Sarah Lim" />
-                      <div class="review-tile__meta">
-                        <div class="review-tile__name">SARAH LIM</div>
-                        <div class="review-tile__time">1 year ago</div>
-                        <div class="review-tile__stars" aria-label="5 out of 5 stars">
-                          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="review-tile__headline">“ Impressive.. ”</div>
-                    <p class="review-tile__text mb-0">
-                      PPC provided a detailed, itemized quotation that helped us optimize our budget without compromising
-                      on the aesthetics. No hidden costs, just honest, high-quality craftsmanship.
-                    </p>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="contact-footer-inner">
+          <div>© <span id="year"></span> PPC CONSTRUCTION SDN. BHD. (1669987-D) | ALL RIGHTS RESERVED</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- WHY PPC -->
-    <section id="why" class="why-clean section-light">
-      <div class="container">
-        <div class="why-head text-center mx-auto">
-          <h2 class="why-title mb-3">WHY PPC CONSTRUCTION</h2>
-          <p class="why-lead mb-2">
-            Choosing us means choosing a partner dedicated to elevating your property's potential.
-            We combine innovative design with cost-effective engineering to deliver superior results.
-          </p>
-          <p class="why-body mb-0">
-            In an industry where trust is everything, we stand as a cornerstone of reliability in Malaysia.
-            With nearly two decades of mastery in construction and renovation, we bridge the gap between visionary design
-            and structural integrity.
-          </p>
-        </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/main.js"></script>
 
-        <div class="row g-4 justify-content-center mt-4 mt-lg-5">
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">1</div>
-              <div class="why-tile__label">Transparent<br />Costing</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">2</div>
-              <div class="why-tile__label">Quality<br />Craftsmanship</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">3</div>
-              <div class="why-tile__label">Licensed<br />Accredited</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">4</div>
-              <div class="why-tile__label">On Time, On<br />Budget Delivery</div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <div class="why-tile">
-              <div class="why-tile__num">5</div>
-              <div class="why-tile__label">Long Term<br />Client Support</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Sticky WhatsApp button (bottom-right) -->
+  <a class="wa-float"
+    href="https://wa.me/60102502525?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20PPC%20Construction.%20Please%20connect%20me%20with%20the%20project%20manager."
+    target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="currentColor"
+        d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z" />
+    </svg>
+  </a>
+</body>
 
-    <!-- FAQ -->
-    <section id="faq" class="section-pad section-light">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="h1 fw-bold mb-0">Frequently Asked Questions</h2>
-        </div>
-
-        <div class="accordion mt-4" id="faqAccordion">
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                We have a specific budget for our renovation. How do we ensure we’re spending it wisely?
-              </button>
-            </h3>
-            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                We don’t believe in "cookie-cutter" estimates. We consult with you to prioritize High-Impact Design
-                Elements and also Financial planning that align with your lifestyle or brand identity. Whether it’s
-                structural optimization, bespoke cabinetry, or sustainable material sourcing, we ensure your investment
-                increases both your Property Value and Functional Quality of Life.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                Do you disappear after the project is done, or is there long-term support?
-              </button>
-            </h3>
-            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                We are Anti-"Hit and Run." We stand by the craftsmanship of every renovation and build. We conduct
-                follow-up checks to ensure everything is performing as intended. For us, a project isn’t just a one-time
-                transaction; it’s a Long-Term Partnership in maintaining the value and beauty of your property.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                Can I be hands-on during the design and build? I want to be part of the decision-making.
-              </button>
-            </h3>
-            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                We wouldn't have it any other way. We believe in Empowerment through Design. We provide a platform where
-                you are the "Chief Architect" of your lifestyle needs. Rather than just watching from the sidelines, you
-                are invited to site walkthroughs and material workshops to ensure every detail feels like "home."
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                Will I have a say in the day-to-day progress, or am I just paying for a finished product?
-              </button>
-            </h3>
-            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Definitely. We operate on a principle of Informed Execution. We create communication channels where you
-                are an Active Stakeholder in the project’s evolution. You aren't just funding a construction site; you
-                are an integral part of the transformation from concept to completion.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                How do you address accessibility and inclusive design in your projects?
-              </button>
-            </h3>
-            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Inclusive design is not a checkbox; it’s a standard. We offer tailored, human-centric solutions—from
-                barrier-free layouts to sensory-friendly material palettes—specifically designed to align with your
-                building’s purpose and the diverse needs of its occupants.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                Will this design look dated in a few years, or is there long-term value?
-              </button>
-            </h3>
-            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                We don’t believe in "Surface-Level Aesthetics." We design for Functional Longevity, balancing current
-                innovations with timeless principles. Our goal is to create a space that grows with you. We don’t just
-                finish a project; we build a lasting relationship to help you maintain and evolve your environment as
-                your needs change.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
-                Is any project too small—or too large—for your team?
-              </button>
-            </h3>
-            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                We thrive on variety. We provide the same level of precision for a bespoke furniture commission as we do
-                for industrial-scale architectural projects. Whether you are looking for a curated interior update or a
-                complete structural overhaul, we possess the manpower and technical oversight to ensure your vision is
-                executed to perfection.
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
-                How big is your team and what is your expertise?
-              </button>
-            </h3>
-            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                <p class="mb-3">
-                  We operate as an Integrated Design &amp; Project Management Collective. This allows us to curate a
-                  "Project Dream Team" specifically tailored to your site’s requirements. Our network includes:
-                </p>
-                <ul class="mb-3">
-                  <li>Design &amp; Visualization: Interior Designers, 3D Render Artists, and AutoCAD Draftsmen.</li>
-                  <li>
-                    Technical Engineering: M&amp;E Specialists (Mechanical &amp; Electrical), Plumbing Schematics
-                    Experts, and Lighting Consultants.
-                  </li>
-                  <li>Master Craftsmen: Professional Carpenters for bespoke cabinetry, Tilers, and Fine Finishers.</li>
-                  <li>
-                    Project Oversight: Dedicated Project Leads and Copywriters to ensure seamless documentation and
-                    communication.
-                  </li>
-                </ul>
-                <p class="mb-0">
-                  Safety &amp; Compliance First: Every renovation or construction site is managed under strict CIDB
-                  standards (or local safety protocols) to ensure a zero-compromise environment for our workers and your
-                  property.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section-pad section-light contact-section">
-      <div class="container">
-        <div class="contact-grid">
-          <div class="row g-5 align-items-start">
-            <div class="col-lg-5">
-              <div class="contact-info">
-                <div class="contact-item">
-                  <div class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M12 2a8 8 0 0 1 8 8c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 0 1 8-8Zm0 4.2A3.8 3.8 0 1 0 12 14a3.8 3.8 0 0 0 0-7.6Z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-item__body">
-                    <div class="contact-item__title">OFFICE</div>
-                    <div class="contact-item__text">
-                      52, Jalan Bunga Melur 12,<br />
-                      68000 Ampang, Selangor, Malaysia.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M3 7.5 12 3l9 4.5V20a1 1 0 0 1-1 1h-6v-7H10v7H4a1 1 0 0 1-1-1V7.5Zm9-2.3L5 8.3V19h3v-7h8v7h3V8.3L12 5.2Z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-item__body">
-                    <div class="contact-item__title">FACTORY</div>
-                    <div class="contact-item__text">
-                      Lot 270, Batu 14, Jalan Sungai Sop,<br />
-                      43100 Hulu Langat, Selangor, Malaysia.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M6.6 10.8c1.3 2.5 3.1 4.3 5.6 5.6l1.9-1.9c.2-.2.5-.3.8-.2 1 .3 2 .5 3.1.5.5 0 1 .4 1 1V20c0 .5-.5 1-1 1C10.8 21 3 13.2 3 3c0-.5.4-1 1-1h3.6c.6 0 1 .5 1 1 0 1 .2 2.1.5 3.1.1.3 0 .6-.2.8L6.6 10.8Z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-item__body">
-                    <div class="contact-item__title">CONTACT US</div>
-                    <div class="contact-item__text">
-                      <a class="contact-link" href="tel:+60102502525">+6010-250 2525</a><br />
-                      <a class="contact-link" href="tel:+60128189500">+6012-818 9500</a><br />
-                      <a class="contact-link" href="tel:+60162525254">+6016-252 5254</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-item__body">
-                    <div class="contact-item__title">EMAIL</div>
-                    <div class="contact-item__text">
-                      <a class="contact-link" href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.9 9h-3.2a15.3 15.3 0 0 0-1.2-5A8 8 0 0 1 19.9 11ZM12 4.1c1 1.4 1.8 3.6 2.2 6.9H9.8c.4-3.3 1.2-5.5 2.2-6.9ZM4.1 13h3.2a15.3 15.3 0 0 0 1.2 5A8 8 0 0 1 4.1 13Zm3.2-2H4.1A8 8 0 0 1 8.5 6a15.3 15.3 0 0 0-1.2 5Zm2.5 2h4.4c-.4 3.3-1.2 5.5-2.2 6.9-1-1.4-1.8-3.6-2.2-6.9Zm6.7 0h3.2A8 8 0 0 1 15.5 18a15.3 15.3 0 0 0 1.2-5Z"
-                      />
-                    </svg>
-                  </div>
-                  <div class="contact-item__body">
-                    <div class="contact-item__title">WEBSITE</div>
-                    <div class="contact-item__text">
-                      <a class="contact-link" href="#" target="_blank" rel="noopener">ppcconstruction.com.my</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-7">
-              <div class="contact-form-card">
-                <h2 class="contact-form-title mb-4">Free Online Consultation</h2>
-                <form id="contactForm" novalidate>
-                  <div class="row g-3">
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="name">Name</label>
-                    </div>
-                    <div class="col-md-8">
-                      <input class="form-control contact-control" id="name" name="name" type="text" autocomplete="name" required />
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="phone">Mobile</label>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="input-group">
-                        <span class="input-group-text contact-prefix" id="phonePrefix">+60</span>
-                        <input
-                          class="form-control contact-control is-prefixed"
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          inputmode="numeric"
-                          autocomplete="tel-national"
-                          aria-describedby="phonePrefix"
-                          placeholder="10-250 2525"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="location">Location</label>
-                    </div>
-                    <div class="col-md-8">
-                      <input class="form-control contact-control" id="location" name="location" type="text" autocomplete="street-address" />
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="type">Type</label>
-                    </div>
-                    <div class="col-md-8">
-                      <select class="form-select contact-control" id="type" name="type">
-                        <option value="" selected>Select type</option>
-                        <option value="terence">Terence</option>
-                        <option value="bungalow">Bungalow</option>
-                        <option value="office">Office</option>
-                        <option value="factory">Factory</option>
-                        <option value="condominium">Condominium</option>
-                      </select>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="budget">Budget</label>
-                    </div>
-                    <div class="col-md-8">
-                      <select class="form-select contact-control" id="budget" name="budget">
-                        <option value="" selected>Select budget</option>
-                        <option value="<50k">Below RM 50k</option>
-                        <option value="50-100k">RM 50k – RM 100k</option>
-                        <option value="100-250k">RM 100k – RM 150k</option>
-                        <option value="150-200k">RM 150k – RM 200k</option>
-                        <option value="200k+">RM 200k+</option>
-                      </select>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label class="form-label contact-label" for="message">Message</label>
-                    </div>
-                    <div class="col-md-8">
-                      <textarea
-                        class="form-control contact-control contact-control--message"
-                        id="message"
-                        name="message"
-                        rows="4"
-                        maxlength="420"
-                        placeholder="Tell us about your project..."
-                        aria-describedby="messageHelp"
-                      ></textarea>
-                      <div class="contact-help" id="messageHelp">0 / 50 words</div>
-                    </div>
-
-                    <div class="col-12 d-flex align-items-center justify-content-end gap-3 pt-2">
-                      <button class="btn btn-accent contact-submit" type="submit">Submit</button>
-                      <div class="small contact-status" id="contactStatus" role="status" aria-live="polite"></div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-social-row" aria-label="Social links">
-            <a class="contact-social" href="https://www.facebook.com/share/1ZyCpNPS53/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z"
-                />
-              </svg>
-            </a>
-            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2ZM17.6 6.6a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z"
-                />
-              </svg>
-            </a>
-            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z"
-                />
-              </svg>
-            </a>
-            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="TikTok">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M16.8 2c.4 2.6 1.9 4.1 4.2 4.4v3.3c-1.6.1-3-.4-4.2-1.2V16c0 3.6-2.9 6-6.4 6-3.3 0-6.4-2.7-6.4-6.4S6.8 9.2 10.2 9.2c.5 0 1 .1 1.5.2v3.6c-.4-.1-.8-.3-1.3-.3-1.6 0-2.9 1.3-2.9 2.9s1.3 3 3 3c1.7 0 3-1 3-3.5V2h3.3Z"
-                />
-              </svg>
-            </a>
-            <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path
-                  fill="currentColor"
-                  d="M6.5 6.8a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM4.8 21V8.8h3.4V21H4.8Zm5.9 0V8.8h3.2v1.7h.1c.4-.9 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V21h-3.4v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-3.4Z"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-footer-bar">
-        <div class="container">
-          <div class="contact-footer-inner">
-            <div>© <span id="year"></span> PPC CONSTRUCTION SDN. BHD. (1669987-D) | ALL RIGHTS RESERVED</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="assets/js/main.js"></script>
-
-    <!-- Sticky WhatsApp button (bottom-right) -->
-    <a
-      class="wa-float"
-      href="https://wa.me/60102502525?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20PPC%20Construction.%20Please%20connect%20me%20with%20the%20project%20manager."
-      target="_blank"
-      rel="noopener"
-      aria-label="Chat on WhatsApp"
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path
-          fill="currentColor"
-          d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z"
-        />
-      </svg>
-    </a>
-  </body>
 </html>

@@ -1261,6 +1261,7 @@
     wireWhoRevealOnScroll();
     wirePauseHomeWhenWhoVisible();
     wireServicesReveal();
+    wireFixedCarouselHeight("servicesCarousel");
     wireFixedCarouselHeight("reviewsCarousel");
     wireSimpleSectionFadeIns();
     pauseOffscreenHeroVideos();

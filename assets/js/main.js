@@ -383,6 +383,7 @@
     const nav = root.querySelector(".progress-nav");
     const navItems = Array.from(root.querySelectorAll(".progress-nav__item")).filter((el) => el instanceof HTMLButtonElement);
     const videos = slides.map((s) => s.querySelector("video.hero-video")).map((v) => (v instanceof HTMLVideoElement ? v : null));
+    const heroVideo = document.getElementById("homeHeroVideo");
     const labelRoot = document.getElementById("homeLabel");
     const labelText = document.getElementById("homeLabelText");
     const heroOverlay = document.getElementById("homeHeroOverlay");
@@ -630,10 +631,10 @@
     root.addEventListener(
       "click",
       () => {
-        if (idx === 0 && heroVideo) {
-          const p = heroVideo.play();
-          if (p && typeof p.catch === "function") p.catch(() => {});
-        }
+        if (idx !== 0) return;
+        if (!(heroVideo instanceof HTMLVideoElement)) return;
+        const p = heroVideo.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
       },
       { passive: true }
     );

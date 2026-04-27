@@ -298,6 +298,20 @@ body{
   object-fit: cover;
   border-radius: 0;
   box-shadow: none;
+  transform: scale(1.03);
+  transition: transform 9.5s linear;
+  will-change: transform;
+}
+.works-slide.is-active img{
+  transform: scale(1.12);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .works-slide img,
+  .works-slide.is-active img{
+    transition:none;
+    transform:none;
+  }
 }
 .works-slide.is-active{
   opacity: 1;

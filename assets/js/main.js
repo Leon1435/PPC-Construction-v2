@@ -386,7 +386,6 @@
     const heroVideo = document.getElementById("homeHeroVideo");
     const labelRoot = document.getElementById("homeLabel");
     const labelText = document.getElementById("homeLabelText");
-    const heroOverlay = document.getElementById("homeHeroOverlay");
 
     if (!slides.length) return;
 
@@ -395,7 +394,6 @@
     let leaveTimer = null;
     let paused = false;
     let labelTimer = null;
-    let heroOverlayTimer = null;
     let isSwitching = false;
     let remainingMs = 0;
     let nextDueAt = 0;
@@ -444,44 +442,52 @@
       const active = slides[idx];
       const mode = active?.dataset?.overlay;
       const title = active?.dataset?.title || "";
+      const subtitle = active?.dataset?.subtitle || "";
       const show = mode === "label" && Boolean(title);
       if (labelTimer) window.clearTimeout(labelTimer);
 
-      const current = labelText.textContent || "";
+      const currentTitle = (labelText.querySelector(".home-label__title")?.textContent || labelText.textContent || "").trim();
+      const currentSubtitle = (labelText.querySelector(".home-label__subtitle")?.textContent || "").trim();
 
       if (!show) {
         if (!labelRoot.classList.contains("is-visible")) {
-          labelText.textContent = "";
+          labelText.replaceChildren();
           return;
         }
         labelRoot.classList.add("is-changing");
         labelTimer = window.setTimeout(() => {
           labelRoot.classList.remove("is-visible");
-          labelText.textContent = "";
+          labelText.replaceChildren();
         }, 110);
         return;
       }
 
+      const apply = () => {
+        labelText.replaceChildren();
+        if (subtitle) {
+          const t = document.createElement("span");
+          t.className = "home-label__title";
+          t.textContent = title;
+          labelText.appendChild(t);
+
+          const s = document.createElement("span");
+          s.className = "home-label__subtitle";
+          s.textContent = subtitle;
+          labelText.appendChild(s);
+          return;
+        }
+        labelText.textContent = title;
+      };
+
       labelRoot.classList.add("is-visible");
-      if (current === title && !labelRoot.classList.contains("is-changing")) return;
+      if (currentTitle === String(title).trim() && currentSubtitle === String(subtitle).trim() && !labelRoot.classList.contains("is-changing")) return;
 
       // Smooth cross-fade: fade out -> swap text -> fade in.
       labelRoot.classList.add("is-changing");
       labelTimer = window.setTimeout(() => {
-        labelText.textContent = title;
+        apply();
         requestAnimationFrame(() => labelRoot.classList.remove("is-changing"));
       }, 140);
-    };
-
-    const setHomeHeroOverlay = () => {
-      if (!(heroOverlay instanceof HTMLElement)) return;
-      if (heroOverlayTimer) window.clearTimeout(heroOverlayTimer);
-      const show = idx === 0;
-      heroOverlay.classList.toggle("is-visible", show);
-      if (show) {
-        heroOverlay.classList.add("is-changing");
-        requestAnimationFrame(() => heroOverlay.classList.remove("is-changing"));
-      }
     };
 
     const scheduleNextForActive = () => {
@@ -526,8 +532,6 @@
 
       slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
       setActiveNav();
-      // Hide/show the main overlay first to avoid brief overlap.
-      setHomeHeroOverlay();
       setHomeLabel();
 
       const active = slides[idx];
@@ -872,41 +876,58 @@
     let idx = 0;
     let timer = null;
     let paused = false;
+    let captionTimer = null;
 
     const setCaption = () => {
       if (!(captionEl instanceof HTMLElement)) return;
       const active = slides[idx];
       const raw = String(active?.dataset?.caption || "").trim();
-      captionEl.style.opacity = raw ? "1" : "0";
-      if (!raw) {
+      if (captionTimer) window.clearTimeout(captionTimer);
+
+      const apply = () => {
+        captionEl.style.opacity = raw ? "1" : "0";
+        if (!raw) {
+          captionEl.replaceChildren();
+          return;
+        }
+
+        // Supports "Project | Location" format (like reference).
+        // If location isn't provided, default to Kuala Lumpur (or data-location).
+        const parts = raw.split("|").map((s) => s.trim()).filter(Boolean);
         captionEl.replaceChildren();
+
+        const name = document.createElement("span");
+        name.className = "works-caption__name";
+        name.textContent = parts[0] || raw;
+        captionEl.appendChild(name);
+
+        const locText =
+          parts.length > 1
+            ? parts.slice(1).join(" | ")
+            : String(active?.dataset?.location || "Kuala Lumpur").trim();
+
+        const sep = document.createElement("span");
+        sep.className = "works-caption__sep";
+        sep.textContent = "|";
+        captionEl.appendChild(sep);
+
+        const loc = document.createElement("span");
+        loc.className = "works-caption__loc";
+        loc.textContent = locText;
+        captionEl.appendChild(loc);
+      };
+
+      // Smooth cross-fade (same idea as Home label): fade out -> swap -> fade in.
+      if (!captionEl.classList.contains("is-changing")) {
+        captionEl.classList.add("is-changing");
+        captionTimer = window.setTimeout(() => {
+          apply();
+          requestAnimationFrame(() => captionEl.classList.remove("is-changing"));
+        }, 140);
         return;
       }
 
-      // Supports "Project | Location" format (like reference).
-      // If location isn't provided, default to Kuala Lumpur (or data-location).
-      const parts = raw.split("|").map((s) => s.trim()).filter(Boolean);
-      captionEl.replaceChildren();
-
-      const name = document.createElement("span");
-      name.className = "works-caption__name";
-      name.textContent = parts[0] || raw;
-      captionEl.appendChild(name);
-
-      const locText =
-        parts.length > 1
-          ? parts.slice(1).join(" | ")
-          : String(active?.dataset?.location || "Kuala Lumpur").trim();
-
-      const sep = document.createElement("span");
-      sep.className = "works-caption__sep";
-      sep.textContent = "|";
-      captionEl.appendChild(sep);
-
-      const loc = document.createElement("span");
-      loc.className = "works-caption__loc";
-      loc.textContent = locText;
-      captionEl.appendChild(loc);
+      apply();
     };
 
     const setClasses = () => {
@@ -978,6 +999,85 @@
     observer.observe(home);
   };
 
+  // Fade in/out with single-active behavior (Home/Works/Who only):
+  // when the next section starts to show, the previous fades out.
+  const wirePrimarySectionInViewFades = () => {
+    const ids = ["home", "works", "who"];
+    const els = ids.map((id) => document.getElementById(id)).filter((el) => el instanceof HTMLElement);
+    if (!els.length) return;
+
+    const ratios = new Map();
+    let activeEl = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          if (!(el instanceof HTMLElement)) return;
+          ratios.set(el, entry.isIntersecting ? entry.intersectionRatio : 0);
+        });
+
+        const servicesHalf = Boolean(window.__pccServicesHalfInView);
+
+        // Pick the most-visible section as the only active one.
+        let best = null;
+        let bestRatio = 0;
+        els.forEach((el) => {
+          if (servicesHalf && el.id === "who") return; // force Who to disappear when Services is half in view
+          const r = Number(ratios.get(el) || 0);
+          if (r > bestRatio) {
+            bestRatio = r;
+            best = el;
+          }
+        });
+
+        // Require "some" visibility before activating any section.
+        const nextActive = bestRatio >= 0.18 ? best : null;
+        if (nextActive !== activeEl) activeEl = nextActive;
+
+        els.forEach((el) => el.classList.toggle("is-inview", el === activeEl));
+      },
+      {
+        root: null,
+        threshold: [0, 0.12, 0.18, 0.25, 0.35, 0.5, 0.65, 0.8],
+        rootMargin: "0px",
+      }
+    );
+
+    els.forEach((el) => observer.observe(el));
+  };
+
+  // When Services is >= 50% in view, force Who to fade out + pause.
+  const wireHideWhoWhenServicesHalfVisible = () => {
+    const services = document.getElementById("services");
+    const who = document.getElementById("who");
+    if (!(services instanceof HTMLElement) || !(who instanceof HTMLElement)) return;
+
+    const pauseWho = () => {
+      who.querySelectorAll("video.hero-video").forEach((v) => {
+        if (v instanceof HTMLVideoElement) v.pause();
+      });
+      const api = window.__pccWhoSlideshow;
+      if (api) api.pause();
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        const half = entry.isIntersecting && entry.intersectionRatio >= 0.5;
+        window.__pccServicesHalfInView = half;
+        if (half) {
+          who.classList.remove("is-inview");
+          pauseWho();
+        }
+      },
+      { root: null, threshold: [0, 0.5, 0.6, 0.75], rootMargin: "0px" }
+    );
+
+    observer.observe(services);
+  };
+
   const wireWhoRevealOnScroll = () => {
     const who = document.getElementById("who");
     if (!(who instanceof HTMLElement)) return;
@@ -1015,10 +1115,11 @@
 
         // Consider Who "visible" only when a decent portion is in view.
         // This prevents videos from continuing when you've scrolled past to the next section.
-        const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+        const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.5;
 
         if (isVisible) {
           who.classList.add("is-video-visible");
+          who.classList.add("is-inview");
           revealed = true;
           if (!inited) {
             inited = true;
@@ -1029,9 +1130,8 @@
           const api = window.__pccWhoSlideshow;
           if (api) api.resume();
         } else {
-          // Fade-in should happen only once. Keep the revealed state visible,
-          // but still pause videos when the section is out of view.
-          if (!revealed) who.classList.remove("is-video-visible");
+          // Always fade out when out of view, but still keep init state.
+          who.classList.remove("is-inview");
           pauseWhoVideos();
           const api = window.__pccWhoSlideshow;
           if (api) api.pause();
@@ -1039,9 +1139,9 @@
       },
       {
         root: null,
-        threshold: [0, 0.1, 0.2, 0.3, 0.5],
+        threshold: [0, 0.25, 0.5, 0.65, 0.8],
         // Shrink the effective viewport a bit so we pause earlier near edges.
-        rootMargin: "-10% 0px -10% 0px",
+        rootMargin: "0px",
       }
     );
 
@@ -1197,6 +1297,11 @@
     const status = document.getElementById("contactStatus");
     if (!(form instanceof HTMLFormElement)) return;
 
+    const nameEl = document.getElementById("name");
+    const phoneEl = document.getElementById("phone");
+    const locationEl = document.getElementById("location");
+    const typeEl = document.getElementById("type");
+    const budgetEl = document.getElementById("budget");
     const message = document.getElementById("message");
     const messageHelp = document.getElementById("messageHelp");
     const MAX_WORDS = 50;
@@ -1226,10 +1331,31 @@
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (status) status.textContent = "Thanks! Your message is ready to send. (Hook this up to email/backend later.)";
-      form.reset();
-      // Reset counter after form reset.
-      syncMessageCount();
+
+      const name = nameEl instanceof HTMLInputElement ? nameEl.value.trim() : "";
+      const phoneRaw = phoneEl instanceof HTMLInputElement ? phoneEl.value.trim() : "";
+      const phone = phoneRaw ? `+60 ${phoneRaw}` : "";
+      const location = locationEl instanceof HTMLInputElement ? locationEl.value.trim() : "";
+      const type = typeEl instanceof HTMLSelectElement ? typeEl.value.trim() : "";
+      const budget = budgetEl instanceof HTMLSelectElement ? budgetEl.value.trim() : "";
+      const msg = message instanceof HTMLTextAreaElement ? message.value.trim() : "";
+
+      const lines = [
+        "Hello, I would like to discuss a project with PPC Construction. Please connect me with the project manager.",
+        "",
+        `Name: ${name || "-"}`,
+        `Phone: ${phone || "-"}`,
+        `Location: ${location || "-"}`,
+        `Type: ${type || "-"}`,
+        `Budget: ${budget || "-"}`,
+        `Message: ${msg || "-"}`,
+      ];
+
+      const waNumber = "60102502525";
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+
+      if (status) status.textContent = "Redirecting to WhatsApp…";
+      window.open(waUrl, "_blank", "noopener,noreferrer");
     });
   };
 
@@ -1260,6 +1386,8 @@
     wireHomeRevealOnScroll();
     wireWorksCarousel();
     wireWhoRevealOnScroll();
+    wirePrimarySectionInViewFades();
+    wireHideWhoWhenServicesHalfVisible();
     wirePauseHomeWhenWhoVisible();
     wireServicesReveal();
     wireFixedCarouselHeight("servicesCarousel");

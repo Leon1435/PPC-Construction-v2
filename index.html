@@ -3,17 +3,72 @@
 
 <head>
   <meta charset="utf-8" />
+  <!-- Technical best-practice -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PCC Construction</title>
-  <meta name="description" content="PPC Construction — Residential & Commercial construction solutions." />
+  <!-- SEO: keyword + location focused title -->
+  <title>PPC Construction | Malaysia Construction & Renovation Company</title>
+  <!-- SEO: 150–160 chars, compelling + keyword optimized -->
+  <meta name="description" content="PPC Construction is a Malaysia construction & renovation company delivering residential and commercial projects with transparent costing and quality workmanship." />
+  <!-- SEO: crawl directives -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="PPC Construction" />
 
-  <link rel="icon" href="assets\media\icons\favicon.png" />
+  <!-- Canonical URL (replace with your live domain) -->
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="PPC Construction | Malaysia Construction & Renovation Company" />
+  <meta property="og:description" content="Residential & commercial construction and renovation in Malaysia. Transparent pricing, disciplined project delivery, and long-term client support." />
+  <meta property="og:image" content="https://yourdomain.com/assets/media/home/home-page-video-poster.png" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PPC Construction | Malaysia Construction & Renovation Company" />
+  <meta name="twitter:description" content="Residential & commercial construction and renovation in Malaysia. Transparent pricing, disciplined project delivery, and long-term client support." />
+  <meta name="twitter:image" content="https://yourdomain.com/assets/media/home/home-page-video-poster.png" />
+
+  <!-- Favicon (use forward slashes for web paths) -->
+  <link rel="icon" href="assets/media/icons/favicon.png" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
+  <!-- Performance: preload critical poster (hero above-the-fold) -->
+  <link rel="preload" as="image" href="assets/media/home/home-page-video-poster.png" />
   <link rel="preload" href="Montserrat/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Structured Data (Schema.org) -->
+  <!-- SEO: LocalBusiness / ConstructionCompany for rich results -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ConstructionCompany",
+      "name": "PPC Construction",
+      "url": "https://yourdomain.com/",
+      "email": "ppc.construction.my@gmail.com",
+      "telephone": [
+        "+60 10-250 2525",
+        "+60 12-818 9500",
+        "+60 16-252 5254"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "52, Jalan Bunga Melur 12, Taman Muda",
+        "addressLocality": "Ampang",
+        "postalCode": "68000",
+        "addressRegion": "Selangor",
+        "addressCountry": "MY"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      }
+    }
+  </script>
 </head>
 
 <body tabindex="0">
@@ -50,13 +105,16 @@
 
   <!-- HOME -->
   <section id="home" class="hero hero--tall">
+    <!-- Accessibility/SEO: single H1 for the page -->
+    <h1 class="visually-hidden">PPC Construction Malaysia Construction &amp; Renovation Company</h1>
     <div class="slideshow-container" id="homeSlideshow" aria-label="Home slideshow">
       <!-- Slide 1: Video -->
-      <div class="slide is-active" data-type="video">
+      <div class="slide is-active" data-type="video" data-overlay="label" data-title="INNOVATING SOLUTIONS FOR" data-subtitle="A CHANGING WORLD">
         <div class="hero-media hero-media--home">
           <video id="homeHeroVideo" class="hero-video" autoplay muted playsinline preload="metadata"
-            poster="assets\media\home\home-page-video-poster.png">
-            <source src="assets\media\home\home-page-video-1.mp4" type="video/mp4" />
+            poster="assets/media/home/home-page-video-poster.png">
+            <!-- NOTE: Consider compressing hero MP4 (H.264/AAC) for faster load -->
+            <source src="assets/media/home/home-page-video-1.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -65,21 +123,21 @@
       <div class="slide" data-type="video" data-overlay="label" data-title="RESIDENTIAL">
         <div class="hero-media hero-media--home">
           <video class="hero-video" autoplay muted playsinline preload="metadata">
-            <source src="assets\media\home\home-page-video-2.mp4" type="video/mp4" />
+            <source src="assets/media/home/home-page-video-2.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
       <div class="slide" data-type="video" data-overlay="label" data-title="COMMERCIAL">
         <div class="hero-media hero-media--home">
           <video class="hero-video" autoplay muted playsinline preload="metadata">
-            <source src="assets\media\home\home-page-video-3.mp4" type="video/mp4" />
+            <source src="assets/media/home/home-page-video-3.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
       <div class="slide" data-type="video" data-overlay="label" data-title="CONSTRUCTION">
         <div class="hero-media hero-media--home">
           <video class="hero-video" autoplay muted playsinline preload="metadata">
-            <source src="assets\media\home\home-page-video-4.mp4" type="video/mp4" />
+            <source src="assets/media/home/home-page-video-4.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -115,27 +173,15 @@
     <div class="home-label" id="homeLabel" aria-live="polite">
       <div class="container">
         <div class="home-label__text" id="homeLabelText"></div>
-      </div>
-    </div>
-
-    <div class="home-hero-overlay" id="homeHeroOverlay" aria-live="polite">
-      <div class="container">
-        <div class="home-hero-overlay__inner">
-          <div class="home-hero-overlay__title">INNOVATING SOLUTIONS FOR</div>
-          <div class="home-hero-overlay__subtitle">A CHANGING WORLD</div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- OUR WORKS -->
   <section id="works" class="works-hero works-hero--full" aria-label="Our works">
     <div class="works-blank">
-      <div class="works-blend works-blend--top" aria-hidden="true"></div>
+      <!-- <div class="works-blend works-blend--top" aria-hidden="true"></div> -->
 
       <div id="works-view" class="works-view" aria-hidden="true"></div>
       <div class="works-carousel works-carousel--blank" id="worksCarousel" aria-label="Our works slideshow">
-        <div class="works-top-title" aria-hidden="true">OUR WORKS</div>
         <button class="works-arrow works-arrow--prev" type="button" aria-label="Previous slide" data-dir="-1">
           <span aria-hidden="true">‹</span>
         </button>
@@ -204,7 +250,7 @@
         </button>
       </div>
 
-      <div class="works-blend works-blend--bottom" aria-hidden="true"></div>
+      <!-- <div class="works-blend works-blend--bottom" aria-hidden="true"></div> -->
     </div>
   </section>
 
@@ -259,7 +305,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\01-Terrace-House-copy.png" alt="Service 1" />
+                    <img src="assets/media/our-services/01-Terrace-House-copy.png" alt="Modern terrace home fit-out and renovation service in Malaysia" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Essential Fit-outs for Modern Terrace Living</h3>
                   <p class="service-tile__text">
@@ -274,7 +320,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\02-Workspaces-copy.png" alt="Service 2" />
+                    <img src="assets/media/our-services/02-Workspaces-copy.png" alt="Office and workspace renovation solutions for commercial interiors" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Optimized Workspaces, Exceptional Value</h3>
                   <p class="service-tile__text">
@@ -293,7 +339,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\03-Urban-Home-copy.png" alt="Service 3" />
+                    <img src="assets/media/our-services/03-Urban-Home-copy.png" alt="Urban home renovation and space optimization for apartments and condos" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Unlock the Potential of Your Urban Home</h3>
                   <p class="service-tile__text">
@@ -317,7 +363,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\04-Electrical-Systems-copy.png" alt="Service 4" />
+                    <img src="assets/media/our-services/04-Electrical-Systems-copy.png" alt="Concealed electrical wiring and modern electrical system installation" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Premium Concealed Electrical Systems</h3>
                   <p class="service-tile__text">
@@ -340,7 +386,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\05-Bathroom-copy.png" alt="Service 5" />
+                    <img src="assets/media/our-services/05-Bathroom-copy.png" alt="Bathroom remodeling and renovation with space-saving design" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Innovative Bathrooms, Tailored Excellence.</h3>
                   <p class="service-tile__text">
@@ -360,7 +406,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\06-Modern-Kitchen-copy.png" alt="Service 6" />
+                    <img src="assets/media/our-services/06-Modern-Kitchen-copy.png" alt="Modern kitchen renovation with custom cabinetry and durable finishes" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Modern Kitchen Renovation</h3>
                   <p class="service-tile__text">
@@ -384,7 +430,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\07-Elevated-Ceiling-copy.png" alt="Service 7" />
+                    <img src="assets/media/our-services/07-Elevated-Ceiling-copy.png" alt="Plaster ceiling works with lighting layouts and concealed services" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">The Art of Elevated Ceilings</h3>
                   <p class="service-tile__text">
@@ -404,7 +450,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\08-Bedroom-copy.png" alt="Service 8" />
+                    <img src="assets/media/our-services/08-Bedroom-copy.png" alt="Bedroom interior renovation with 3D visualization and comfort-focused design" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Private Sanctuary: Bedroom Reimagined</h3>
                   <p class="service-tile__text">
@@ -424,7 +470,7 @@
               <div class="col-md-4">
                 <article class="service-tile h-100">
                   <div class="service-tile__media">
-                    <img src="assets\media\our-services\09-SPC-Flooring-copy.png" alt="Service 9" />
+                    <img src="assets/media/our-services/09-SPC-Flooring-copy.png" alt="SPC flooring installation for waterproof and durable modern interiors" loading="lazy" />
                   </div>
                   <h3 class="service-tile__title">Worry-Free Elegance with SPC Flooring</h3>
                   <p class="service-tile__text">
@@ -505,7 +551,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\KELVIN-KONG.png" alt="Kelvin Kong" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/KELVIN-KONG.png" alt="Customer review avatar: Kelvin Kong" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">KELVIN KONG</div>
                       <div class="review-tile__time">1 month ago</div>
@@ -524,7 +570,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\Nicol-Wong.png" alt="Nicol Wong" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/Nicol-Wong.png" alt="Customer review avatar: Nicol Wong" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">NICOL WONG</div>
                       <div class="review-tile__time">4 months ago</div>
@@ -543,7 +589,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\ADMAD.png" alt="Admad" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/ADMAD.png" alt="Customer review avatar: Admad" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">ADMAD</div>
                       <div class="review-tile__time">1 year ago</div>
@@ -567,7 +613,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\Aminah.png" alt="Aminah" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/Aminah.png" alt="Customer review avatar: Aminah" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">AMINAH</div>
                       <div class="review-tile__time">2 years ago</div>
@@ -586,7 +632,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\David-Chen.png" alt="David Chen" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/David-Chen.png" alt="Customer review avatar: David Chen" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">DAVID CHEN</div>
                       <div class="review-tile__time">9 months ago</div>
@@ -605,7 +651,7 @@
               <div class="col-md-4">
                 <article class="review-tile h-100">
                   <div class="review-tile__top">
-                    <img class="review-tile__avatar" src="assets\media\our-reviews\SARAH-LIM.png" alt="Sarah Lim" />
+                    <img class="review-tile__avatar" src="assets/media/our-reviews/SARAH-LIM.png" alt="Customer review avatar: Sarah Lim" loading="lazy" />
                     <div class="review-tile__meta">
                       <div class="review-tile__name">SARAH LIM</div>
                       <div class="review-tile__time">1 year ago</div>
@@ -913,7 +959,7 @@
                 <div class="contact-item__body">
                   <div class="contact-item__title">WEBSITE</div>
                   <div class="contact-item__text">
-                    <a class="contact-link" href="#" target="_blank" rel="noopener">ppcconstruction.com.my</a>
+                    <a class="contact-link" href="https://ppcconstruction.com.my" target="_blank" rel="noopener noreferrer">ppcconstruction.com.my</a>
                   </div>
                 </div>
               </div>
@@ -923,13 +969,13 @@
           <div class="col-lg-7">
             <div class="contact-form-card">
               <h2 class="contact-form-title mb-4">Free Online Consultation</h2>
-              <form id="contactForm" novalidate>
+              <form id="contactForm" novalidate autocomplete="off">
                 <div class="row g-3">
                   <div class="col-md-4">
                     <label class="form-label contact-label" for="name">Name</label>
                   </div>
                   <div class="col-md-8">
-                    <input class="form-control contact-control" id="name" name="name" type="text" autocomplete="name"
+                    <input class="form-control contact-control" id="name" name="name" type="text" autocomplete="off"
                       required />
                   </div>
 
@@ -940,7 +986,7 @@
                     <div class="input-group">
                       <span class="input-group-text contact-prefix" id="phonePrefix">+60</span>
                       <input class="form-control contact-control is-prefixed" id="phone" name="phone" type="tel"
-                        inputmode="numeric" autocomplete="tel-national" aria-describedby="phonePrefix"
+                        inputmode="numeric" autocomplete="off" aria-describedby="phonePrefix"
                         placeholder="10-250 2525" />
                     </div>
                   </div>
@@ -950,14 +996,14 @@
                   </div>
                   <div class="col-md-8">
                     <input class="form-control contact-control" id="location" name="location" type="text"
-                      autocomplete="street-address" />
+                      autocomplete="off" />
                   </div>
 
                   <div class="col-md-4">
                     <label class="form-label contact-label" for="type">Type</label>
                   </div>
                   <div class="col-md-8">
-                    <select class="form-select contact-control" id="type" name="type">
+                    <select class="form-select contact-control" id="type" name="type" autocomplete="off">
                       <option value="" selected>Select type</option>
                       <option value="terence">Terence</option>
                       <option value="bungalow">Bungalow</option>
@@ -971,13 +1017,13 @@
                     <label class="form-label contact-label" for="budget">Budget</label>
                   </div>
                   <div class="col-md-8">
-                    <select class="form-select contact-control" id="budget" name="budget">
+                    <select class="form-select contact-control" id="budget" name="budget" autocomplete="off">
                       <option value="" selected>Select budget</option>
                       <option value="<50k">Below RM 50k</option>
-                      <option value="50-100k">RM 50k – RM 100k</option>
-                      <option value="100-250k">RM 100k – RM 150k</option>
-                      <option value="150-200k">RM 150k – RM 200k</option>
-                      <option value="200k+">RM 200k+</option>
+                      <option value="50-100k">RM 51k – RM 100k</option>
+                      <option value="100-250k">RM 101k – RM 150k</option>
+                      <option value="150-200k">RM 151k – RM 200k</option>
+                      <option value="200k+">RM 201k+</option>
                     </select>
                   </div>
 
@@ -986,7 +1032,7 @@
                   </div>
                   <div class="col-md-8">
                     <textarea class="form-control contact-control contact-control--message" id="message" name="message"
-                      rows="4" maxlength="420" placeholder="Tell us about your project..."
+                      rows="4" maxlength="420" autocomplete="off" placeholder="Tell us about your project..."
                       aria-describedby="messageHelp"></textarea>
                     <div class="contact-help" id="messageHelp">0 / 50 words</div>
                   </div>
@@ -1003,31 +1049,31 @@
 
         <div class="contact-social-row" aria-label="Social links">
           <a class="contact-social" href="https://www.facebook.com/share/1ZyCpNPS53/?mibextid=wwXIfr" target="_blank"
-            rel="noopener" aria-label="Facebook">
+            rel="noopener noreferrer" aria-label="Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                 d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.3c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.8v1.8H7v3.2h2.5v8h4z" />
             </svg>
           </a>
-          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <a class="contact-social" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                 d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2ZM17.6 6.6a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z" />
             </svg>
           </a>
-          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="Little Red Book">
+          <a class="contact-social" href="#" target="_blank" rel="noopener noreferrer" aria-label="Little Red Book">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                 d="M7.2 5.8h9.6c2.3 0 4.2 1.9 4.2 4.2v4.9c0 2.3-1.9 4.2-4.2 4.2H7.2C4.9 19.1 3 17.2 3 14.9V10c0-2.3 1.9-4.2 4.2-4.2Zm2.2 4.1c-.5 0-.9.4-.9.9v3.4c0 .5.4.9.9.9h5.1c.5 0 .9-.4.9-.9v-3.4c0-.5-.4-.9-.9-.9H9.4Zm.9 1.5h3.3c.2 0 .4.2.4.4v1.6c0 .2-.2.4-.4.4h-3.3c-.2 0-.4-.2-.4-.4v-1.6c0-.2.2-.4.4-.4Z" />
             </svg>
           </a>
-          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+          <a class="contact-social" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                 d="M16.8 2c.4 2.6 1.9 4.1 4.2 4.4v3.3c-1.6.1-3-.4-4.2-1.2V16c0 3.6-2.9 6-6.4 6-3.3 0-6.4-2.7-6.4-6.4S6.8 9.2 10.2 9.2c.5 0 1 .1 1.5.2v3.6c-.4-.1-.8-.3-1.3-.3-1.6 0-2.9 1.3-2.9 2.9s1.3 3 3 3c1.7 0 3-1 3-3.5V2h3.3Z" />
             </svg>
           </a>
-          <a class="contact-social" href="#" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <a class="contact-social" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path fill="currentColor"
                 d="M6.5 6.8a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM4.8 21V8.8h3.4V21H4.8Zm5.9 0V8.8h3.2v1.7h.1c.4-.9 1.5-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V21h-3.4v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-3.4Z" />
@@ -1054,7 +1100,7 @@
   <!-- Sticky WhatsApp button (bottom-right) -->
   <a class="wa-float"
     href="https://wa.me/60102502525?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20PPC%20Construction.%20Please%20connect%20me%20with%20the%20project%20manager."
-    target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path fill="currentColor"
         d="M12 2a9.7 9.7 0 0 0-8.3 14.8L2 22l5.4-1.6A9.7 9.7 0 1 0 12 2Zm0 17.6c-1.5 0-3-.4-4.2-1.1l-.3-.2-3.2.9.9-3.1-.2-.3A7.9 7.9 0 1 1 12 19.6Zm4.6-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.5c.1.2 1.8 2.8 4.3 3.9.6.3 1.1.5 1.5.6.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 0-1.1-.1-.1-.3-.2-.5-.3Z" />

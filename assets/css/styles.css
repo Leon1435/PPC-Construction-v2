@@ -1280,7 +1280,7 @@ section[id]{
   background:rgba(179,19,28,1);
 }
 #servicesCarousel .carousel-indicators.services-dots .active::after{
-  animation: carouselDotFill var(--services-interval, 6.5s) linear forwards;
+  animation: carouselDotFill var(--services-interval, 5s) linear forwards;
 }
 
 .service-tile{
@@ -1426,8 +1426,37 @@ section[id]{
 #reviewsCarousel .carousel-arrow{
   position:absolute;
   top:50%;
+  bottom:auto;
   transform:translateY(-50%);
   z-index:5;
+}
+
+/* Side arrow layout (like reference): big arrows in side whitespace */
+#servicesCarousel .carousel-arrow.works-arrow--prev,
+#reviewsCarousel .carousel-arrow.works-arrow--prev{
+  left:-8.5rem; /* push into the white side space */
+  right:auto;
+}
+#servicesCarousel .carousel-arrow.works-arrow--next,
+#reviewsCarousel .carousel-arrow.works-arrow--next{
+  right:-8.5rem; /* push into the white side space */
+  left:auto;
+}
+
+/* Make the arrows appropriate for white background sections */
+#servicesCarousel .carousel-arrow.works-arrow,
+#reviewsCarousel .carousel-arrow.works-arrow{
+  font-size: min(66vh, 18rem);
+  padding:.15rem .35rem;
+  color:rgba(13,19,32,.30);
+  opacity:1;
+}
+#servicesCarousel .carousel-arrow.works-arrow:hover,
+#servicesCarousel .carousel-arrow.works-arrow:focus-visible,
+#reviewsCarousel .carousel-arrow.works-arrow:hover,
+#reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
+  color:rgba(13,19,32,.50);
+  transform:translateY(-50%) scale(1.03);
 }
 /* Prevent height jump between review slides */
 #reviewsCarousel .carousel-inner{
@@ -1475,7 +1504,7 @@ section[id]{
   background:rgba(179,19,28,1);
 }
 #reviewsCarousel .carousel-indicators.reviews-dots .active::after{
-  animation: carouselDotFill var(--reviews-interval, 9s) linear forwards;
+  animation: carouselDotFill var(--reviews-interval, 5s) linear forwards;
 }
 
 @keyframes carouselDotFill{

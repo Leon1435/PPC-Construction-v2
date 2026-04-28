@@ -985,7 +985,7 @@
     const schedule = () => {
       if (timer) window.clearTimeout(timer);
       if (paused) return;
-      timer = window.setTimeout(() => go(idx + 1), 4500);
+      timer = window.setTimeout(() => go(idx + 1), 3000);
     };
 
     const go = (nextIdx) => {

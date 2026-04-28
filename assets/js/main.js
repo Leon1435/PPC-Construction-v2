@@ -608,6 +608,19 @@
         }
       });
 
+      // Preload the NEXT slide's video in the background so the first swipe
+      // doesn't wait for a cold network fetch.
+      if (type === "video") {
+        const nextVideo = videos[(idx + 1) % videos.length];
+        if (nextVideo instanceof HTMLVideoElement) {
+          // Load sources (data-src -> src) and trigger a fetch, but do not play.
+          // Run after paint to keep the transition snappy.
+          window.setTimeout(() => {
+            ensureVideoSourcesLoaded(nextVideo);
+          }, 0);
+        }
+      }
+
       scheduleNextForActive();
     };
 

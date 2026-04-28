@@ -1026,7 +1026,7 @@ section[id]{
   inset:0;
   background:
     linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 40%, rgba(255,255,255,.92) 62%, #fff 100%),
-    url("../media/our-purpose/our-purpose.png");
+    url("https://pub-77c488299e824272a7e3be8e546bca69.r2.dev/our-purpose/our-purpose.png");
   background-size:cover;
   background-position:left center;
   background-repeat:no-repeat;
@@ -1862,7 +1862,13 @@ select.contact-control{
     width:100%;
     max-width:min(21.25rem, 100%); /* 340px ÷ 16 = 21.25rem */
     margin:0 auto;
-    text-align:center;
+  }
+  .service-tile__title{
+    font-size:.90rem;
+  }
+  .service-tile__text{
+    font-size:.85rem;
+    text-align:justify;
   }
   .service-tile__media{
     width:100%;

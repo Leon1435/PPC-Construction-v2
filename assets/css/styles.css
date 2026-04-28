@@ -291,11 +291,6 @@ section[id]{
   pointer-events:none;
 }
 
-@media (max-width: 767.98px){
-  .works-track--blank::before{ height: 130px; }
-  .works-track--blank::after{ height: 150px; }
-}
-
 /* Anchor target for navbar (scrolls to the slide area, not the blend) */
 .works-view{
   position:relative;
@@ -361,29 +356,33 @@ section[id]{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: auto;
-  height: auto;
+  width: clamp(46px, 7vw, 64px);
+  height: clamp(46px, 7vw, 64px);
   border: none;
-  background: transparent;
-  color: rgba(255,255,255,.85);
+  border-radius: 999px;
+  background: rgba(0,0,0,.32);
+  color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* ~1/3 of slide height */
-  /* ~2/3 of slide height */
-  font-size: min(66vh, 18rem);
+  font-size: clamp(28px, 5.5vw, 44px);
   line-height: 1;
-  padding: .15rem .35rem;
-  opacity: .78;
-  transition: transform .18s ease, opacity .18s ease, color .18s ease;
+  padding: 0;
+  opacity: 1;
+  transition: background-color .18s ease, transform .18s ease, opacity .18s ease;
   z-index: 5;
 }
 .works-arrow:hover,
 .works-arrow:focus-visible{
-  opacity: .95;
-  color: rgba(255,255,255,.95);
+  background: rgba(0,0,0,.46);
   transform: translateY(-50%) scale(1.03);
 }
+.works-arrow:focus,
+.works-arrow:active{
+  outline:0;
+  box-shadow:none;
+}
+
 .works-arrow--prev{ left: 12px; }
 .works-arrow--next{ right: 12px; }
 
@@ -450,16 +449,6 @@ section[id]{
 .works-caption__loc{
   font-weight:400;
   opacity:.95;
-}
-
-@media (max-width: 767.98px){
-  .works-arrow{ width: 56px; height: 56px; font-size: 40px; }
-  .works-top-title{ top:.95rem; }
-  .works-caption{ bottom:1rem; }
-}
-
-@media (max-width: 575.98px){
-  .works-caption{ bottom:.9rem; }
 }
 
 /* Home: only darken the bottom ~25% (no side tint) */
@@ -711,9 +700,6 @@ section[id]{
 .who-overlay__copy{
   width: min(62ch, 100%); /* increase to widen, decrease to narrow */
 }
-@media (max-width: 767.98px){
-  .who-overlay__copy{ width: min(30ch, 100%); }
-}
 .who-overlay__inner{
   max-width:920px;
   padding:0 1rem;
@@ -829,14 +815,6 @@ section[id]{
   to { width: 100%; }
 }
 
-/* Mobile: stack tighter */
-@media (max-width: 767.98px) {
-  .progress-nav { gap: 8px; }
-  .progress-nav__track { width: 36px; }
-  .progress-nav__item.is-active .progress-nav__track { width: 52px; }
-  .progress-nav__index { font-size: 12px; }
-}
-
 /* Footer social icons */
 .footer-social{
   display:inline-flex;
@@ -896,15 +874,6 @@ section[id]{
   border-color:rgba(37, 211, 102, 1);
   transform: translateY(-1px);
   box-shadow:0 22px 54px rgba(0,0,0,.38);
-}
-@media (max-width: 575.98px){
-  .wa-float{
-    right:18px;
-    bottom:50px;
-    width:60px;
-    height:60px;
-  }
-  .wa-float svg{ width:30px; height:30px; }
 }
 
 /* Label slides (RESIDENTIAL/COMMERCIAL/CONSTRUCTION) */
@@ -1346,18 +1315,6 @@ section[id]{
   font-weight: 500;
 }
 
-@media (max-width: 767.98px){
-  #servicesCarousel{ padding-bottom:2.25rem; }
-  #servicesCarousel .carousel-inner,
-  #servicesCarousel .carousel-item,
-  #servicesCarousel .carousel-item > .row{
-    min-height: 620px;
-  }
-  .service-tile{ max-width:420px; text-align:left; }
-  .service-tile__title,
-  .service-tile__text{ text-align:center; }
-}
-
 .feature{
   border-radius:1.25rem;
   border:1px solid rgba(13,19,32,.08);
@@ -1446,16 +1403,22 @@ section[id]{
 /* Make the arrows appropriate for white background sections */
 #servicesCarousel .carousel-arrow.works-arrow,
 #reviewsCarousel .carousel-arrow.works-arrow{
-  font-size: min(66vh, 18rem);
-  padding:.15rem .35rem;
-  color:rgba(13,19,32,.30);
+  /* Lighter/smaller than Works arrows */
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  font-size:34px;
+  padding:0;
   opacity:1;
 }
 #servicesCarousel .carousel-arrow.works-arrow:hover,
 #servicesCarousel .carousel-arrow.works-arrow:focus-visible,
 #reviewsCarousel .carousel-arrow.works-arrow:hover,
 #reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
-  color:rgba(13,19,32,.50);
+  background:rgba(0,0,0,.28);
+  color:#fff;
   transform:translateY(-50%) scale(1.03);
 }
 /* Prevent height jump between review slides */
@@ -1574,67 +1537,10 @@ section[id]{
   margin:0 auto;
 }
 
-@media (max-width: 767.98px){
-  .review-tile{ max-width:420px; }
-  /* Mobile reviews: keep the same left-right structure, but center the whole card */
-  #reviewsCarousel .carousel-item > .row{ justify-content:center; }
-  .review-tile{
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .review-tile__top{
-    justify-content:center;
-    flex-direction:row;
-    align-items:center;
-  }
-  .review-tile__meta{ text-align:left; }
-  .review-tile__text{ margin:0; max-width:none; }
-  #reviewsCarousel .carousel-inner,
-  #reviewsCarousel .carousel-item,
-  #reviewsCarousel .carousel-item > .row{
-    min-height: 640px;
-  }
-}
-
 /* Mobile: allow instant collapse when clicking a nav link */
 .navbar-collapse.is-instant,
 .navbar-collapse.is-instant.collapsing{
   transition: none !important;
-}
-
-/* Mobile: prevent WhatsApp button from covering Home slide labels */
-@media (max-width: 575.98px){
-  .home-label{ padding-bottom:4rem; }
-  .home-label__text{
-    font-size:clamp(1.15rem, 4.2vw, 1.65rem);
-    max-width:calc(100% - 5.75rem); /* leave room for bottom-right WA button */
-    margin:0 auto;
-    letter-spacing:.16em;
-  }
-  .home-label__subtitle{
-    font-size:clamp(.9rem, 3.2vw, 1.15rem);
-    letter-spacing:.16em;
-  }
-}
-
-/* Mobile: tighten gap between Home label and progress bar */
-@media (max-width: 575.98px){
-  #home .progress-nav{ bottom: 1.35rem; }
-}
-
-/* Mobile: make "Who We Are" description smaller for smoother wrapping */
-@media (max-width: 767.98px){
-  .who-overlay__title{
-    font-size:clamp(1.55rem, 7.2vw, 2.15rem);
-    letter-spacing:.10em;
-  }
-  .who-overlay__para{
-    font-size:clamp(.98rem, 3.8vw, 1.15rem);
-    line-height:1.55;
-    max-width:44ch;
-    margin-bottom:.95rem;
-  }
 }
 
 .accordion-button{
@@ -1666,18 +1572,6 @@ section[id]{
   background:rgba(13,19,32,.04);
   border-top:1px solid rgba(13,19,32,.10);
   border-radius:0 0 .75rem .75rem;
-}
-
-/* Mobile FAQ: slightly smaller text + clearer Q/A separation */
-@media (max-width: 767.98px){
-  .accordion-button{
-    font-size:.7rem;
-    line-height:1.4;
-  }
-  .accordion-body{
-    font-size:.7rem;
-    line-height:1.65;
-  }
 }
 
 /* CONTACT (match provided layout) */
@@ -1893,11 +1787,6 @@ select.contact-control{
   text-transform:uppercase;
 }
 
-@media (max-width: 991.98px){
-  .contact-form-card{ margin-left:0; max-width:none; }
-  .contact-label{ padding-top:0; }
-}
-
 .contact-list a{color:#fff; text-decoration:none}
 .contact-list a:hover{text-decoration:underline}
 .contact-list li{
@@ -1911,7 +1800,14 @@ select.contact-control{
 }
 .border-white-10{border-color:rgba(255,255,255,.1)!important}
 
+/* ============================================================
+   RESPONSIVE (mobile/tablet) — consolidated at bottom
+   ============================================================ */
+
 @media (max-width: 991.98px){
+  .contact-form-card{ margin-left:0; max-width:none; }
+  .contact-label{ padding-top:0; }
+
   .hero-overlay{padding-top:6.25rem}
   .hero--short{min-height:64vh}
   .hero-stats{grid-template-columns:1fr}
@@ -1927,4 +1823,177 @@ select.contact-control{
     background-position:left top;
   }
   .purpose-card{padding:1.5rem 0}
+}
+
+@media (max-width: 767.98px){
+  .works-track--blank::before{ height: 130px; }
+  .works-track--blank::after{ height: 150px; }
+
+  .works-arrow{ width: 56px; height: 56px; font-size: 40px; }
+  .works-top-title{ top:.95rem; }
+  .works-caption{ bottom:1rem; }
+
+  .who-overlay__copy{ width: min(30ch, 100%); }
+
+  .progress-nav { gap: 8px; }
+  .progress-nav__track { width: 36px; }
+  .progress-nav__item.is-active .progress-nav__track { width: 52px; }
+  .progress-nav__index { font-size: 12px; }
+
+  /* Mobile: allow carousel swipe while still allowing vertical scroll */
+  #servicesCarousel,
+  #reviewsCarousel{
+    touch-action: pan-y;
+  }
+
+  #servicesCarousel{ padding-bottom:0; }
+  #servicesCarousel .carousel-inner,
+  #servicesCarousel .carousel-item,
+  #servicesCarousel .carousel-item > .row{
+    min-height:auto;
+  }
+  /* Mobile: make slide thinner + add side whitespace */
+  #servicesCarousel .carousel-inner{ padding:0 clamp(.75rem, 4vw, 1.25rem); }
+  /* Remove Bootstrap row negative margins (prevents horizontal overflow on narrow screens) */
+  #servicesCarousel .carousel-item > .row{ margin-left:0; margin-right:0; }
+  #servicesCarousel .carousel-item > .row > [class*="col-"]{ padding-left:0; padding-right:0; }
+
+  .service-tile{
+    width:100%;
+    max-width:min(21.25rem, 100%); /* 340px ÷ 16 = 21.25rem */
+    margin:0 auto;
+    text-align:center;
+  }
+  .service-tile__media{
+    width:100%;
+    height:210px;
+    border-radius:1.15rem;
+    overflow:hidden;
+  }
+
+  /* Reviews: keep original layout (do not tighten like Services) */
+  .review-tile{ max-width:420px; }
+  /* Mobile reviews: keep the same left-right structure, but center the whole card */
+  #reviewsCarousel .carousel-item > .row{ justify-content:center; }
+  .review-tile{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .review-tile__top{
+    justify-content:center;
+    flex-direction:row;
+    align-items:center;
+  }
+  .review-tile__meta{ text-align:left; }
+  .review-tile__text{ margin:0; max-width:none; }
+  #reviewsCarousel .carousel-inner,
+  #reviewsCarousel .carousel-item,
+  #reviewsCarousel .carousel-item > .row{
+    min-height:auto;
+  }
+
+  /* Mobile: Services arrows inside the image */
+  #servicesCarousel .carousel-arrow.works-arrow--prev{
+    /* Anchor arrows to the centered card width (prevents circle sticking out) */
+    left:calc(50% - (21.25rem / 2) + .65rem);
+    right:auto;
+  }
+  #servicesCarousel .carousel-arrow.works-arrow--next{
+    left:auto;
+    right:calc(50% - (21.25rem / 2) + .65rem);
+  }
+  #servicesCarousel .carousel-arrow.works-arrow{
+    /* Center arrows within the (fixed-height) service image */
+    top:105px;
+    transform:translateY(-50%);
+    transition:none; /* prevent "flying" when top updates per slide */
+  }
+
+  #servicesCarousel .carousel-arrow.works-arrow:active,
+  #servicesCarousel .carousel-arrow.works-arrow:focus-visible{
+    color:#fff;
+    opacity:1;
+    transform:translateY(-50%);
+  }
+
+  /* Mobile: Reviews arrows (stable, not inside image) */
+  #reviewsCarousel{ --reviews-card-w: 340px; }
+  .review-tile{ max-width:min(var(--reviews-card-w), 100%); }
+
+  #reviewsCarousel .carousel-arrow.works-arrow--prev{
+    left:calc(50% - (var(--reviews-card-w) / 2) - .6rem);
+    right:auto;
+    opacity:1;
+  }
+  #reviewsCarousel .carousel-arrow.works-arrow--next{
+    left:auto;
+    right:calc(50% - (var(--reviews-card-w) / 2) - .6rem);
+    opacity:1;
+  }
+  #reviewsCarousel .carousel-arrow.works-arrow{
+    top:var(--reviews-arrow-top, 50%);
+    transform:translateY(-50%);
+    transition:none;
+    /* Revert to simple black arrows (no circle) for mobile reviews */
+    width:auto;
+    height:auto;
+    background:transparent;
+    border-radius:0;
+    color:rgba(13,19,32,.65);
+    font-size:3.25rem;
+  }
+
+  #reviewsCarousel .carousel-arrow.works-arrow:active,
+  #reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
+    color:rgba(13,19,32,.65);
+    opacity:1;
+    transform:translateY(-50%);
+  }
+
+  .who-overlay__title{
+    font-size:clamp(1.55rem, 7.2vw, 2.15rem);
+    letter-spacing:.10em;
+  }
+  .who-overlay__para{
+    font-size:clamp(.98rem, 3.8vw, 1.15rem);
+    line-height:1.55;
+    max-width:44ch;
+    margin-bottom:.95rem;
+  }
+
+  .accordion-button{
+    font-size:.7rem;
+    line-height:1.4;
+  }
+  .accordion-body{
+    font-size:.7rem;
+    line-height:1.65;
+  }
+}
+
+@media (max-width: 575.98px){
+  .works-caption{ bottom:.9rem; }
+
+  .wa-float{
+    right:18px;
+    bottom:50px;
+    width:60px;
+    height:60px;
+  }
+  .wa-float svg{ width:30px; height:30px; }
+
+  .home-label{ padding-bottom:4rem; }
+  .home-label__text{
+    font-size:clamp(1.15rem, 4.2vw, 1.65rem);
+    max-width:calc(100% - 5.75rem); /* leave room for bottom-right WA button */
+    margin:0 auto;
+    letter-spacing:.16em;
+  }
+  .home-label__subtitle{
+    font-size:clamp(.9rem, 3.2vw, 1.15rem);
+    letter-spacing:.16em;
+  }
+
+  #home .progress-nav{ bottom: 1.35rem; }
 }

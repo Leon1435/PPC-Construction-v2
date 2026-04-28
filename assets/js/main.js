@@ -1313,6 +1313,199 @@
     });
   };
 
+  // Add touch swipe to Bootstrap carousels (Services/Reviews).
+  // Bootstrap swipe support can vary by build/version; this makes it consistent.
+  const wireBootstrapCarouselSwipe = (carouselId) => {
+    const el = document.getElementById(carouselId);
+    if (!(el instanceof HTMLElement)) return;
+    if (el.dataset.swipeWired === "1") return;
+    el.dataset.swipeWired = "1";
+
+    addSwipeNavigation(el, {
+      onNext: () => {
+        const bs = window.bootstrap;
+        const Carousel = bs && bs.Carousel;
+        if (!Carousel) return;
+        const inst =
+          typeof Carousel.getOrCreateInstance === "function"
+            ? Carousel.getOrCreateInstance(el)
+            : typeof Carousel.getInstance === "function"
+              ? Carousel.getInstance(el)
+              : null;
+        inst?.next?.();
+      },
+      onPrev: () => {
+        const bs = window.bootstrap;
+        const Carousel = bs && bs.Carousel;
+        if (!Carousel) return;
+        const inst =
+          typeof Carousel.getOrCreateInstance === "function"
+            ? Carousel.getOrCreateInstance(el)
+            : typeof Carousel.getInstance === "function"
+              ? Carousel.getInstance(el)
+              : null;
+        inst?.prev?.();
+      },
+    });
+  };
+
+  // Mobile: position Reviews arrows beside avatar row.
+  const wireMobileReviewsArrowAnchor = () => {
+    const bp = window.matchMedia("(max-width: 767.98px)");
+    const carousel = document.getElementById("reviewsCarousel");
+    if (!(carousel instanceof HTMLElement)) return;
+
+    const compute = () => {
+      if (!bp.matches) {
+        carousel.style.removeProperty("--reviews-arrow-top");
+        return;
+      }
+      const topRow = carousel.querySelector(".carousel-item.active .review-tile__top");
+      if (!(topRow instanceof HTMLElement)) return;
+
+      const cRect = carousel.getBoundingClientRect();
+      const tRect = topRow.getBoundingClientRect();
+      const y = Math.round(tRect.top - cRect.top + tRect.height / 2);
+      carousel.style.setProperty("--reviews-arrow-top", `${y}px`);
+    };
+
+    compute();
+    window.setTimeout(compute, 0);
+    carousel.addEventListener("slid.bs.carousel", compute);
+    window.addEventListener("resize", compute);
+    carousel.querySelectorAll("img").forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) return;
+      if (img.complete) return;
+      img.addEventListener("load", compute, { once: true });
+    });
+
+    if (typeof bp.addEventListener === "function") bp.addEventListener("change", compute);
+    else if (typeof bp.addListener === "function") bp.addListener(compute);
+  };
+
+  // Mobile: turn multi-card slides into single-card slides (Services + Reviews)
+  // so each swipe shows 1 item at a time.
+  const wireMobileSingleItemCarousels = () => {
+    const bp = window.matchMedia("(max-width: 767.98px)");
+
+    const rebuild = (carouselId, opts) => {
+      const carousel = document.getElementById(carouselId);
+      if (!(carousel instanceof HTMLElement)) return;
+      const inner = carousel.querySelector(".carousel-inner");
+      if (!(inner instanceof HTMLElement)) return;
+      const indicators = carousel.querySelector(".carousel-indicators");
+
+      if (!carousel.dataset.originalInnerHtml) {
+        carousel.dataset.originalInnerHtml = inner.innerHTML;
+      }
+      if (indicators instanceof HTMLElement && !carousel.dataset.originalIndicatorsHtml) {
+        carousel.dataset.originalIndicatorsHtml = indicators.innerHTML;
+      }
+
+      const isMobile = bp.matches;
+      const isApplied = carousel.dataset.singleItemMobile === "1";
+      if (isMobile === isApplied) return;
+
+      // If Bootstrap carousel is already instantiated, dispose before DOM surgery.
+      const bs = window.bootstrap;
+      const Carousel = bs && bs.Carousel;
+      const existing = Carousel && typeof Carousel.getInstance === "function" ? Carousel.getInstance(carousel) : null;
+      if (existing && typeof existing.dispose === "function") existing.dispose();
+
+      if (!isMobile) {
+        inner.innerHTML = carousel.dataset.originalInnerHtml || "";
+        delete carousel.dataset.singleItemMobile;
+
+        if (indicators instanceof HTMLElement && carousel.dataset.originalIndicatorsHtml != null) {
+          indicators.innerHTML = carousel.dataset.originalIndicatorsHtml;
+        }
+      } else {
+        const temp = document.createElement("div");
+        temp.innerHTML = carousel.dataset.originalInnerHtml || "";
+
+        const cols = Array.from(temp.querySelectorAll(opts.itemColSelector)).filter((el) => el instanceof HTMLElement);
+        if (!cols.length) {
+          // Safety: if we couldn't find any cards, do not blank the carousel.
+          inner.innerHTML = carousel.dataset.originalInnerHtml || inner.innerHTML;
+          delete carousel.dataset.singleItemMobile;
+          return;
+        }
+        const frag = document.createDocumentFragment();
+
+        cols.forEach((col, i) => {
+          const item = document.createElement("div");
+          item.className = `carousel-item${i === 0 ? " active" : ""}`;
+
+          const row = document.createElement("div");
+          row.className = opts.rowClass;
+
+          const colClone = col.cloneNode(true);
+          if (colClone instanceof HTMLElement) {
+            colClone.classList.remove("col-md-4", "col-lg-4", "col-sm-4");
+            colClone.classList.add("col-12");
+          }
+
+          row.appendChild(colClone);
+          item.appendChild(row);
+          frag.appendChild(item);
+        });
+
+        inner.replaceChildren(frag);
+        carousel.dataset.singleItemMobile = "1";
+
+        // Bootstrap expects indicators length to match items length,
+        // even if we visually hide the dots. Rebuild them for mobile.
+        if (indicators instanceof HTMLElement) {
+          indicators.replaceChildren();
+          cols.forEach((_, i) => {
+            const b = document.createElement("button");
+            b.type = "button";
+            b.setAttribute("data-bs-target", `#${carouselId}`);
+            b.setAttribute("data-bs-slide-to", String(i));
+            b.setAttribute("aria-label", `Slide ${i + 1}`);
+            if (i === 0) {
+              b.classList.add("active");
+              b.setAttribute("aria-current", "true");
+            }
+            indicators.appendChild(b);
+          });
+        }
+      }
+
+      // Re-initialize Bootstrap carousel with current data attributes.
+      if (Carousel) {
+        const intervalAttr = carousel.getAttribute("data-bs-interval");
+        const interval = intervalAttr ? Number(intervalAttr) : undefined;
+        // eslint-disable-next-line no-new
+        new Carousel(carousel, {
+          interval: Number.isFinite(interval) ? interval : undefined,
+          ride: carousel.getAttribute("data-bs-ride") || false,
+          touch: carousel.getAttribute("data-bs-touch") !== "false",
+        });
+      }
+      // Clear any previously-set arrow positioning var.
+      carousel.style.removeProperty("--carousel-arrow-top");
+    };
+
+    const applyAll = () => {
+      rebuild("servicesCarousel", {
+        // Note: we rebuild from `carousel.dataset.originalInnerHtml` which is the INNER html,
+        // so selectors must NOT depend on `#servicesCarousel` existing in that temp DOM.
+        itemColSelector: ".carousel-item .col-md-4",
+        rowClass: "row g-4 g-lg-5 justify-content-center",
+      });
+      rebuild("reviewsCarousel", {
+        itemColSelector: ".carousel-item .col-md-4",
+        rowClass: "row g-4 justify-content-center",
+        // Keep reviews stable; no arrow-top syncing.
+      });
+    };
+
+    applyAll();
+    if (typeof bp.addEventListener === "function") bp.addEventListener("change", applyAll);
+    else if (typeof bp.addListener === "function") bp.addListener(applyAll);
+  };
+
   const wireSimpleSectionFadeIns = () => {
     const ids = ["works", "purpose", "why", "reviews"];
     const targets = ids.map((id) => document.getElementById(id)).filter((el) => el instanceof HTMLElement);
@@ -1431,6 +1624,10 @@
     wireHideWhoWhenServicesHalfVisible();
     wirePauseHomeWhenWhoVisible();
     wireServicesReveal();
+    wireMobileSingleItemCarousels();
+    wireBootstrapCarouselSwipe("servicesCarousel");
+    wireBootstrapCarouselSwipe("reviewsCarousel");
+    wireMobileReviewsArrowAnchor();
     wireFixedCarouselHeight("servicesCarousel");
     wireFixedCarouselHeight("reviewsCarousel");
     wireSimpleSectionFadeIns();

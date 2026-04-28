@@ -1924,8 +1924,25 @@ select.contact-control{
     transition:none; /* prevent "flying" when top updates per slide */
   }
 
+  /* Mobile Services: circular dark bg + white arrow */
+  #servicesCarousel .carousel-arrow.works-arrow{
+    width:45px;
+    height:45px;
+    border-radius:999px;
+    background:rgba(0,0,0,.32);
+    color:#fff;
+    font-size:40px;
+    padding:0;
+    opacity:1;
+    transition:none;
+  }
+
+  /* Mobile Services: keep arrow + circle fixed (no focus/active changes) */
+  #servicesCarousel .carousel-arrow.works-arrow:hover,
   #servicesCarousel .carousel-arrow.works-arrow:active,
+  #servicesCarousel .carousel-arrow.works-arrow:focus,
   #servicesCarousel .carousel-arrow.works-arrow:focus-visible{
+    background:rgba(0,0,0,.32);
     color:#fff;
     opacity:1;
     transform:translateY(-50%);

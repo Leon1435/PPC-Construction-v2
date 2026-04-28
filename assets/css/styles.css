@@ -1896,16 +1896,16 @@ select.contact-control{
   /* Mobile: Services arrows inside the image */
   #servicesCarousel .carousel-arrow.works-arrow--prev{
     /* Anchor arrows to the centered card width (prevents circle sticking out) */
-    left:calc(50% - (21.25rem / 2) + .65rem);
+    left:var(--services-arrow-left, calc(50% - (21.25rem / 2) + .65rem));
     right:auto;
   }
   #servicesCarousel .carousel-arrow.works-arrow--next{
     left:auto;
-    right:calc(50% - (21.25rem / 2) + .65rem);
+    right:var(--services-arrow-right, calc(50% - (21.25rem / 2) + .65rem));
   }
   #servicesCarousel .carousel-arrow.works-arrow{
     /* Center arrows within the (fixed-height) service image */
-    top:105px;
+    top:var(--services-arrow-top, 105px);
     transform:translateY(-50%);
     transition:none; /* prevent "flying" when top updates per slide */
   }
@@ -1922,13 +1922,13 @@ select.contact-control{
   .review-tile{ max-width:min(var(--reviews-card-w), 100%); }
 
   #reviewsCarousel .carousel-arrow.works-arrow--prev{
-    left:calc(50% - (var(--reviews-card-w) / 2) - .6rem);
+    left:calc(50% - (var(--reviews-card-w) / 2) - .2rem);
     right:auto;
     opacity:1;
   }
   #reviewsCarousel .carousel-arrow.works-arrow--next{
     left:auto;
-    right:calc(50% - (var(--reviews-card-w) / 2) - .6rem);
+    right:calc(50% - (var(--reviews-card-w) / 2) - .2rem);
     opacity:1;
   }
   #reviewsCarousel .carousel-arrow.works-arrow{

@@ -1383,6 +1383,51 @@
     else if (typeof bp.addListener === "function") bp.addListener(compute);
   };
 
+  // Mobile: position Services arrows inside the active image dynamically.
+  const wireMobileServicesArrowAnchor = () => {
+    const bp = window.matchMedia("(max-width: 767.98px)");
+    const carousel = document.getElementById("servicesCarousel");
+    if (!(carousel instanceof HTMLElement)) return;
+
+    const compute = () => {
+      if (!bp.matches) {
+        carousel.style.removeProperty("--services-arrow-top");
+        carousel.style.removeProperty("--services-arrow-left");
+        carousel.style.removeProperty("--services-arrow-right");
+        return;
+      }
+
+      const media = carousel.querySelector(".carousel-item.active .service-tile__media");
+      if (!(media instanceof HTMLElement)) return;
+
+      const cRect = carousel.getBoundingClientRect();
+      const mRect = media.getBoundingClientRect();
+
+      const top = Math.round(mRect.top - cRect.top + mRect.height / 2);
+      // Inset a bit from the image edge so the circle stays fully inside.
+      const inset = 10;
+      const left = Math.round(mRect.left - cRect.left + inset);
+      const right = Math.round(cRect.right - mRect.right + inset);
+
+      carousel.style.setProperty("--services-arrow-top", `${top}px`);
+      carousel.style.setProperty("--services-arrow-left", `${left}px`);
+      carousel.style.setProperty("--services-arrow-right", `${right}px`);
+    };
+
+    compute();
+    window.setTimeout(compute, 0);
+    carousel.addEventListener("slid.bs.carousel", compute);
+    window.addEventListener("resize", compute);
+    carousel.querySelectorAll("img").forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) return;
+      if (img.complete) return;
+      img.addEventListener("load", compute, { once: true });
+    });
+
+    if (typeof bp.addEventListener === "function") bp.addEventListener("change", compute);
+    else if (typeof bp.addListener === "function") bp.addListener(compute);
+  };
+
   // Mobile: turn multi-card slides into single-card slides (Services + Reviews)
   // so each swipe shows 1 item at a time.
   const wireMobileSingleItemCarousels = () => {
@@ -1627,6 +1672,7 @@
     wireMobileSingleItemCarousels();
     wireBootstrapCarouselSwipe("servicesCarousel");
     wireBootstrapCarouselSwipe("reviewsCarousel");
+    wireMobileServicesArrowAnchor();
     wireMobileReviewsArrowAnchor();
     wireFixedCarouselHeight("servicesCarousel");
     wireFixedCarouselHeight("reviewsCarousel");

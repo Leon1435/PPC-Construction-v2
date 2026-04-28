@@ -1,4 +1,23 @@
 (() => {
+  const ensureVideoSourcesLoaded = (video) => {
+    if (!(video instanceof HTMLVideoElement)) return false;
+    const sources = Array.from(video.querySelectorAll("source")).filter((s) => s instanceof HTMLSourceElement);
+    let changed = false;
+    sources.forEach((s) => {
+      const ds = s.getAttribute("data-src");
+      if (!ds) return;
+      s.setAttribute("src", ds);
+      s.removeAttribute("data-src");
+      changed = true;
+    });
+    if (changed) {
+      try {
+        video.load();
+      } catch {}
+    }
+    return changed;
+  };
+
   const addSwipeNavigation = (root, { onNext, onPrev }) => {
     if (!(root instanceof HTMLElement)) return;
 
@@ -574,6 +593,7 @@
       videos.forEach((v, i) => {
         if (!v) return;
         if (i === idx && type === "video" && !paused) {
+          ensureVideoSourcesLoaded(v);
           // If the video was at the end, restart so it doesn't instantly end and skip.
           try {
             const dur = v.duration;
@@ -1129,6 +1149,9 @@
     const resumeActiveWhoVideo = () => {
       const activeVideo = who.querySelector(".slide.is-active video.hero-video");
       if (!(activeVideo instanceof HTMLVideoElement)) return;
+
+      // Lazy-load sources when Who enters viewport.
+      ensureVideoSourcesLoaded(activeVideo);
 
       // If it ended (or is essentially at the end), restart so it doesn't "stick" on the last frame.
       try {

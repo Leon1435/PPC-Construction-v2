@@ -356,25 +356,23 @@ section[id]{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(46px, 7vw, 64px);
-  height: clamp(46px, 7vw, 64px);
   border: none;
-  border-radius: 999px;
-  background: rgba(0,0,0,.32);
-  color: #fff;
+  background: transparent;
+  color: rgba(255,255,255,.85);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(28px, 5.5vw, 44px);
+  font-size: min(66vh, 18rem);
   line-height: 1;
-  padding: 0;
-  opacity: 1;
-  transition: background-color .18s ease, transform .18s ease, opacity .18s ease;
+  padding: .15rem .35rem;
+  opacity: .78;
+  transition: transform .18s ease, opacity .18s ease, color .18s ease;
   z-index: 5;
 }
 .works-arrow:hover,
 .works-arrow:focus-visible{
-  background: rgba(0,0,0,.46);
+  opacity: .95;
+  color: rgba(255,255,255,.95);
   transform: translateY(-50%) scale(1.03);
 }
 .works-arrow:focus,
@@ -1400,25 +1398,25 @@ section[id]{
   left:auto;
 }
 
-/* Make the arrows appropriate for white background sections */
+/* Desktop: make Services/Reviews arrows match Works (big chevrons),
+   but use a dark transparent color for white sections. */
 #servicesCarousel .carousel-arrow.works-arrow,
 #reviewsCarousel .carousel-arrow.works-arrow{
-  /* Lighter/smaller than Works arrows */
-  width:40px;
-  height:40px;
-  border-radius:999px;
-  background:rgba(0,0,0,.35);
-  color:#fff;
-  font-size:34px;
-  padding:0;
-  opacity:1;
+  width:auto;
+  height:auto;
+  border-radius:0;
+  background:transparent;
+  padding:.15rem .35rem;
+  color:rgba(13,19,32,.28);
+  opacity:.9;
 }
 #servicesCarousel .carousel-arrow.works-arrow:hover,
 #servicesCarousel .carousel-arrow.works-arrow:focus-visible,
 #reviewsCarousel .carousel-arrow.works-arrow:hover,
 #reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
-  background:rgba(0,0,0,.28);
-  color:#fff;
+  background:transparent;
+  color:rgba(13,19,32,.42);
+  opacity:1;
   transform:translateY(-50%) scale(1.03);
 }
 /* Prevent height jump between review slides */
@@ -1829,7 +1827,17 @@ select.contact-control{
   .works-track--blank::before{ height: 130px; }
   .works-track--blank::after{ height: 150px; }
 
-  .works-arrow{ width: 56px; height: 56px; font-size: 40px; }
+  /* Mobile: small circular arrows */
+  .works-arrow{
+    width:56px;
+    height:56px;
+    border-radius:999px;
+    background:rgba(0,0,0,.32);
+    color:#fff;
+    font-size:40px;
+    padding:0;
+    opacity:1;
+  }
   .works-top-title{ top:.95rem; }
   .works-caption{ bottom:1rem; }
 

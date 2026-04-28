@@ -1942,13 +1942,15 @@ select.contact-control{
     border-radius:0;
     color:rgba(13,19,32,.65);
     font-size:3.25rem;
+    box-shadow:none;
   }
 
   #reviewsCarousel .carousel-arrow.works-arrow:active,
   #reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
-    color:rgba(13,19,32,.65);
+    color:#fff;
     opacity:1;
     transform:translateY(-50%);
+    box-shadow:none;
   }
 
   .who-overlay__title{

@@ -116,15 +116,48 @@
       if (!(target instanceof HTMLElement)) return;
       e.preventDefault();
 
-      const navEl = document.getElementById("mainNav");
-      const navH = navEl instanceof HTMLElement ? navEl.getBoundingClientRect().height : 72;
-      const y = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      const doScroll = () => {
+        const navEl = document.getElementById("mainNav");
+        const navH = navEl instanceof HTMLElement ? navEl.getBoundingClientRect().height : 72;
+        const y = target.getBoundingClientRect().top + window.scrollY - navH;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      };
 
+      // Mobile fix: if the navbar is expanded, collapse it instantly (no animation),
+      // then do a single smooth scroll. This avoids the "half section then corrects" jump.
       const nav = document.getElementById("navbarContent");
-      if (nav && nav.classList.contains("show")) {
-        const toggler = document.querySelector(".navbar-toggler");
-        if (toggler instanceof HTMLElement) toggler.click();
+      if (nav instanceof HTMLElement && nav.classList.contains("show")) {
+        nav.classList.add("is-instant");
+        // Force reflow so the "no transition" class applies before hiding.
+        // eslint-disable-next-line no-unused-expressions
+        nav.offsetHeight;
+
+        // Prefer Bootstrap API if available (more reliable than toggler click).
+        const bs = window.bootstrap;
+        const inst =
+          bs && typeof bs.Collapse?.getOrCreateInstance === "function"
+            ? bs.Collapse.getOrCreateInstance(nav, { toggle: false })
+            : null;
+
+        const afterHide = () => {
+          // Let layout settle for accurate nav height, then scroll once.
+          requestAnimationFrame(() => {
+            doScroll();
+            // Re-enable transitions for normal toggles.
+            window.setTimeout(() => nav.classList.remove("is-instant"), 0);
+          });
+        };
+
+        nav.addEventListener("hidden.bs.collapse", afterHide, { once: true });
+
+        if (inst && typeof inst.hide === "function") {
+          inst.hide();
+        } else {
+          const toggler = document.querySelector(".navbar-toggler");
+          if (toggler instanceof HTMLElement) toggler.click();
+        }
+      } else {
+        doScroll();
       }
 
       // Keep nav highlighting responsive immediately on click.
@@ -692,6 +725,14 @@
       overlay.classList.toggle("is-label", mode !== "intro");
 
       titleEl.textContent = title;
+
+      // If the page provides static HTML copy for the paragraphs, don't overwrite it.
+      const hasStaticCopy =
+        (p1 instanceof HTMLElement && p1.textContent?.trim()) ||
+        (p2 instanceof HTMLElement && p2.textContent?.trim()) ||
+        (p3 instanceof HTMLElement && p3.textContent?.trim());
+      if (hasStaticCopy) return;
+
       if (mode === "intro") {
         renderSoftLines(p1, [active?.dataset?.line1]);
         renderSoftLines(p2, [active?.dataset?.line2a || active?.dataset?.line2, active?.dataset?.line2b, active?.dataset?.line2c]);

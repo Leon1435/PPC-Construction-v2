@@ -178,7 +178,6 @@
   <!-- OUR WORKS -->
   <section id="works" class="works-hero works-hero--full" aria-label="Our works">
     <div class="works-blank">
-      <!-- <div class="works-blend works-blend--top" aria-hidden="true"></div> -->
 
       <div id="works-view" class="works-view" aria-hidden="true"></div>
       <div class="works-carousel works-carousel--blank" id="worksCarousel" aria-label="Our works slideshow">
@@ -187,25 +186,28 @@
         </button>
 
         <div class="works-track works-track--blank">
-          <div class="works-slide is-active" data-caption="Baron">
+          <!-- Order matches requested top-to-bottom sequence -->
+          <div class="works-slide is-active" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2001.png" alt="The Oval 01" loading="lazy" />
+          </div>
+          <div class="works-slide is-next" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2002.png" alt="The Oval 02" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2003.png" alt="The Oval 03" loading="lazy" />
+          </div>
+          <div class="works-slide" data-caption="The Oval">
+            <img src="assets/media/our-works/The%20Oval%2004.png" alt="The Oval 04" loading="lazy" />
+          </div>
+
+          <div class="works-slide" data-caption="Baron">
             <img src="assets/media/our-works/Baron%2001.png" alt="Baron 01" loading="lazy" />
           </div>
-          <div class="works-slide is-next" data-caption="Baron">
+          <div class="works-slide" data-caption="Baron">
             <img src="assets/media/our-works/Baron%2002.png" alt="Baron 02" loading="lazy" />
           </div>
           <div class="works-slide" data-caption="Baron">
             <img src="assets/media/our-works/Baron%2003.png" alt="Baron 03" loading="lazy" />
-          </div>
-
-          <div class="works-slide" data-caption="Chuan Yu Bu Luo">
-            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2001.png" alt="Chuan Yu Bu Luo 01" loading="lazy" />
-          </div>
-          <div class="works-slide" data-caption="Chuan Yu Bu Luo">
-            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2002.png" alt="Chuan Yu Bu Luo 02" loading="lazy" />
-          </div>
-
-          <div class="works-slide" data-caption="KLCC">
-            <img src="assets/media/our-works/KLCC%2001.png" alt="KLCC 01" loading="lazy" />
           </div>
 
           <div class="works-slide" data-caption="Marc">
@@ -218,28 +220,26 @@
             <img src="assets/media/our-works/Marc%2003.png" alt="Marc 03" loading="lazy" />
           </div>
 
+          <div class="works-slide" data-caption="KLCC">
+            <img src="assets/media/our-works/KLCC%2001.png" alt="KLCC 01" loading="lazy" />
+          </div>
+
           <div class="works-slide" data-caption="TRX">
             <img src="assets/media/our-works/TRX%2001.png" alt="TRX 01" loading="lazy" />
           </div>
 
-          <div class="works-slide" data-caption="The Oval">
-            <img src="assets/media/our-works/The%20Oval%2001.png" alt="The Oval 01" loading="lazy" />
-          </div>
-          <div class="works-slide" data-caption="The Oval">
-            <img src="assets/media/our-works/The%20Oval%2002.png" alt="The Oval 02" loading="lazy" />
-          </div>
-          <div class="works-slide" data-caption="The Oval">
-            <img src="assets/media/our-works/The%20Oval%2003.png" alt="The Oval 03" loading="lazy" />
-          </div>
-          <div class="works-slide" data-caption="The Oval">
-            <img src="assets/media/our-works/The%20Oval%2004.png" alt="The Oval 04" loading="lazy" />
-          </div>
-
-          <div class="works-slide is-prev" data-caption="YangBuTong">
+          <div class="works-slide" data-caption="YangBuTong">
             <img src="assets/media/our-works/YangBuTong%2001.png" alt="YangBuTong 01" loading="lazy" />
           </div>
           <div class="works-slide" data-caption="YangBuTong">
             <img src="assets/media/our-works/YangBuTong%2002.png" alt="YangBuTong 02" loading="lazy" />
+          </div>
+
+          <div class="works-slide" data-caption="Chuan Yu Bu Luo">
+            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2001.png" alt="Chuan Yu Bu Luo 01" loading="lazy" />
+          </div>
+          <div class="works-slide is-prev" data-caption="Chuan Yu Bu Luo">
+            <img src="assets/media/our-works/Chuan%20Yu%20Bu%20Luo%2002.png" alt="Chuan Yu Bu Luo 02" loading="lazy" />
           </div>
         </div>
 
@@ -249,8 +249,6 @@
           <span aria-hidden="true">›</span>
         </button>
       </div>
-
-      <!-- <div class="works-blend works-blend--bottom" aria-hidden="true"></div> -->
     </div>
   </section>
 
@@ -264,8 +262,12 @@
         data-line3a="We turn your vision into reality with disciplined "
         data-line3b="precision and uncompromising efficiency.">
         <div class="hero-media">
-          <video class="hero-video" muted playsinline preload="metadata">
-            <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
+          <video class="hero-video"
+          muted
+          playsinline
+          preload="metadata"
+          poster="assets/media/who-we-are/who-we-are-poster.png">
+          <source src="assets/media/who-we-are/Who-We-Are-Meeting-01.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -274,10 +276,12 @@
     <div class="who-overlay" id="whoOverlay" aria-live="polite">
       <div class="container">
         <div class="who-overlay__inner text-center mx-auto">
-          <h2 class="who-overlay__title" id="whoOverlayTitle">WHO WE ARE</h2>
-          <div class="who-overlay__para" id="whoOverlayP1"></div>
-          <div class="who-overlay__para" id="whoOverlayP2"></div>
-          <div class="who-overlay__para" id="whoOverlayP3"></div>
+          <div class="who-overlay__copy">
+            <h2 class="who-overlay__title" id="whoOverlayTitle">WHO WE ARE</h2>
+            <p class="who-overlay__para" id="whoOverlayP1">More than builders, we are your partners in excellence.</p>
+            <p class="who-overlay__para" id="whoOverlayP2">PPC Construction Sdn. Bhd. delivers seamless design-and-build solutions for ambitious commercial spaces and premium homes.</p>
+            <p class="who-overlay__para" id="whoOverlayP3">We turn your vision into reality with disciplined precision and uncompromising efficiency.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -298,6 +302,11 @@
           <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+
+        <button class="works-arrow works-arrow--prev carousel-arrow" type="button" aria-label="Previous slide"
+          data-bs-target="#servicesCarousel" data-bs-slide="prev">
+          <span aria-hidden="true">‹</span>
+        </button>
 
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -489,6 +498,11 @@
             </div>
           </div>
         </div>
+
+        <button class="works-arrow works-arrow--next carousel-arrow" type="button" aria-label="Next slide"
+          data-bs-target="#servicesCarousel" data-bs-slide="next">
+          <span aria-hidden="true">›</span>
+        </button>
       </div>
     </div>
   </section>
@@ -544,6 +558,11 @@
             aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         </div>
+
+        <button class="works-arrow works-arrow--prev carousel-arrow" type="button" aria-label="Previous slide"
+          data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+          <span aria-hidden="true">‹</span>
+        </button>
 
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -670,6 +689,11 @@
             </div>
           </div>
         </div>
+
+        <button class="works-arrow works-arrow--next carousel-arrow" type="button" aria-label="Next slide"
+          data-bs-target="#reviewsCarousel" data-bs-slide="next">
+          <span aria-hidden="true">›</span>
+        </button>
       </div>
     </div>
   </section>
@@ -882,8 +906,9 @@
     <div class="container">
       <div class="contact-grid">
         <div class="row g-5 align-items-start">
-          <div class="col-lg-5">
+          <div class="col-lg-5 order-2 order-lg-1">
             <div class="contact-info">
+              <h2 class="h4 fw-bold mb-4">Contact Details</h2>
               <div class="contact-item">
                 <div class="contact-item__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
@@ -943,8 +968,10 @@
                 <div class="contact-item__body">
                   <div class="contact-item__title">EMAIL</div>
                   <div class="contact-item__text">
-                    <a class="contact-link"
-                      href="mailto:ppc.construction.my@gmail.com">ppc.construction.my@gmail.com</a>
+                      <a class="contact-link"
+                        href="mailto:ppc.construction.my@gmail.com?subject=Inquiry&body=Hi%20PPC%20Construction,%0A%0A">
+                        ppc.construction.my@gmail.com
+                      </a>
                   </div>
                 </div>
               </div>
@@ -959,14 +986,14 @@
                 <div class="contact-item__body">
                   <div class="contact-item__title">WEBSITE</div>
                   <div class="contact-item__text">
-                    <a class="contact-link" href="https://ppcconstruction.com.my" target="_blank" rel="noopener noreferrer">ppcconstruction.com.my</a>
+                    <a class="contact-link" href="https://ppcconstruction.my" target="_blank" rel="noopener noreferrer">ppcconstruction.my</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-7">
+          <div class="col-lg-7 order-1 order-lg-2">
             <div class="contact-form-card">
               <h2 class="contact-form-title mb-4">Free Online Consultation</h2>
               <form id="contactForm" novalidate autocomplete="off">

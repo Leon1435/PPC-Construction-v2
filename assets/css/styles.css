@@ -1921,6 +1921,8 @@ select.contact-control{
     color:#fff;
     opacity:1;
     transform:translateY(-50%);
+    outline:0;
+    box-shadow:none;
   }
 
   /* Mobile: Reviews arrows (stable, not inside image) */
@@ -1949,14 +1951,20 @@ select.contact-control{
     color:rgba(13,19,32,.65);
     font-size:3.25rem;
     box-shadow:none;
+    -webkit-tap-highlight-color: transparent;
+    appearance:none;
   }
 
   #reviewsCarousel .carousel-arrow.works-arrow:active,
+  #reviewsCarousel .carousel-arrow.works-arrow:focus,
   #reviewsCarousel .carousel-arrow.works-arrow:focus-visible{
-    color:#fff;
+    color:rgba(13,19,32,.65);
     opacity:1;
     transform:translateY(-50%);
+    outline:0;
     box-shadow:none;
+    background:transparent;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .who-overlay__title{

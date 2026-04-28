@@ -726,6 +726,7 @@
     const p3 = document.getElementById("whoOverlayP3");
 
     if (!slides.length) return;
+    const singleSlide = slides.length <= 1;
 
     let idx = 0;
     let timer = null;
@@ -847,6 +848,7 @@
       const v = videos[idx];
       if (!v) return;
       if (paused) return;
+      ensureVideoSourcesLoaded(v);
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(() => {});
     };
@@ -866,14 +868,16 @@
       slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
       setActiveNav();
 
-      animateOverlaySwap();
-      resetAll();
+      if (!singleSlide) {
+        animateOverlaySwap();
+        resetAll();
+      }
       playActive();
-      scheduleFallbackAdvance();
+      if (!singleSlide) scheduleFallbackAdvance();
     };
 
     const go = (nextIdx) => setActive(nextIdx);
-    addSwipeNavigation(root, { onNext: () => go(idx + 1), onPrev: () => go(idx - 1) });
+    // No swipe navigation for Who section.
 
     // Progress navigation
     navItems.forEach((btn) => {
@@ -898,6 +902,10 @@
     // Ended -> advance
     videos.forEach((v) => {
       if (!v) return;
+      if (singleSlide) {
+        v.loop = true;
+        return;
+      }
       v.loop = false;
       v.addEventListener("ended", () => {
         if (paused) return;

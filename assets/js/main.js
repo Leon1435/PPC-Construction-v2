@@ -1356,7 +1356,12 @@
         p.el.style.width = p.width;
       });
 
-      if (maxH > 0) inner.style.height = `${maxH}px`;
+      if (maxH > 0) {
+        // IMPORTANT: cap the fixed height to what's actually available in the layout.
+        // This prevents viewport-fitted sections (e.g. Services) from overflowing on short screens.
+        const cap = Math.round(carousel.getBoundingClientRect().height || 0);
+        inner.style.height = `${cap > 0 ? Math.min(maxH, cap) : maxH}px`;
+      }
     };
 
     recompute();
@@ -1368,6 +1373,88 @@
       if (img.complete) return;
       img.addEventListener("load", recompute, { once: true });
     });
+  };
+
+  // Viewport-fitted sections: keep "fit to viewport" layout by default,
+  // but if the content overflows, allow the section to expand to auto height.
+  const wireViewportOverflowAutoExpand = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!(section instanceof HTMLElement)) return;
+
+    let raf = 0;
+    const recompute = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+
+        const nav = document.getElementById("mainNav");
+        const navH = nav instanceof HTMLElement ? nav.getBoundingClientRect().height : 0;
+        const available = Math.max(0, window.innerHeight - navH);
+
+        // Measure REQUIRED height in auto mode (hidden to avoid flicker),
+        // then compare it to the viewport-fitted available height.
+        const prevVisibility = section.style.visibility;
+        section.style.visibility = "hidden";
+        section.classList.add("is-measuring");
+        section.classList.remove("is-overflowing");
+
+        // Force layout
+        // eslint-disable-next-line no-unused-expressions
+        section.offsetHeight;
+
+        const required = section.scrollHeight;
+
+        section.classList.remove("is-measuring");
+        section.style.visibility = prevVisibility;
+
+        // SECOND PASS: in fitted mode, the carousel/cards can be height-constrained.
+        // Detect "internal" clipping inside the active tiles as well.
+        section.classList.remove("is-overflowing");
+        // eslint-disable-next-line no-unused-expressions
+        section.offsetHeight;
+
+        const activeTiles = section.querySelectorAll("#servicesCarousel .carousel-item.active .service-tile");
+        let internalOverflow = false;
+        activeTiles.forEach((tile) => {
+          if (!(tile instanceof HTMLElement)) return;
+          if (tile.scrollHeight > tile.clientHeight + 1) internalOverflow = true;
+        });
+
+        const overflows = required > available + 1 || internalOverflow;
+        section.classList.toggle("is-overflowing", overflows);
+      });
+    };
+
+    recompute();
+    window.addEventListener("load", recompute, { once: true });
+    window.addEventListener("resize", recompute);
+
+    // Services uses a carousel; changing slides can change height needs.
+    const carousel = section.querySelector(".carousel");
+    if (carousel instanceof HTMLElement) {
+      carousel.addEventListener("slid.bs.carousel", recompute);
+    }
+
+    // Images may load after layout.
+    section.querySelectorAll("img").forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) return;
+      if (img.complete) return;
+      img.addEventListener("load", recompute, { once: true });
+    });
+
+    // Content size can change after responsive rebuilds (e.g. mobile single-item carousel).
+    // ResizeObserver makes overflow detection robust without manual event wiring.
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => recompute());
+      ro.observe(section);
+      const inner = section.querySelector(".container");
+      if (inner instanceof HTMLElement) ro.observe(inner);
+      if (carousel instanceof HTMLElement) ro.observe(carousel);
+    }
+
+    // Expose a hook for other layout code to call if needed.
+    section.dataset.recomputeOverflow = "1";
+    section.__recomputeOverflow = recompute;
   };
 
   // Add touch swipe to Bootstrap carousels (Services/Reviews).
@@ -1734,6 +1821,7 @@
     wireMobileReviewsArrowAnchor();
     wireFixedCarouselHeight("servicesCarousel");
     wireFixedCarouselHeight("reviewsCarousel");
+    wireViewportOverflowAutoExpand("services");
     wireSimpleSectionFadeIns();
     pauseOffscreenHeroVideos();
     wireContactForm();

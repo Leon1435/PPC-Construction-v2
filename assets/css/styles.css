@@ -26,7 +26,10 @@ html,body{ overflow-x:hidden; }
 }
 body{
   font-family:MontserratLocal,Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  margin:0;
+  background:var(--bg);
 }
+html{ background:var(--bg); }
 
 /* Make anchor jumps account for fixed navbar on all screens */
 html{
@@ -999,8 +1002,7 @@ section[id]{
 
 /* Viewport-fitted sections: exactly fill the space below the fixed navbar */
 #services.section-pad,
-#reviews.section-pad,
-#why.why-clean{
+#reviews.section-pad{
   height:calc(100svh - var(--nav-h));
   max-height:calc(100svh - var(--nav-h));
   display:flex;
@@ -1014,8 +1016,7 @@ section[id]{
 
 /* Center the section content block itself */
 #services > .container,
-#reviews > .container,
-#why > .container{
+#reviews > .container{
   width:100%;
   display:flex;
   flex-direction:column;
@@ -1134,9 +1135,6 @@ section[id]{
 
 .why-clean{
   padding:5.25rem 0;
-  min-height:calc(100svh - var(--nav-h));
-  display:flex;
-  align-items:center;
 }
 .why-head{max-width:920px}
 .why-title{
@@ -1232,6 +1230,7 @@ section[id]{
 }
 
 .service-transition{
+  background:white;
   width: 100%;
   height: 7%;
 }
@@ -1459,6 +1458,14 @@ section[id]{
 #purpose .purpose-title,
 #purpose .purpose-subtitle{
   text-align:center;
+}
+
+/* Desktop: Our Purpose title/subtitle left-aligned (keep mobile centered) */
+@media (min-width: 768px){
+  #purpose .purpose-title,
+  #purpose .purpose-subtitle{
+    text-align:left;
+  }
 }
 
 /* Add consistent spacing under each section title */
@@ -1929,7 +1936,9 @@ select.contact-control{
   .purpose-card{padding:1.5rem 0}
 
   .service-transition{
-    display:none;
+    border:none;
+    background:white;
+    height:3%;
   }
 }
 
@@ -2022,6 +2031,7 @@ select.contact-control{
     left:clamp(1rem, 4vw, 1.5rem);
     transform:none;
     text-align:left;
+    font-size:clamp(.9rem, 2.6vw, 1.25rem);
     white-space:normal;
     /* max-width:calc(100% - (2 * clamp(1rem, 4vw, 1.5rem))); */
   }
@@ -2202,6 +2212,9 @@ select.contact-control{
 }
 
 @media (max-width: 575.98px){
+  .works-caption{
+    font-size:clamp(.85rem, 3.4vw, 1.1rem);
+  }
 
   .wa-float{
     right:18px;

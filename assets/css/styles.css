@@ -7,7 +7,7 @@
   --accent:#b3131c;
   --accent-2:#f2c14e;
   --shadow:0 18px 60px rgba(0,0,0,.35);
-  --anchor-gap:16px; /* extra breathing room below fixed navbar */
+  --anchor-gap:0px; /* nav-flush sections (no extra scroll gap) */
   /* Set by JS to match the real navbar height */
   /* --nav-h:5000px; */
 }
@@ -30,10 +30,10 @@ body{
 
 /* Make anchor jumps account for fixed navbar on all screens */
 html{
-  scroll-padding-top: calc(var(--nav-h, 72px) + var(--anchor-gap));
+  scroll-padding-top: calc(var(--nav-h, 72px));
 }
 section[id]{
-  scroll-margin-top: calc(var(--nav-h, 72px) + var(--anchor-gap));
+  scroll-margin-top: calc(var(--nav-h, 72px));
 }
 
 /* Slightly larger side gutters (responsive) */
@@ -160,6 +160,14 @@ section[id]{
 }
 .hero--tall{min-height:calc(100svh - var(--nav-h))}
 .hero--short{min-height:calc(100svh - var(--nav-h))}
+
+/* Keep Who section exactly within the viewport below the fixed navbar */
+#who{
+  height:calc(100svh - var(--nav-h));
+  max-height:calc(100svh - var(--nav-h));
+  min-height:unset;
+  overflow:hidden;
+}
 .hero-carousel,.hero-carousel .carousel-inner,.hero-carousel .carousel-item{height:100%}
 .hero-media{
   position:absolute;
@@ -205,6 +213,13 @@ section[id]{
   position:relative;
   padding:0;
   background: rgb(25, 25, 25);
+}
+
+/* Keep Our Works section exactly within the viewport below the fixed navbar */
+#works{
+  height:calc(100svh - var(--nav-h));
+  max-height:calc(100svh - var(--nav-h));
+  overflow:hidden;
 }
 
 /* Works structure:
@@ -402,11 +417,11 @@ section[id]{
 .works-caption{
   position:absolute;
   left:50%;
-  bottom:1.25rem;
+  bottom:2.3rem;
   transform:translateX(-50%);
   z-index:6;
   color:#fff;
-  font-size:clamp(1.2rem, 3.2vw, 2.2rem);
+  font-size:clamp(1.1rem, 2.8vw, 1.9rem);
   letter-spacing:.04em;
   text-shadow:
     /* dark outline + depth */
@@ -842,7 +857,7 @@ section[id]{
 .wa-float{
   position:fixed;
   right:50px;
-  bottom:50px;
+  bottom:40px;
   z-index:9999;
   width:64px;
   height:64px;
@@ -981,6 +996,44 @@ section[id]{
 
 .section-pad > .container{width:100%}
 .section-head{max-width:820px}
+
+/* Viewport-fitted sections: exactly fill the space below the fixed navbar */
+#services.section-pad,
+#reviews.section-pad,
+#why.why-clean{
+  height:calc(100svh - var(--nav-h));
+  max-height:calc(100svh - var(--nav-h));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  position:relative;
+  padding:0;
+}
+
+/* Center the section content block itself */
+#services > .container,
+#reviews > .container,
+#why > .container{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Contact section includes footer bar; keep the footer pinned at the bottom */
+#contact.section-pad.contact-section{
+  height:auto;
+  max-height:none;
+  display:block;
+  overflow:visible;
+  position:relative;
+  padding:inherit;
+}
+
+#contact > .container{ width:100%; }
 .section-dark{background:var(--bg); color:#fff}
 .section-light{background:#fff; color:var(--text)}
 
@@ -1008,7 +1061,8 @@ section[id]{
 
 .purpose-split{
   position:relative;
-  min-height:calc(100svh - var(--nav-h));
+  height:calc(100svh - var(--nav-h));
+  max-height:calc(100svh - var(--nav-h));
   display:flex;
   align-items:center;
   padding:5.25rem 0;
@@ -1104,25 +1158,31 @@ section[id]{
   line-height:1.7;
 }
 .why-tile{
-  height:100%;
-  min-height:118px;
+  /* Fixed box size (responsive scaling with viewport) */
+  width:clamp(7.6rem, 14vw, 9.3rem);
+  height:clamp(6.8rem, 12.5vw, 8.4rem);
+  min-height:0;
+  max-width:none;
+  box-sizing:border-box;
+  overflow:hidden;
   border-radius:1.25rem;
   border:1.5px solid rgba(13,19,32,.65);
   background:#fff;
   display:grid;
   place-items:center;
-  gap:.35rem;
-  padding:1.1rem .9rem;
+  gap:.25rem;
+  padding:1rem .75rem;
   text-align:center;
+  justify-self:center;
 }
 .why-tile__num{
-  font-size:1.45rem;
+  font-size:clamp(1.35rem, 4.4vw, 1.75rem);
   color:rgba(13,19,32,.92);
   font-weight:600;
   line-height:1;
 }
 .why-tile__label{
-  font-size:.95rem;
+  font-size:clamp(.85rem, 3.2vw, 1.08rem);
   color:rgba(13,19,32,.88);
   line-height:1.28;
   font-weight:400;
@@ -1171,6 +1231,10 @@ section[id]{
   box-shadow:0 12px 40px rgba(13,19,32,.12);
 }
 
+.service-transition{
+  width: 100%;
+  height: 7%;
+}
 .service-card{
   border:1px solid rgba(13,19,32,.08);
   border-radius:1.25rem;
@@ -1188,11 +1252,11 @@ section[id]{
   text-align:center;
   max-width:none;
 }
-.services-title{
-  font-weight:800;
-  letter-spacing:.16em;
-  color:var(--accent);
-  font-size:clamp(1.5rem, 3.4vw, 2.2rem);
+  /* Narrow title + copy slightly so it lines up with the image card */
+#services .service-tile > *:not(.service-tile__media){
+  padding-left:clamp(.5rem, 2.6vw, .95rem);
+  padding-right:clamp(.5rem, 2.6vw, .95rem);
+  box-sizing:border-box;
 }
 #servicesCarousel{
   margin-top:2.25rem;
@@ -1300,13 +1364,13 @@ section[id]{
 }
 .service-tile__title{
   margin:1rem 0 .6rem;
-  font-weight:800;
-  font-size:.85rem;
+  font-weight:700;
+  font-size:.80rem;
   color:#0d1320;
 }
 .service-tile__text{
   color:#0d1320;
-  font-size:.75rem;
+  font-size:.70rem;
   line-height:1.45em;
   text-align: left;
   margin-bottom:.5rem;
@@ -1361,10 +1425,55 @@ section[id]{
 }
 .reviews-title{
   font-weight:800;
-  letter-spacing:.16em;
+  letter-spacing:.12em;
   color:var(--accent);
   font-size:clamp(1.5rem, 3.4vw, 2.2rem);
 }
+
+/* Unified section-title style (match OUR SERVICES) */
+.services-title,
+.reviews-title,
+.purpose-title,
+.why-title,
+.contact-form-title,
+.faq-title{
+  font-weight:800;
+  letter-spacing:.1em;
+  color:var(--accent);
+  font-size:clamp(1.5rem, 3.4vw, 2.2rem);
+  text-align:center;
+}
+
+/* Title alignment + tighter spacing (reduced gaps between title/subtitle blocks) */
+#faq .section-head{
+  text-align:center;
+  max-width:none; /* match accordion width (not the global .section-head max-width) */
+  width:100%;
+}
+#faq .section-head .h1{
+  width:100%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+#purpose .purpose-title,
+#purpose .purpose-subtitle{
+  text-align:center;
+}
+
+/* Add consistent spacing under each section title */
+#services .services-title,
+#reviews .reviews-title,
+#why .why-title,
+#faq .section-head .h1,
+#contact .contact-form-title{
+  margin-bottom:2.5rem;
+}
+
+#purpose .purpose-title{ margin-bottom:.15rem !important; }
+#purpose .purpose-subtitle{ margin-bottom:1.5rem !important; }
+
+
 .reviews-carousel{
   margin-top:2.25rem;
   padding-bottom:2.75rem; /* dots */
@@ -1575,14 +1684,13 @@ section[id]{
 /* CONTACT (match provided layout) */
 .contact-section{
   display:block; /* override .section-pad flex so footer stacks below */
-  /* Override .section-pad spacing so layout matches reference */
-  padding-top:4rem;
+  padding-top:4rem; /* matches original contact spacing */
   padding-bottom:0; /* footer bar sits inside the section */
   min-height:auto;
 }
 .contact-grid{
-  padding-top:.75rem;
-  padding-bottom:1.25rem;
+  padding-top:3rem;
+  padding-bottom:2.5rem;
 }
 .contact-info{
   display:flex;
@@ -1634,10 +1742,6 @@ section[id]{
 }
 .contact-form-title{
   text-align:center;
-  font-weight:800;
-  letter-spacing:.14em;
-  color:var(--accent);
-  font-size:clamp(1.35rem, 2.3vw, 1.75rem);
 }
 .contact-label{
   color:rgba(13,19,32,.78);
@@ -1823,21 +1927,56 @@ select.contact-control{
     background-repeat:no-repeat;
   }
   .purpose-card{padding:1.5rem 0}
+
+  .service-transition{
+    display:none;
+  }
 }
 
 @media (max-width: 767.98px){
   .works-track--blank::before{ height: 130px; }
   .works-track--blank::after{ height: 150px; }
 
+  /* Make the tile columns shrink to content instead of forced 50% width */
+  #why .row.g-4 > .col-6{
+    width:50%;
+    padding: 0;
+  }
+  /* Center the last tile (number 5) on its own row */
+  #why .row.g-4 > .col-6:last-child{
+    flex:0 0 100%;
+    width:auto;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* Mobile: allow internal scrolling and top-padding for viewport-fitted sections */
+  #services,
+  #reviews{
+    scrollbar-gutter: stable;
+    overflow-y:auto;
+    justify-content:flex-start;
+    padding-top:2rem;
+    padding-bottom:2rem;
+  }
+  #services > .container,
+  #reviews > .container{
+    justify-content:flex-start;
+  }
+
   /* Mobile: nudge Reviews title upward a bit */
   #reviews .section-head{
     margin-top:-1.5rem;
   }
 
-  /* Our Purpose: similar text scale on narrow screens */
-  #purpose .purpose-title{
-    font-size:clamp(1.12rem, 4.1vw, 1.38rem);
+  /* Keep section titles consistent on mobile */
+  #purpose .purpose-title,
+  #why .why-title,
+  #contact .contact-form-title,
+  #faq .section-head .h1{
+    font-size:clamp(1.5rem, 3.4vw, 2.2rem);
     letter-spacing:.12em;
+    color:var(--accent);
   }
   #purpose .purpose-subtitle,
   #purpose .purpose-intro,
@@ -1847,36 +1986,18 @@ select.contact-control{
     line-height:1.55;
   }
 
-  /* Why PPC: match Our Purpose mobile type scale (title + intro copy) */
-  #why .why-title{
-    font-size:clamp(1.12rem, 4.1vw, 1.38rem);
-    letter-spacing:.12em;
-  }
+  /* Why PPC: match Our Purpose mobile type scale (intro copy) */
   #why .why-lead,
   #why .why-body{
     font-size:clamp(.88rem, 3.2vw, .96rem);
     line-height:1.55;
   }
 
-  /* Why PPC tiles: smaller boxes, bigger numbers */
-  #why .why-tile{
-    min-height:0;
-    padding:.80rem .70rem;
-    gap:.2rem;
-    border-radius:1rem;
-  }
-  #why .why-tile__num{
-    font-size:clamp(1.2rem, 5.8vw, 1.65rem);
-    line-height:1;
-  }
-  #why .why-tile__label{
-    font-size:clamp(.72rem, 2.85vw, .86rem);
-    line-height:1.22;
-  }
-
   /* Our Purpose: viewport-tall block + vertical center (nav jump lands on balanced layout) */
   .purpose-split{
-    min-height:calc(100svh - var(--nav-h));
+    height:calc(100svh - var(--nav-h));
+    max-height:calc(100svh - var(--nav-h));
+    min-height:unset;
     align-items:center;
     padding:2rem 0 2.5rem;
   }
@@ -1896,7 +2017,14 @@ select.contact-control{
     opacity:1;
   }
   .works-top-title{ top:.95rem; }
-  .works-caption{ bottom:1rem; }
+  .works-caption{
+    bottom:3.5rem;
+    left:clamp(1rem, 4vw, 1.5rem);
+    transform:none;
+    text-align:left;
+    white-space:normal;
+    /* max-width:calc(100% - (2 * clamp(1rem, 4vw, 1.5rem))); */
+  }
 
   .who-overlay__copy{ width: min(30ch, 100%); }
 
@@ -1943,13 +2071,6 @@ select.contact-control{
     height:210px;
     border-radius:1.15rem;
     overflow:hidden;
-  }
-
-  /* Narrow title + copy slightly so it lines up with the image card */
-  #services .service-tile > *:not(.service-tile__media){
-    padding-left:clamp(.5rem, 2.6vw, .95rem);
-    padding-right:clamp(.5rem, 2.6vw, .95rem);
-    box-sizing:border-box;
   }
 
   /* Reviews: keep original layout (do not tighten like Services) */
@@ -2081,11 +2202,10 @@ select.contact-control{
 }
 
 @media (max-width: 575.98px){
-  .works-caption{ bottom:.9rem; }
 
   .wa-float{
     right:18px;
-    bottom:50px;
+    bottom:40px;
     width:60px;
     height:60px;
   }

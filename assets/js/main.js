@@ -123,67 +123,78 @@
   };
 
   const wireSmoothScroll = () => {
-    document.addEventListener("click", (e) => {
-      const a = e.target instanceof Element ? e.target.closest('a[href^="#"]') : null;
-      if (!a) return;
-      const href = a.getAttribute("href");
-      if (!href || href === "#") return;
-      // Special-case: "Our Works" should scroll to the slide viewport anchor,
-      // but nav highlighting should remain tied to the real #works section.
-      const target =
-        href === "#works" ? document.getElementById("works-view") : document.querySelector(href);
-      if (!(target instanceof HTMLElement)) return;
-      e.preventDefault();
+    document.addEventListener(
+      "click",
+      (e) => {
+        const a = e.target instanceof Element ? e.target.closest('a[href^="#"]') : null;
+        if (!a) return;
 
-      const doScroll = () => {
-        const navEl = document.getElementById("mainNav");
-        const navH = navEl instanceof HTMLElement ? navEl.getBoundingClientRect().height : 72;
-        const gapRaw = getComputedStyle(document.documentElement).getPropertyValue("--anchor-gap").trim();
-        const anchorGap = Number.parseFloat(gapRaw) || 16;
-        const y = target.getBoundingClientRect().top + window.scrollY - navH - anchorGap;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      };
+        const href = a.getAttribute("href");
+        if (!href || href === "#") return;
 
-      // Mobile fix: if the navbar is expanded, collapse it instantly (no animation),
-      // then do a single smooth scroll. This avoids the "half section then corrects" jump.
-      const nav = document.getElementById("navbarContent");
-      if (nav instanceof HTMLElement && nav.classList.contains("show")) {
-        nav.classList.add("is-instant");
-        // Force reflow so the "no transition" class applies before hiding.
-        // eslint-disable-next-line no-unused-expressions
-        nav.offsetHeight;
+        const target = document.querySelector(href);
+        if (!(target instanceof HTMLElement)) return;
 
-        // Prefer Bootstrap API if available (more reliable than toggler click).
-        const bs = window.bootstrap;
-        const inst =
-          bs && typeof bs.Collapse?.getOrCreateInstance === "function"
-            ? bs.Collapse.getOrCreateInstance(nav, { toggle: false })
-            : null;
+        e.preventDefault();
 
-        const afterHide = () => {
-          // Let layout settle for accurate nav height, then scroll once.
-          requestAnimationFrame(() => {
-            doScroll();
-            // Re-enable transitions for normal toggles.
-            window.setTimeout(() => nav.classList.remove("is-instant"), 0);
-          });
+        // Unlock fade/reveal state before measuring + scrolling.
+        const id = href.slice(1);
+        const sec = document.getElementById(id);
+        if (sec instanceof HTMLElement) sec.classList.add("is-inview");
+
+        // Keep nav highlighting responsive immediately on click.
+        setActiveNavLink(href);
+
+        const doScroll = (behavior) => {
+          syncNavbarHeightVar();
+          const navEl = document.getElementById("mainNav");
+          const navH = navEl instanceof HTMLElement ? navEl.offsetHeight : 72;
+
+          const run = () => {
+            const top = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: Math.max(0, top - navH), behavior });
+          };
+
+          // Two frames: layout stable after navbar class changes / collapse / font load.
+          window.requestAnimationFrame(() => window.requestAnimationFrame(run));
         };
 
-        nav.addEventListener("hidden.bs.collapse", afterHide, { once: true });
+        // Mobile fix: if the navbar is expanded, collapse it instantly,
+        // then scroll with `auto` to avoid fighting Bootstrap animations.
+        const nav = document.getElementById("navbarContent");
+        if (nav instanceof HTMLElement && nav.classList.contains("show")) {
+          nav.classList.add("is-instant");
+          // eslint-disable-next-line no-unused-expressions
+          nav.offsetHeight;
 
-        if (inst && typeof inst.hide === "function") {
-          inst.hide();
+          const bs = window.bootstrap;
+          const inst =
+            bs && typeof bs.Collapse?.getOrCreateInstance === "function"
+              ? bs.Collapse.getOrCreateInstance(nav, { toggle: false })
+              : null;
+
+          const afterHide = () => {
+            window.requestAnimationFrame(() => {
+              doScroll("auto");
+              window.setTimeout(() => nav.classList.remove("is-instant"), 0);
+            });
+          };
+
+          nav.addEventListener("hidden.bs.collapse", afterHide, { once: true });
+
+          if (inst && typeof inst.hide === "function") {
+            inst.hide();
+          } else {
+            const toggler = document.querySelector(".navbar-toggler");
+            if (toggler instanceof HTMLElement) toggler.click();
+          }
         } else {
-          const toggler = document.querySelector(".navbar-toggler");
-          if (toggler instanceof HTMLElement) toggler.click();
+          // Desktop/normal: smooth scroll.
+          doScroll("smooth");
         }
-      } else {
-        doScroll();
-      }
-
-      // Keep nav highlighting responsive immediately on click.
-      setActiveNavLink(href);
-    });
+      },
+      true
+    );
   };
 
   const wireSectionObservers = () => {
@@ -1569,8 +1580,9 @@
         const interval = intervalAttr ? Number(intervalAttr) : undefined;
         // eslint-disable-next-line no-new
         new Carousel(carousel, {
-          interval: Number.isFinite(interval) ? interval : undefined,
-          ride: carousel.getAttribute("data-bs-ride") || false,
+          // Disable auto cycling (manual only)
+          interval: false,
+          ride: false,
           touch: carousel.getAttribute("data-bs-touch") !== "false",
         });
       }

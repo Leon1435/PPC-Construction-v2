@@ -172,6 +172,8 @@
     <div class="home-label" id="homeLabel" aria-live="polite">
       <div class="container">
         <div class="home-label__text" id="homeLabelText"></div>
+      </div>
+    </div>
   </section>
 
   <!-- OUR WORKS -->
@@ -287,15 +289,16 @@
   </section>
 
   <!-- SERVICES -->
+  <div class="service-transition"></div>
   <section id="services" class="section-pad section-light">
     <div class="container">
       <div class="section-head">
         <h2 class="services-title mb-0">OUR SERVICES</h2>
       </div>
 
-      <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000"
+      <div id="servicesCarousel" class="carousel slide"
         data-bs-touch="true">
-        <div class="carousel-indicators services-dots">
+        <div class="carousel-indicators">
           <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#servicesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -505,6 +508,7 @@
       </div>
     </div>
   </section>
+  <div class="service-transition"></div>
 
   <!-- PURPOSE -->
   <section id="purpose" class="purpose-split">
@@ -550,9 +554,9 @@
         <h2 class="reviews-title">OUR REVIEWS</h2>
       </div>
 
-      <div id="reviewsCarousel" class="carousel slide reviews-carousel" data-bs-ride="carousel" data-bs-interval="5000"
+      <div id="reviewsCarousel" class="carousel slide reviews-carousel"
         data-bs-touch="true">
-        <div class="carousel-indicators reviews-dots">
+        <div class="carousel-indicators">
           <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -713,7 +717,7 @@
         </p>
       </div>
 
-      <div class="row g-4 justify-content-center mt-4 mt-lg-5">
+      <div class="row g-4 justify-content-between mt-4 mt-lg-5 why-row">
         <div class="col-6 col-md-4 col-lg-2">
           <div class="why-tile">
             <div class="why-tile__num">1</div>
@@ -752,7 +756,7 @@
   <section id="faq" class="section-pad section-light">
     <div class="container">
       <div class="section-head">
-        <h2 class="h1 fw-bold mb-0">Frequently Asked Questions</h2>
+        <h2 class="faq-title">Frequently Asked Questions</h2>
       </div>
 
       <div class="accordion mt-4" id="faqAccordion">
@@ -907,7 +911,7 @@
         <div class="row g-5 align-items-start">
           <div class="col-lg-5 order-2 order-lg-1">
             <div class="contact-info">
-              <h2 class="h4 fw-bold mb-4">Contact Details</h2>
+              <h2 class="h4 fw-bold mb-4 ">Contact Details</h2>
               <div class="contact-item">
                 <div class="contact-item__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24">
@@ -1030,7 +1034,7 @@
                   <div class="col-md-8">
                     <select class="form-select contact-control" id="type" name="type" autocomplete="off">
                       <option value="" selected>Select type</option>
-                      <option value="terence">Terence</option>
+                      <option value="terrace">Terrace</option>
                       <option value="bungalow">Bungalow</option>
                       <option value="office">Office</option>
                       <option value="factory">Factory</option>
@@ -1107,7 +1111,9 @@
         </div>
       </div>
     </div>
+  </section>
 
+  <footer>
     <div class="contact-footer-bar">
       <div class="container">
         <div class="contact-footer-inner">
@@ -1115,7 +1121,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

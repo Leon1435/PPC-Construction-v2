@@ -1868,15 +1868,16 @@ select.contact-control{
 
   .service-tile{
     width:100%;
-    max-width:min(21.25rem, 100%); /* 340px ÷ 16 = 21.25rem */
+    max-width:min(21rem, 100%); /* 340px ÷ 16 = 21.25rem */
     margin:0 auto;
   }
   .service-tile__title{
-    font-size:.90rem;
+    font-size:.85rem;
+    font-weight: 700;
   }
   .service-tile__text{
-    font-size:.85rem;
-    text-align:justify;
+    font-size:.70rem;
+    text-align:left;
   }
   .service-tile__media{
     width:100%;

@@ -138,7 +138,9 @@
       const doScroll = () => {
         const navEl = document.getElementById("mainNav");
         const navH = navEl instanceof HTMLElement ? navEl.getBoundingClientRect().height : 72;
-        const y = target.getBoundingClientRect().top + window.scrollY - navH;
+        const gapRaw = getComputedStyle(document.documentElement).getPropertyValue("--anchor-gap").trim();
+        const anchorGap = Number.parseFloat(gapRaw) || 16;
+        const y = target.getBoundingClientRect().top + window.scrollY - navH - anchorGap;
         window.scrollTo({ top: y, behavior: "smooth" });
       };
 

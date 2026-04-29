@@ -842,7 +842,7 @@ section[id]{
 .wa-float{
   position:fixed;
   right:50px;
-  bottom:80px;
+  bottom:50px;
   z-index:9999;
   width:64px;
   height:64px;
@@ -984,18 +984,14 @@ section[id]{
 .section-dark{background:var(--bg); color:#fff}
 .section-light{background:#fff; color:var(--text)}
 
-/* Section separators with side gaps (Services / Purpose / Reviews / Why / FAQ / Contact) */
+/* Section separators with side gaps (Reviews -> Why -> FAQ) */
 
-#services,
-#reviews,
 #why,
 #faq,
 #contact{
   position:relative;
 }
 
-#services::before,
-#reviews::before,
 #why::before,
 #faq::before,
 #contact::before{
@@ -1007,20 +1003,6 @@ section[id]{
   height:1px;
   background:rgba(13,19,32,.18);
   width:min(1100px, calc(100% - (2 * clamp(1rem, 4vw, 2.25rem))));
-}
-
-/* Purpose already uses ::before for the background image — top rule uses ::after */
-#purpose.purpose-split::after{
-  content:"";
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  height:1px;
-  background:rgba(13,19,32,.18);
-  width:min(1100px, calc(100% - (2 * clamp(1rem, 4vw, 2.25rem))));
-  z-index:2;
-  pointer-events:none;
 }
 
 
@@ -1563,7 +1545,7 @@ section[id]{
   font-weight:700;
   color:rgba(13,19,32,.92);
   font-size:1rem;
-  line-height:1.45;
+  line-height:1.65;
 }
 
 .accordion-button:not(.collapsed){
@@ -1584,7 +1566,7 @@ section[id]{
   color:rgba(13,19,32,.92);
   font-weight:500;
   font-size:1rem;
-  line-height:1.7;
+  line-height:1.9;
   background:rgba(13,19,32,.04);
   border-top:1px solid rgba(13,19,32,.10);
   border-radius:0 0 .75rem .75rem;
@@ -1835,8 +1817,10 @@ select.contact-control{
   .purpose-split::before{
     background:
       linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.92) 100%),
-      url("../media/our-purpose/our-purpose.png");
+      url("https://pub-77c488299e824272a7e3be8e546bca69.r2.dev/our-purpose/our-purpose.png");
+    background-size:cover;
     background-position:left top;
+    background-repeat:no-repeat;
   }
   .purpose-card{padding:1.5rem 0}
 }
@@ -1861,6 +1845,43 @@ select.contact-control{
   #purpose .purpose-point__text{
     font-size:clamp(.88rem, 3.2vw, .96rem);
     line-height:1.55;
+  }
+
+  /* Why PPC: match Our Purpose mobile type scale (title + intro copy) */
+  #why .why-title{
+    font-size:clamp(1.12rem, 4.1vw, 1.38rem);
+    letter-spacing:.12em;
+  }
+  #why .why-lead,
+  #why .why-body{
+    font-size:clamp(.88rem, 3.2vw, .96rem);
+    line-height:1.55;
+  }
+
+  /* Why PPC tiles: smaller boxes, bigger numbers */
+  #why .why-tile{
+    min-height:0;
+    padding:.80rem .70rem;
+    gap:.2rem;
+    border-radius:1rem;
+  }
+  #why .why-tile__num{
+    font-size:clamp(1.2rem, 5.8vw, 1.65rem);
+    line-height:1;
+  }
+  #why .why-tile__label{
+    font-size:clamp(.72rem, 2.85vw, .86rem);
+    line-height:1.22;
+  }
+
+  /* Our Purpose: viewport-tall block + vertical center (nav jump lands on balanced layout) */
+  .purpose-split{
+    min-height:calc(100svh - var(--nav-h));
+    align-items:center;
+    padding:2rem 0 2.5rem;
+  }
+  .purpose-card{
+    padding:1rem 0;
   }
 
   /* Mobile: small circular arrows */
@@ -1915,7 +1936,7 @@ select.contact-control{
     font-size:.70rem;
     text-align:left;
     line-height: 1.75em;
-    margin-bottom: 1.2rem;
+    margin-bottom: .8rem;
   }
   .service-tile__media{
     width:100%;
@@ -2051,11 +2072,11 @@ select.contact-control{
 
   .accordion-button{
     font-size:.7rem;
-    line-height:1.4;
+    line-height:1.6;
   }
   .accordion-body{
     font-size:.7rem;
-    line-height:1.65;
+    line-height:1.85;
   }
 }
 

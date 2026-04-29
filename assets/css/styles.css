@@ -1222,31 +1222,25 @@ section[id]{
   line-height:1.7;
 }
 .why-tile{
-  /* Fixed box size (responsive scaling with viewport) */
-  width:clamp(7.6rem, 14vw, 9.3rem);
-  height:clamp(6.8rem, 12.5vw, 8.4rem);
-  min-height:0;
-  max-width:none;
-  box-sizing:border-box;
-  overflow:hidden;
+  height:100%;
+  min-height:118px;
   border-radius:1.25rem;
   border:1.5px solid rgba(13,19,32,.65);
   background:#fff;
   display:grid;
   place-items:center;
-  gap:.25rem;
-  padding:1rem .75rem;
+  gap:.35rem;
+  padding:1.1rem .9rem;
   text-align:center;
-  justify-self:center;
 }
 .why-tile__num{
-  font-size:clamp(1.35rem, 4.4vw, 1.75rem);
+  font-size:1.45rem;
   color:rgba(13,19,32,.92);
   font-weight:600;
   line-height:1;
 }
 .why-tile__label{
-  font-size:clamp(.85rem, 3.2vw, 1.08rem);
+  font-size:.95rem;
   color:rgba(13,19,32,.88);
   line-height:1.28;
   font-weight:400;
@@ -2018,11 +2012,17 @@ select.contact-control{
   .works-track--blank::before{ height: 130px; }
   .works-track--blank::after{ height: 150px; }
 
-  /* Make the tile columns shrink to content instead of forced 50% width */
+  /* Why PPC (mobile): keep 2-column grid but cap tile width */
   #why .row.g-4 > .col-6{
     flex:0 0 50%;
     max-width:50%;
-    padding:0;
+    display:flex;
+    justify-content:center;
+    padding-left:.5rem;
+    padding-right:.5rem;
+  }
+  #why .why-tile{
+    width:min(170px, 100%);
   }
   /* Center the last tile (number 5) on its own row */
   #why .row.g-4 > .col-6:last-child{

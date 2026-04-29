@@ -1317,6 +1317,17 @@
     if (!(inner instanceof HTMLElement)) return;
 
     const recompute = () => {
+      // If this carousel sits inside a viewport-fitted section that has switched to
+      // "auto-expand" mode, do NOT force a fixed inner height. Let content define it.
+      const hostSection = carousel.closest(".section-pad");
+      if (
+        hostSection instanceof HTMLElement &&
+        (hostSection.classList.contains("is-overflowing") || hostSection.classList.contains("is-measuring"))
+      ) {
+        inner.style.removeProperty("height");
+        return;
+      }
+
       const items = Array.from(inner.querySelectorAll(".carousel-item")).filter((el) => el instanceof HTMLElement);
       if (!items.length) return;
 

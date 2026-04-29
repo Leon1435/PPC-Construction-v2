@@ -1432,7 +1432,6 @@ section[id]{
 /* Unified section-title style (match OUR SERVICES) */
 .services-title,
 .reviews-title,
-.purpose-title,
 .why-title,
 .contact-form-title,
 .faq-title{
@@ -1454,18 +1453,6 @@ section[id]{
   display:block;
   margin-left:auto;
   margin-right:auto;
-}
-#purpose .purpose-title,
-#purpose .purpose-subtitle{
-  text-align:center;
-}
-
-/* Desktop: Our Purpose title/subtitle left-aligned (keep mobile centered) */
-@media (min-width: 768px){
-  #purpose .purpose-title,
-  #purpose .purpose-subtitle{
-    text-align:left;
-  }
 }
 
 /* Add consistent spacing under each section title */
@@ -1882,12 +1869,9 @@ select.contact-control{
   z-index:1;
 }
 
-.contact-footer-bar{
-  margin-top:.5rem;
+.footer-bar{
   background:var(--bg);
   border-top:4px solid var(--accent);
-}
-.contact-footer-inner{
   padding:1.1rem 0;
   text-align:center;
   color:rgba(255,255,255,.78);
@@ -1936,7 +1920,6 @@ select.contact-control{
   .purpose-card{padding:1.5rem 0}
 
   .service-transition{
-    border:none;
     background:white;
     height:3%;
   }

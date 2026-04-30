@@ -1310,11 +1310,13 @@
     observer.observe(services);
   };
 
-  const wireFixedCarouselHeight = (carouselId) => {
+  const wireFixedCarouselHeight = (carouselId, opts = {}) => {
     const carousel = document.getElementById(carouselId);
     if (!(carousel instanceof HTMLElement)) return;
     const inner = carousel.querySelector(".carousel-inner");
     if (!(inner instanceof HTMLElement)) return;
+
+    const { capToCarouselHeight = true } = opts;
 
     const recompute = () => {
       // If this carousel sits inside a viewport-fitted section that has switched to
@@ -1331,6 +1333,14 @@
       const items = Array.from(inner.querySelectorAll(".carousel-item")).filter((el) => el instanceof HTMLElement);
       if (!items.length) return;
 
+      // IMPORTANT: clear any previously-locked inner height before measuring.
+      // The carousel-items use `height:100%` in CSS, so a stale locked inner
+      // height would force each item's scrollHeight to that value, producing
+      // an inflated maxH that never shrinks (e.g. when DOM is rebuilt for
+      // mobile single-item layout, or when a slide simply has less content).
+      const prevInnerHeight = inner.style.height;
+      inner.style.height = "";
+
       // Measure each item at natural height.
       const prev = items.map((it) => ({
         el: it,
@@ -1339,6 +1349,7 @@
         visibility: it.style.visibility,
         pointerEvents: it.style.pointerEvents,
         width: it.style.width,
+        height: it.style.height,
       }));
 
       items.forEach((it) => {
@@ -1347,6 +1358,9 @@
         it.style.visibility = "hidden";
         it.style.pointerEvents = "none";
         it.style.width = "100%";
+        // Defensive: neutralise CSS `height:100%` during measurement so the
+        // item resolves to its own content height regardless of ancestor sizing.
+        it.style.height = "auto";
       });
 
       // Force layout
@@ -1365,9 +1379,21 @@
         p.el.style.visibility = p.visibility;
         p.el.style.pointerEvents = p.pointerEvents;
         p.el.style.width = p.width;
+        p.el.style.height = p.height;
       });
 
+      // If we somehow couldn't measure, restore the previous lock so we don't
+      // accidentally collapse the carousel.
+      if (!(maxH > 0) && prevInnerHeight) {
+        inner.style.height = prevInnerHeight;
+      }
+
       if (maxH > 0) {
+        if (!capToCarouselHeight) {
+          inner.style.height = `${maxH}px`;
+          return;
+        }
+
         // IMPORTANT: cap the fixed height to what's actually available in the layout.
         // This prevents viewport-fitted sections (e.g. Services) from overflowing on short screens.
         const cap = Math.round(carousel.getBoundingClientRect().height || 0);
@@ -1384,6 +1410,26 @@
       if (img.complete) return;
       img.addEventListener("load", recompute, { once: true });
     });
+
+    // The mobile/desktop rebuild swaps the carousel-inner DOM. Recompute when
+    // that happens so the locked height matches the new slide structure.
+    if (typeof MutationObserver !== "undefined") {
+      let pending = false;
+      const mo = new MutationObserver(() => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+          pending = false;
+          recompute();
+          carousel.querySelectorAll("img").forEach((img) => {
+            if (!(img instanceof HTMLImageElement)) return;
+            if (img.complete) return;
+            img.addEventListener("load", recompute, { once: true });
+          });
+        });
+      });
+      mo.observe(inner, { childList: true, subtree: true });
+    }
   };
 
   // Viewport-fitted sections: keep "fit to viewport" layout by default,
@@ -1830,9 +1876,12 @@
     wireBootstrapCarouselSwipe("reviewsCarousel");
     wireMobileServicesArrowAnchor();
     wireMobileReviewsArrowAnchor();
-    wireFixedCarouselHeight("servicesCarousel");
+    // Lock services carousel height to the tallest slide so switching slides
+    // doesn't make the section "jump". `capToCarouselHeight:false` because the
+    // default cap = active item's height (which differs per slide), which would
+    // re-introduce the jump.
+    wireFixedCarouselHeight("servicesCarousel", { capToCarouselHeight: false });
     wireFixedCarouselHeight("reviewsCarousel");
-    wireViewportOverflowAutoExpand("services");
     wireSimpleSectionFadeIns();
     pauseOffscreenHeroVideos();
     wireContactForm();

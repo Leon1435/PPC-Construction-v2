@@ -1849,6 +1849,11 @@ select.contact-control{
   height:22px;
   display:block;
 }
+/* Xiaohongshu is a wide wordmark — give it a bit more room than the silhouette icons */
+.contact-social[aria-label="Little Red Book"] svg{
+  width:30px;
+  height:30px;
+}
 .contact-social:hover,
 .contact-social:focus-visible{
   box-shadow:0 14px 34px rgba(13,19,32,.12);
@@ -2217,6 +2222,9 @@ select.contact-control{
   .accordion-button{
     font-size:.7rem;
     line-height:1.6;
+  }
+  .accordion-button::after{
+    margin-left:.45rem; /* mobile: space between text and chevron */
   }
   .accordion-body{
     font-size:.7rem;

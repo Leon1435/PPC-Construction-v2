@@ -1786,6 +1786,9 @@
     const message = document.getElementById("message");
     const messageHelp = document.getElementById("messageHelp");
     const MAX_WORDS = 50;
+    const MAX_PHONE_DIGITS = 10; // fits e.g. 011xxxxxxxx (without +60 prefix)
+
+    const cleanPhone = (value) => String(value || "").replace(/\D+/g, "").slice(0, MAX_PHONE_DIGITS);
 
     const getWords = (value) =>
       String(value || "")
@@ -1810,12 +1813,20 @@
       syncMessageCount();
     }
 
+    // Mobile field: digits only, max 10 characters (e.g. 011xxxxxxxx).
+    if (phoneEl instanceof HTMLInputElement) {
+      phoneEl.addEventListener("input", () => {
+        const next = cleanPhone(phoneEl.value);
+        if (phoneEl.value !== next) phoneEl.value = next;
+      });
+    }
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const name = nameEl instanceof HTMLInputElement ? nameEl.value.trim() : "";
-      const phoneRaw = phoneEl instanceof HTMLInputElement ? phoneEl.value.trim() : "";
-      const phone = phoneRaw ? `+60 ${phoneRaw}` : "";
+      const phoneRaw = phoneEl instanceof HTMLInputElement ? cleanPhone(phoneEl.value) : "";
+      const phone = phoneRaw ? `+60${phoneRaw}` : "";
       const location = locationEl instanceof HTMLInputElement ? locationEl.value.trim() : "";
       const type = typeEl instanceof HTMLSelectElement ? typeEl.value.trim() : "";
       const budget = budgetEl instanceof HTMLSelectElement ? budgetEl.value.trim() : "";
@@ -1835,8 +1846,14 @@
       const waNumber = "60102502525";
       const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
 
-      if (status) status.textContent = "Redirecting to WhatsApp…";
-      window.open(waUrl, "_blank", "noopener,noreferrer");
+      if (status) status.textContent = "Opening WhatsApp…";
+
+      // More reliable than `window.open` on mobile / strict popup blockers.
+      try {
+        window.location.href = waUrl;
+      } catch {
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+      }
     });
   };
 

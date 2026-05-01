@@ -1817,6 +1817,27 @@ select.contact-control{
   border-radius:12px;
   padding:.65rem 1.25rem;
   font-weight:700;
+  /* Neutralize Bootstrap hover/active color shifts for this specific button */
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-active-color: #fff;
+  --bs-btn-disabled-color: #fff;
+  color:#fff;
+  transition:none !important;
+}
+.contact-submit:hover,
+.contact-submit:focus,
+.contact-submit:focus-visible,
+.contact-submit:active,
+.contact-submit.active{
+  color:#fff !important;
+  background-color:var(--accent) !important;
+  border-color:var(--accent) !important;
+  transform:none !important;
+  box-shadow:none !important;
 }
 .contact-status{
   color:rgba(13,19,32,.65);
@@ -1854,12 +1875,6 @@ select.contact-control{
   width:30px;
   height:30px;
 }
-.contact-social:hover,
-.contact-social:focus-visible{
-  box-shadow:0 14px 34px rgba(13,19,32,.12);
-  transform: translateY(-1px);
-}
-
 /* Brand colors on hover (contact row) */
 .contact-social[aria-label="Facebook"]:hover,
 .contact-social[aria-label="Facebook"]:focus-visible{ background-color:#1877F2; border-color:#1877F2; color:#fff; }
